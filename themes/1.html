@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="HVAC Template">
+    <meta name="keywords" content="HVAC, unica, creative, html">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LESSON 1. First automobiles</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Css Styles -->
+    <link rel="stylesheet" href="../css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/font-awesome.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/elegant-icons.css" type="text/css">
+    <link rel="stylesheet" href="../css/nice-select.css" type="text/css">
+    <link rel="stylesheet" href="../css/magnific-popup.css" type="text/css">
+    <link rel="stylesheet" href="../css/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/owl.carousel.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/slicknav.min.css" type="text/css">
+    <link rel="stylesheet" href="../css/style.css" type="text/css">
+
+    <style>
+        /* GLOBAL MOBILE OVERFLOW FIX */
+        html,
+        body {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+            max-width: 100%;
+        }
+
+        img,
+        video,
+        table,
+        iframe {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Prevent text overflow */
+        body {
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+
+        /* Layout container safety */
+        .container,
+        .container-fluid {
+            max-width: 900px;
+            /* Force a reasonable centered width */
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .lesson-title {
+            background-color: #b8d1ea;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .lesson-title h2 {
+            font-weight: 900;
+            color: #000;
+            margin: 0;
+            text-transform: uppercase;
+        }
+
+        .task-label {
+            background-color: #d9e7f4;
+            display: inline-block;
+            padding: 5px 25px;
+            border-radius: 20px 0 0 20px;
+            font-weight: 700;
+            font-style: italic;
+            margin-right: 15px;
+            position: relative;
+        }
+
+        .task-label::after {
+            content: "";
+            position: absolute;
+            right: -20px;
+            top: 0;
+            border-top: 17px solid transparent;
+            border-bottom: 17px solid transparent;
+            border-left: 20px solid #d9e7f4;
+        }
+
+        .task-section {
+            margin-bottom: 40px;
+        }
+
+        .image-caption {
+            background-color: #d1d9e6;
+            padding: 10px;
+            text-align: center;
+            font-weight: 700;
+            margin-top: 10px;
+            letter-spacing: 1px;
+        }
+
+        .text-block {
+            background-color: #f2f2f2;
+            padding: 30px;
+            border-radius: 5px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .lesson-table th,
+        .lesson-table td {
+            border: 1px solid #000 !important;
+            padding: 15px;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        .lesson-table th {
+            font-weight: 700;
+        }
+
+        .gap-fill-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .gap-fill-list li {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .gap-line {
+            display: inline-block;
+            width: 150px;
+            border-bottom: 2px solid #000;
+            margin: 0 5px;
+        }
+
+        .qr-placeholder {
+            width: 80px;
+            height: 80px;
+            border: 1px dashed #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+
+        .word-bank {
+            background-color: #f6f8f1;
+            border: 1px solid #e0e6d6;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .word-bank .word-item {
+            display: inline-block;
+            margin: 5px 15px;
+            padding: 5px 10px;
+        }
+
+        .discussion-list {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .discussion-list li {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .discussion-list li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: #2b78c5;
+            font-weight: bold;
+        }
+
+        /* Interactive Inputs Styles */
+        .task-input {
+            border: 1px solid #ccc;
+            background: #fff;
+            padding: 8px;
+            border-radius: 4px;
+            width: 100%;
+            font-family: 'Lato', sans-serif;
+            transition: border-color 0.3s;
+        }
+
+        .task-input:focus {
+            border-color: #2b78c5;
+            outline: none;
+        }
+
+        .gap-input {
+            width: 150px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            border-bottom: 2px solid #000;
+            background: transparent;
+            padding: 0 5px;
+        }
+
+        .gap-input:focus {
+            border-bottom-color: #2b78c5;
+            outline: none;
+        }
+
+        .check-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .correct-answer {
+            color: #28a745;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            font-weight: bold;
+            display: none;
+            /* Hidden by default */
+        }
+
+        .show-answer-btn {
+            background-color: #2b78c5;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .show-answer-btn:hover {
+            background-color: #1a5a9c;
+        }
+
+        .check-btn {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .check-btn:hover {
+            background-color: #218838;
+        }
+
+        .input-correct {
+            border-color: #28a745 !important;
+            background-color: #e6ffec !important;
+        }
+
+        .input-incorrect {
+            border-color: #dc3545 !important;
+            background-color: #ffe6e6 !important;
+        }
+
+        textarea.task-input {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .correct-answer-display {
+            color: #28a745;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            font-weight: bold;
+            display: none;
+        }
+
+        /* Drag and Drop Styles */
+        .draggable-word {
+            display: inline-block;
+            padding: 5px 15px;
+            margin: 5px;
+            background-color: #fff;
+            border: 1px solid #2b78c5;
+            border-radius: 20px;
+            cursor: move;
+            font-weight: bold;
+            color: #2b78c5;
+            /* PERFORMANCE FIX: Instant Drag */
+            transition: none !important;
+            animation: none !important;
+            will-change: transform;
+            touch-action: none;
+            /* Prevent browser scrolling handling on the element itself if possible, though we handle it in JS */
+        }
+
+        .draggable-word:hover {
+            background-color: #2b78c5;
+            color: #fff;
+        }
+
+        .draggable-word .remove-btn {
+            display: none;
+            margin-left: 8px;
+            color: #dc3545;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 14px;
+            line-height: 1;
+        }
+
+        /* Show remove button when inside drop zone */
+        .drop-zone .draggable-word .remove-btn {
+            display: inline-block;
+        }
+
+        .drop-zone .draggable-word {
+            position: relative;
+            padding-right: 20px;
+            /* Space for x button */
+        }
+
+        .drop-zone .draggable-word .remove-btn {
+            position: absolute;
+            top: 2px;
+            right: 5px;
+        }
+
+        .draggable-word.dragging {
+            opacity: 0.5;
+        }
+
+        .drop-zone {
+            display: inline-block;
+            min-width: 120px;
+            min-height: 30px;
+            border-bottom: 2px solid #000;
+            vertical-align: middle;
+            margin: 0 5px;
+            text-align: center;
+            padding: 0 10px;
+            transition: background 0.2s;
+        }
+
+        .drop-zone.drag-over {
+            background-color: #e3f2fd;
+            border-bottom-color: #2b78c5;
+        }
+
+        .drop-zone .draggable-word {
+            margin: 0;
+            padding: 2px 10px;
+            cursor: pointer;
+        }
+
+        .draggable-word.selected {
+            background-color: #2b78c5;
+            color: #fff;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* Fixed Word Bank Style */
+        .word-bank {
+            position: -webkit-sticky;
+            /* Safari */
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #f6f8f1;
+            border-bottom: 2px solid #e0e6d6;
+            padding: 15px 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Mobile Responsiveness Fixes */
+        @media (max-width: 768px) {
+
+            html,
+            body {
+                overflow-x: hidden;
+                width: 100vw;
+            }
+
+            .pl-4,
+            .ml-5 {
+                padding-left: 10px !important;
+                margin-left: 0 !important;
+            }
+
+            .task-label {
+                font-size: 12px;
+                padding: 4px 10px;
+                white-space: nowrap;
+                line-height: 1.4;
+                width: auto;
+                max-width: 100%;
+                display: inline-block;
+            }
+
+            .lesson-title h2 {
+                font-size: 20px;
+                line-height: 1.3;
+            }
+
+            /* Responsive Inputs */
+            .gap-input {
+                width: 100px;
+                max-width: 100%;
+                /* Safety */
+            }
+
+            .task-input {
+                width: 100%;
+            }
+
+            .word-bank .word-item,
+            .draggable-word {
+                padding: 6px 12px;
+                /* Bigger touch target */
+                font-size: 14px;
+                margin: 4px;
+                max-width: 100%;
+            }
+
+            .text-block {
+                text-align: left !important;
+            }
+
+            .drop-zone {
+                min-width: 80px;
+                height: 30px;
+                margin-bottom: 5px;
+                display: inline-block;
+                padding: 0 5px;
+                background-color: #f8f9fa;
+                border: 1px dashed #2b78c5;
+                vertical-align: middle;
+            }
+
+            .word-bank.is-fixed {
+                padding: 10px 5px;
+                width: 100%;
+                /* Explicit width */
+                left: 0;
+                box-sizing: border-box;
+                /* Include padding in width */
+            }
+
+            /* Table adjustments */
+            .lesson-table th,
+            .lesson-table td {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            /* Task 5 / Debate Section Mobile Fixes */
+            .task-section img {
+                display: block;
+                margin: 0 auto 15px auto;
+                /* Center image */
+            }
+
+            /* FORCE Gutter/Padding on Mobile */
+            .container,
+            .container-fluid,
+            .task-section,
+            .col-lg-7,
+            .mt-4 {
+                padding-left: 15px !important;
+                padding-right: 15px !important;
+            }
+
+            /* Fix Row Margins on Mobile */
+            .row {
+                margin-left: 0 !important;
+                margin-right: 0 !important;
+            }
+
+            .col-md-6 {
+                width: 100%;
+                padding: 0 !important;
+                /* Let parent handle padding */
+                margin-bottom: 15px;
+            }
+
+            /* Center Headers if requested */
+            .mt-4 h6 {
+                text-align: center;
+            }
+        }
+
+        /* Lightbox Styles */
+        .lightbox-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
+
+        .lightbox-img {
+            max-width: 90%;
+            max-height: 90vh;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+            cursor: default;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-overlay.active .lightbox-img {
+            transform: scale(1);
+        }
+
+        .img-fluid {
+            cursor: zoom-in;
+            /* Indicate clickable */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Page Preloder -->
+    <div id="preloder">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Header Section Begin -->
+    <header class="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2">
+                    <div class="header__logo">
+                        <a href="../index.html"><img src="../images/ktu.png" alt="Logo"
+                                style="max-height: 50px; width: auto;"></a>
+                    </div>
+                </div>
+                <div class="col-lg-10">
+                    <div class="header__nav">
+                        <nav class="header__menu">
+                            <ul>
+                                <li><a href="../index.html">Home</a></li>
+                                <li><a href="#">Authors</a></li>
+                                <li class="active"><a href="#">Contents</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="canvas__open">
+                <span class="fa fa-bars"></span>
+            </div>
+        </div>
+    </header>
+    <!-- Header Section End -->
+
+    <!-- Breadcrumb Begin -->
+    <div class="breadcrumb-option set-bg" data-setbg="../img/breadcrumb-bg.jpg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb__text">
+                        <h2>Lesson 1</h2>
+                        <div class="breadcrumb__links">
+                            <a href="../index.html"><i class="fa fa-home"></i> Home</a>
+                            <span>Lesson 1</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+    <!-- Lesson Content Section Begin -->
+    <section class="lesson-content spad bg-white">
+        <div class="container">
+            <!-- Lesson Title -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="lesson-title font-Cambria">
+                        <h2>LESSON 1. First automobiles</h2>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Car Images -->
+            <div class="row justify-content-center mb-4">
+                <div class="col-lg-10 text-center">
+                    <img src="../images/image1.png" alt="Benz Patent Motorwagen" class="img-fluid rounded shadow-sm">
+                </div>
+                <div class="col-12">
+                    <div class="image-caption">
+                        BENZ PATENT MOTORWAGEN, 1886 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 1903 FORD MODEL A
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 1 -->
+            <div class="task-section">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="task-label">TASK 1</div>
+                    <p class="mb-0 font-italic">Look at the picture and find out information related to it. Classify the
+                        information according to the table.</p>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table lesson-table mt-4" id="task1-table">
+                        <thead>
+                            <tr>
+                                <th>Model</th>
+                                <th>Inventor</th>
+                                <th>Year</th>
+                                <th>Technical specifications</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <input type="text" class="task-input" data-answer="Benz Patent Motorwagen">
+                                    <div class="correct-answer-display">Benz Patent Motorwagen</div>
+                                </td>
+                                <td>
+                                    <input type="text" class="task-input" data-answer="Karl Benz">
+                                    <div class="correct-answer-display">Karl Benz</div>
+                                </td>
+                                <td>
+                                    <input type="text" class="task-input" data-answer="1886">
+                                    <div class="correct-answer-display">1886</div>
+                                </td>
+                                <td>
+                                    <input type="area" class="task-input"
+                                        data-answer="3 wheels, single-cylinder engine, 0.75 hp">
+                                    <div class="correct-answer-display">3 wheels, single-cylinder engine, 0.75 hp</div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="text" class="task-input" data-answer="Ford Model A">
+                                    <div class="correct-answer-display">Ford Model A</div>
+                                </td>
+                                <td>
+                                    <input type="text" class="task-input" data-answer="Henry Ford">
+                                    <div class="correct-answer-display">Henry Ford</div>
+                                </td>
+                                <td>
+                                    <input type="text" class="task-input" data-answer="1903">
+                                    <div class="correct-answer-display">1903</div>
+                                </td>
+                                <td>
+                                    <input type="text" class="task-input"
+                                        data-answer="2 cylinders, 8 hp, max speed 28 mph">
+                                    <div class="correct-answer-display">2 cylinders, 8 hp, max speed 28 mph</div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="check-buttons">
+                    <button class="check-btn" onclick="checkTask1()">Check Answers</button>
+                    <button class="check-btn" onclick="clearTask1()" style="background-color: #6c757d;">Clear</button>
+                </div>
+                <p class="mt-3">For more information visit: <a
+                        href="https://moneyweek.com/401922/23-july-1903-henry-ford-sells-his-first-car" target="_blank"
+                        class="text-primary"><u>https://moneyweek.com/401922/23-july-1903-henry-ford-sells-his-first-car</u></a>
+                </p>
+            </div>
+
+            <!-- Task 2 -->
+            <div class="task-section">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="task-label">TASK 2</div>
+                    <p class="mb-0 font-italic">Read the text and answer the questions based on the text.</p>
+                </div>
+                <div class="pl-4 ml-5">
+                    <ol class="font-italic" style="font-size: 18px;">
+                        <li class="mb-3">
+                            <label>Who is Henry Ford?</label>
+                            <textarea class="task-input mt-2" id="task2-q1"></textarea>
+                            <div class="correct-answer-display" id="task2-a1">Sample Answer: Henry Ford was an American
+                                industrialist, business magnate, and founder of the Ford Motor Company.</div>
+                        </li>
+                        <li class="mb-3">
+                            <label>Talk about the importance of Ford Company in automobile industry.</label>
+                            <textarea class="task-input mt-2" id="task2-q2"></textarea>
+                            <div class="correct-answer-display" id="task2-a2">Sample Answer: The Ford Motor Company
+                                revolutionized the automobile industry by introducing the assembly line, making cars
+                                affordable.</div>
+                        </li>
+                    </ol>
+                    <div class="check-buttons">
+                        <button class="check-btn" onclick="checkTask2()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 3 -->
+            <div class="task-section">
+                <div class="d-flex align-items-center mb-3">
+                    <div class="task-label">TASK 3</div>
+                    <p class="mb-0 font-italic">Read and retell the text.</p>
+                </div>
+                <div class="text-block mt-4">
+                    <p>Henry Ford did not <strong>design</strong> the <strong>vehicle</strong>. He did not indeed invent
+                        the gathering line. But more than any other single person, he was capable for changing the
+                        vehicle from development of obscure utility into an advancement that significantly molded the
+                        20th century and proceeds to influence our lives today.</p>
+                    <p>The early history of Ford Engine Company outlines one of Henry Ford's most imperative talents
+                        capacity to recognize and pull in extraordinary individuals. He enlisted a center of youthful,
+                        able men who accepted in his vision and would make Ford Engine Company into one of the world as
+                        an incredible <strong>mechanical ventures</strong>.</p>
+                    <p>The modern companies to begin with car, called the Show A, was taken after by an assortment of
+                        progressed <strong>models</strong>. In 1907 Ford's four-cylinder, $600 Demonstrate N got to be
+                        the best-selling car within the nation. Working with a hand-picked gather of representatives he
+                        came up with the Show T, presented on October 1, 1908.</p>
+                </div>
+                <div class="mt-4">
+                    <h6 class="font-weight-bold mb-2">Write your retelling here:</h6>
+                    <textarea class="task-input" id="task3-input" style="height: 150px;"></textarea>
+                    <div class="correct-answer-display" id="task3-answer">Sample Retelling: Henry Ford, while not the
+                        inventor of the car or assembly line, transformed the vehicle from a luxury to a necessity. His
+                        ability to hire talented people helped build Ford Motor Company.</div>
+                    <div class="check-buttons">
+                        <button class="check-btn" onclick="checkTask3()">Check Answers</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Task 4 -->
+            <div class="task-section">
+                <div class="row align-items-center mb-4">
+                    <div class="col-12 col-md-auto mb-3 mb-md-0">
+                        <div class="task-label">TASK 4</div>
+                    </div>
+                    <div class="col-12 col-md-auto mb-3 mb-md-0">
+                        <!-- Standard Audio Player -->
+                        <audio id="task4-audio" controls style="width: 250px; max-width: 100%;">
+                            <source src="../audios/Track1.mp3" type="audio/mp3">
+                            <source src="../audios/Track1.mp3" type="audio/mp3"> <!-- Fallback -->
+                            Your browser does not support the audio element.
+                        </audio>
+                    </div>
+                    <div class="col-12 col-md">
+                        <p class="mb-0 font-italic" style="font-size: 20px;">
+                            1. Listen to the audio and fill in the gaps.
+                        </p>
+                    </div>
+                </div>
+
+                <ul class="gap-fill-list pl-4 ml-5" id="task4-list">
+                    <li>1. Carl Benz designed the first practical <input type="text" class="gap-input"
+                            data-answer="automobile"> <span class="correct-answer-display">Correct: automobile</span> in
+                        1886.</li>
+                    <li>2. He built his car with fully integrated internal combustion <input type="text"
+                            class="gap-input" data-answer="engine"> <span class="correct-answer-display">Correct:
+                            engine</span>.
+                    </li>
+                    <li>3. Benz's name still lives on in the car company <input type="text" class="gap-input"
+                            data-answer="Mercedes"> <span class="correct-answer-display">Correct: Mercedes</span> Benz.
+                    </li>
+                    <li>4. Carl Benz received a patent for his automobile in <input type="text" class="gap-input"
+                            data-answer="1886"> <span class="correct-answer-display">Correct: 1886</span>.</li>
+                </ul>
+                <div class="check-buttons">
+                    <button class="check-btn" onclick="checkTask4()">Check Answers</button>
+                </div>
+            </div>
+
+            <!-- Task 5 -->
+        </div>
+
+        <div class="task-section">
+            <!-- Task 5 Content Logic (Moved buttons to end of section) -->
+
+            <!-- ... existing content ... -->
+
+            <!-- We will rewrite the whole Task 5 section to inject inputs -->
+            <div class="d-flex align-items-center mb-4">
+                <div class="task-label">TASK 5</div>
+                <h5 class="mb-0 font-weight-bold ml-4">"EXPLORING THE FIRST AUTOMOBILES"</h5>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-7">
+                    <p><strong>Objective:</strong> Develop speaking skills by discussing the history, features, and
+                        impact of the first automobiles.</p>
+
+                    <div class="mt-4">
+                        <h6 class="font-weight-bold mb-3">1. Warm-Up Discussion (5-10 minutes)</h6>
+                        <ul class="discussion-list ml-3">
+                            <li>
+                                <p>Ask the students: "When do you think the first car was invented?" and "What do you
+                                    know about early automobiles?"</p>
+                                <textarea class="task-input mb-3" placeholder="Write your thoughts..."></textarea>
+                                <div class="correct-answer-display">Sample: The first practical automobile was invented
+                                    around 1885-1886 by Karl Benz.</div>
+                            </li>
+                            <li>
+                                <p>Show them images of the first automobiles and encourage them to describe what they
+                                    see (design, features, differences from modern cars)</p>
+                                <textarea class="task-input mb-3" placeholder="Describe the early cars..."></textarea>
+                                <div class="correct-answer-display">Sample: They had large spoke wheels, no roof, a
+                                    tiller instead of a steering wheel.</div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="mt-4">
+                        <h6 class="font-weight-bold mb-3">2. Pair/Group Discussion (15-20 minutes)</h6>
+                        <p class="mb-2"><strong>Prompt Questions:</strong></p>
+                        <div id="task5-group-questions">
+                            <ul class="discussion-list ml-3">
+                                <li>
+                                    <p>What were some of the challenges early car makers faced?</p>
+                                    <textarea class="task-input mb-2"></textarea>
+                                    <div class="correct-answer-display">Sample: Lack of paved roads, finding fuel,
+                                        mechanical breakdowns.</div>
+                                </li>
+                                <li>
+                                    <p>How did the invention of the automobile change people's lives?</p>
+                                    <textarea class="task-input mb-2"></textarea>
+                                    <div class="correct-answer-display">Sample: Personal freedom of movement, suburbs
+                                        growth.</div>
+                                </li>
+                                <li>
+                                    <p>If you lived in the late 1800s, would you want to ride in one of these first
+                                        cars?
+                                        Why or why not?</p>
+                                    <textarea class="task-input mb-2"></textarea>
+                                    <div class="correct-answer-display">Sample: Excited because new technology OR scared
+                                        because dangerous.</div>
+                                </li>
+                                <li>
+                                    <p>How do you think the first automobiles compare to modern cars?</p>
+                                    <textarea class="task-input mb-2"></textarea>
+                                    <div class="correct-answer-display">Sample: Modern cars are faster, safer, more
+                                        comfortable.</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center">
+                    <img src="../images/image1.png" alt="First Automobile" class="img-fluid rounded shadow-sm">
+                </div>
+            </div>
+
+            <div class="mt-4">
+                <h6 class="font-weight-bold mb-3">3. Debate: Advantages vs. Disadvantages</h6>
+                <p>Divide the class into two groups: one side discussing the <strong>advantages</strong> of the
+                    first automobiles, the other discussing <strong>disadvantages</strong>.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Advantages:</label>
+                        <textarea class="task-input" rows="4"></textarea>
+                        <div class="correct-answer-display">Sample: Speed closer to trains than horses eventually, no
+                            animal waste.</div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Disadvantages:</label>
+                        <textarea class="task-input" rows="4"></textarea>
+                        <div class="correct-answer-display">Sample: Pollution, noise, accidents, expensive.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-block mt-4 bg-light">
+                <h6 class="font-weight-bold">Reflection</h6>
+                <p>Ask students: "What do you think was the most significant impact of the first automobiles?"</p>
+                <textarea class="task-input"></textarea>
+                <div class="correct-answer-display">Sample: The most significant impact was likely the redesign of
+                    cities.</div>
+            </div>
+
+            <div class="check-buttons">
+                <button class="check-btn" onclick="checkTask5()">Check Answers</button>
+            </div>
+        </div>
+
+        <!-- Task 6 -->
+        <div class="task-section">
+            <div class="d-flex align-items-center mb-4">
+                <div class="task-label">TASK 6</div>
+                <p class="mb-0 font-italic">Drag and drop the correct words from the word bank into the gaps.</p>
+            </div>
+
+            <!-- Placeholder div to prevent layout jump -->
+            <div id="task6-spacer" style="display: none;"></div>
+
+            <div class="word-bank" id="task6-wordbank">
+                <div class="draggable-word" draggable="true" id="word-engine">engine</div>
+                <div class="draggable-word" draggable="true" id="word-modelt">Model T</div>
+                <div class="draggable-word" draggable="true" id="word-transport">transport</div>
+                <div class="draggable-word" draggable="true" id="word-speed">speed</div>
+                <div class="draggable-word" draggable="true" id="word-benz">Karl Benz</div>
+                <div class="draggable-word" draggable="true" id="word-invention">invention</div>
+                <div class="draggable-word" draggable="true" id="word-affordable">affordable</div>
+                <div class="draggable-word" draggable="true" id="word-roads">roads</div>
+                <div class="draggable-word" draggable="true" id="word-gasoline">gasoline</div>
+                <div class="draggable-word" draggable="true" id="word-production">production</div>
+                <div class="draggable-word" draggable="true" id="word-development">development</div>
+            </div>
+
+            <div class="gap-fill-sentences mt-4">
+                <ol class="gap-fill-list pl-4" id="task6-list">
+                    <li>1. The first practical automobile was created by <span class="drop-zone"
+                            data-answer="Karl Benz"></span> in 1885.
+                        <div class="correct-answer-display">Correct: Karl Benz</div>
+                    </li>
+                    <li>2. Early automobiles were powered by an <span class="drop-zone" data-answer="engine"></span>
+                        that used gasoline.
+                        <div class="correct-answer-display">Correct: engine</div>
+                    </li>
+                    <li>3. One of the first widely used cars was the Ford <span class="drop-zone"
+                            data-answer="Model T"></span>, which was
+                        introduced in 1908.
+                        <div class="correct-answer-display">Correct: Model T</div>
+                    </li>
+                    <li>4. The <span class="drop-zone" data-answer="invention"></span> of automobiles changed the way
+                        people traveled and
+                        connected cities.
+                        <div class="correct-answer-display">Correct: invention</div>
+                    </li>
+                    <li>5. Automobiles made travel faster and more convenient compared to previous forms of <span
+                            class="drop-zone" data-answer="transport"></span>.
+                        <div class="correct-answer-display">Correct: transport</div>
+                    </li>
+                    <li>6. Henry Ford introduced assembly line <span class="drop-zone" data-answer="production"></span>,
+                        which made cars more
+                        <span class="drop-zone" data-answer="affordable"></span> for the average person.
+                        <div class="correct-answer-display">Correct: production, affordable</div>
+                    </li>
+                    <li>7. Early cars could only reach a limited <span class="drop-zone" data-answer="speed"></span>,
+                        but they were still
+                        faster than horse-drawn carriages.
+                        <div class="correct-answer-display">Correct: speed</div>
+                    </li>
+                    <li>8. The growth of cars led to the need for better <span class="drop-zone"
+                            data-answer="roads"></span> and
+                        infrastructure.
+                        <div class="correct-answer-display">Correct: roads</div>
+                    </li>
+                    <li>9. The use of <span class="drop-zone" data-answer="gasoline"></span> as fuel became standard in
+                        most automobiles.
+                        <div class="correct-answer-display">Correct: gasoline</div>
+                    </li>
+                    <li>10. The <span class="drop-zone" data-answer="development"></span> of automobiles has greatly
+                        impacted modern
+                        transportation and lifestyle.
+                        <div class="correct-answer-display">Correct: development</div>
+                    </li>
+                </ol>
+            </div>
+            <div class="check-buttons">
+                <button class="check-btn" onclick="checkTask6()">Check Answers</button>
+                <button class="check-btn" onclick="resetTask6()" style="background-color: #6c757d;">Reset</button>
+            </div>
+        </div>
+
+        </div>
+    </section>
+    <!-- Lesson Content Section End -->
+
+    <!-- Footer Section Begin -->
+    <footer class="footer bg-dark py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center text-white">
+                    <p>Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+
+    <!-- Js Plugins -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.nice-select.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/mixitup.min.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+
+    <script>
+        // Updated Scripts with Mobile Touch Support
+
+        function toggleCorrectAnswers(containerId) {
+            let container = document.getElementById(containerId);
+            if (!container) {
+                const els = document.querySelectorAll(containerId);
+                if (els.length > 0) {
+                    els.forEach(c => {
+                        c.querySelectorAll('.correct-answer-display').forEach(a => a.style.display = 'block');
+                    });
+                    return;
+                }
+                return;
+            };
+            const answers = container.querySelectorAll('.correct-answer-display');
+            answers.forEach(el => {
+                el.style.display = 'block';
+            });
+        }
+
+        function checkTask1() {
+            const inputs = document.querySelectorAll('#task1-table input');
+            inputs.forEach(input => {
+                const answer = input.getAttribute('data-answer');
+                if (input.value.trim().length > 0) {
+                    if (answer.toLowerCase().includes(input.value.trim().toLowerCase())) {
+                        input.classList.add('input-correct');
+                        input.classList.remove('input-incorrect');
+                    } else {
+                        input.classList.add('input-incorrect');
+                        input.classList.remove('input-correct');
+                    }
+                } else {
+                    input.classList.add('input-incorrect');
+                }
+            });
+            toggleCorrectAnswers('task1-table');
+        }
+
+        function clearTask1() {
+            const inputs = document.querySelectorAll('#task1-table input');
+            inputs.forEach(i => {
+                i.value = '';
+                i.classList.remove('input-correct', 'input-incorrect');
+            });
+            const answers = document.querySelectorAll('#task1-table .correct-answer-display');
+            answers.forEach(a => a.style.display = 'none');
+        }
+
+        function checkTask2() {
+            toggleCorrectAnswers('task2-a1');
+            toggleCorrectAnswers('task2-a2');
+            document.getElementById('task2-a1').style.display = 'block';
+            document.getElementById('task2-a2').style.display = 'block';
+        }
+
+        function checkTask3() {
+            const ans = document.getElementById('task3-answer');
+            if (ans) ans.style.display = 'block';
+        }
+
+        // --- Audio Player Logic Removed (Using Native Controls) ---
+
+        function checkTask4() {
+            const inputs = document.querySelectorAll('#task4-list input');
+            inputs.forEach(input => {
+                const answer = input.getAttribute('data-answer');
+                if (input.value.trim().toLowerCase() === answer.toLowerCase()) {
+                    input.classList.add('input-correct');
+                    input.classList.remove('input-incorrect');
+                } else {
+                    input.classList.add('input-incorrect');
+                    input.classList.remove('input-correct');
+                }
+            });
+            toggleCorrectAnswers('task4-list');
+        }
+
+        function checkTask5() {
+            const sections = document.querySelectorAll('.task-section');
+            if (sections[4]) {
+                sections[4].querySelectorAll('.correct-answer-display').forEach(a => a.style.display = 'block');
+            }
+        }
+
+        // Task 6 Logic: Drag & Drop + Click to Select (Mobile)
+        let selectedDraggable = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const draggables = document.querySelectorAll('.draggable-word');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            function clearSelection() {
+                if (selectedDraggable) {
+                    selectedDraggable.classList.remove('selected');
+                    selectedDraggable = null;
+                }
+            }
+
+            draggables.forEach(draggable => {
+                // Drag Events
+                draggable.addEventListener('dragstart', () => {
+                    draggable.classList.add('dragging');
+                    clearSelection();
+                });
+
+                draggable.addEventListener('dragend', () => {
+                    draggable.classList.remove('dragging');
+                });
+
+                // Click Event (Mobile support)
+                draggable.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (selectedDraggable === draggable) {
+                        clearSelection();
+                    } else {
+                        clearSelection();
+                        selectedDraggable = draggable;
+                        draggable.classList.add('selected');
+                    }
+                });
+            });
+
+            function returnToBank(wordElement) {
+                const bank = document.getElementById('task6-wordbank');
+                // Remove X button if present (we can just hide it via css, but cleaner to remove listener if we added one? 
+                // Actually CSS handles display. We just move the element.)
+                wordElement.classList.remove('selected', 'dragging');
+                wordElement.style.backgroundColor = '';
+                wordElement.style.borderColor = '';
+                bank.appendChild(wordElement);
+            }
+
+            function placeWordInZone(zone, word) {
+                // 1. Check if zone already has a word
+                const existing = zone.querySelector('.draggable-word');
+                if (existing) {
+                    returnToBank(existing);
+                }
+
+                // 2. Move new word
+                zone.appendChild(word);
+                word.classList.remove('selected', 'dragging');
+
+                // 3. Ensure Remove Button Exists
+                let removeBtn = word.querySelector('.remove-btn');
+                if (!removeBtn) {
+                    removeBtn = document.createElement('span');
+                    removeBtn.className = 'remove-btn';
+                    removeBtn.innerHTML = '&times;';
+                    removeBtn.onclick = (e) => {
+                        e.stopPropagation(); // Prevent drag start or other clicks
+                        returnToBank(word);
+                        zone.style.borderBottomColor = ''; // Reset zone color if it was checked
+                    };
+                    word.appendChild(removeBtn);
+                }
+            }
+
+            dropZones.forEach(zone => {
+                // Drag Events
+                zone.addEventListener('dragover', e => {
+                    e.preventDefault();
+                    zone.classList.add('drag-over');
+                });
+
+                zone.addEventListener('dragleave', e => {
+                    zone.classList.remove('drag-over');
+                });
+
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    zone.classList.remove('drag-over');
+                    const draggable = document.querySelector('.dragging');
+                    if (draggable) {
+                        placeWordInZone(zone, draggable);
+                    }
+                });
+
+                // Click Event (Mobile support)
+                zone.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (selectedDraggable) {
+                        placeWordInZone(zone, selectedDraggable);
+                        clearSelection();
+                    }
+                    // If clicking zone with existing word, do nothing (user can click X)
+                });
+            });
+
+            document.addEventListener('click', () => {
+                clearSelection();
+            });
+
+            // --- Sticky Header Logic ---
+            const wordBank = document.getElementById('task6-wordbank');
+            const spacer = document.getElementById('task6-spacer');
+
+            // Calculate initial offset
+            // We need to recalculate this on resize mostly, but simple check works for now.
+            let wordBankOffset = wordBank.getBoundingClientRect().top + window.scrollY;
+
+            window.addEventListener('resize', () => {
+                if (!wordBank.classList.contains('is-fixed')) {
+                    wordBankOffset = wordBank.getBoundingClientRect().top + window.scrollY;
+                } else {
+                    // If currently fixed, the spacer is where the bank WAS
+                    wordBankOffset = spacer.getBoundingClientRect().top + window.scrollY;
+                }
+            });
+
+            // Mobile Touch Drag Logic
+            let touchDragItem = null;
+            let touchClone = null;
+            let touchOffsetX = 0;
+            let touchOffsetY = 0;
+
+            draggables.forEach(draggable => {
+                // Touch Start
+                draggable.addEventListener('touchstart', (e) => {
+                    const touch = e.touches[0];
+                    touchDragItem = draggable;
+
+                    // Create clone for visual feedback
+                    touchClone = draggable.cloneNode(true);
+                    touchClone.style.position = 'fixed';
+                    touchClone.style.pointerEvents = 'none'; // Allow clicking through to background
+                    touchClone.style.zIndex = '10000';
+                    touchClone.style.opacity = '0.9';
+                    touchClone.style.transform = 'scale(1.1)';
+                    touchClone.style.boxShadow = '0 5px 15px rgba(0,0,0,0.2)';
+
+                    // CRITICAL FIX: Disable transition for instant 1:1 movement
+                    touchClone.style.transition = 'none';
+
+                    // Position clone at finger
+                    const rect = draggable.getBoundingClientRect();
+                    touchOffsetX = touch.clientX - rect.left;
+                    touchOffsetY = touch.clientY - rect.top;
+
+                    touchClone.style.left = (rect.left) + 'px';
+                    touchClone.style.top = (rect.top) + 'px';
+
+                    document.body.appendChild(touchClone);
+                    draggable.classList.add('dragging');
+                    // Prevent scrolling while dragging? Maybe strictly on the word.
+                    // e.preventDefault(); // If we want to prevent scroll. But users might want to scroll.
+                    // Let's NOT prevent default initially to allow scroll, but if they move sideways/long hold it traps?
+                    // Better UX: If they move significantly, it's a drag.
+                }, { passive: false });
+
+                // Touch Move
+                draggable.addEventListener('touchmove', (e) => {
+                    if (!touchDragItem || !touchClone) return;
+                    e.preventDefault(); // Stop scrolling while dragging
+
+                    const touch = e.touches[0];
+                    touchClone.style.left = (touch.clientX - touchOffsetX) + 'px';
+                    touchClone.style.top = (touch.clientY - touchOffsetY) + 'px';
+                }, { passive: false });
+
+                // Touch End
+                draggable.addEventListener('touchend', (e) => {
+                    if (!touchDragItem || !touchClone) return;
+
+                    draggable.classList.remove('dragging');
+
+                    // Check drop target
+                    const touch = e.changedTouches[0];
+                    // Temporarily hide clone to get element below it
+                    touchClone.style.display = 'none';
+                    const elemBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+
+                    const dropZone = elemBelow ? elemBelow.closest('.drop-zone') : null;
+
+                    if (dropZone) {
+                        // Matched zone
+                        placeWordInZone(dropZone, touchDragItem);
+                        dropZone.classList.remove('drag-over');
+                    }
+
+                    // Clean up
+                    if (touchClone) document.body.removeChild(touchClone);
+                    touchClone = null;
+                    touchDragItem = null;
+                });
+            });
+
+            // Removed JS Sticky Logic -- handled by CSS 'position: sticky'
+        });
+
+        function checkTask6() {
+            const zones = document.querySelectorAll('#task6-list .drop-zone');
+            zones.forEach(zone => {
+                const answer = zone.getAttribute('data-answer');
+                const child = zone.querySelector('.draggable-word');
+                if (child) {
+                    const word = child.textContent.trim();
+                    if (word.toLowerCase() === answer.toLowerCase()) {
+                        zone.style.borderBottomColor = '#28a745';
+                        child.style.backgroundColor = '#e6ffec';
+                        child.style.borderColor = '#28a745';
+                    } else {
+                        zone.style.borderBottomColor = '#dc3545';
+                        child.style.backgroundColor = '#ffe6e6';
+                        child.style.borderColor = '#dc3545';
+                    }
+                } else {
+                    zone.style.borderBottomColor = '#dc3545';
+                }
+            });
+            toggleCorrectAnswers('task6-list');
+        }
+
+        function resetTask6() {
+            const bank = document.getElementById('task6-wordbank');
+            const draggables = document.querySelectorAll('.draggable-word');
+            draggables.forEach(d => {
+                d.style.backgroundColor = '';
+                d.style.borderColor = '';
+                d.classList.remove('dragging');
+                d.classList.remove('selected');
+                // Remove the X button logic is handled by css display, but let's be safe
+                const btn = d.querySelector('.remove-btn');
+                if (btn) btn.remove(); // Remove button completely when resetting
+                bank.appendChild(d);
+            });
+            const zones = document.querySelectorAll('#task6-list .drop-zone');
+            zones.forEach(z => {
+                z.style.borderBottomColor = '';
+                z.innerHTML = '';
+            });
+            const answers = document.querySelectorAll('#task6-list .correct-answer-display');
+            answers.forEach(a => a.style.display = 'none');
+            let selectedDraggable = null;
+        }
+
+
+        // --- Lightbox Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // Create Lightbox Elements
+            const overlay = document.createElement('div');
+            overlay.className = 'lightbox-overlay';
+            const img = document.createElement('img');
+            img.className = 'lightbox-img';
+            overlay.appendChild(img);
+            document.body.appendChild(overlay);
+
+            // Add click listeners to all content images
+            const images = document.querySelectorAll('.lesson-content img:not(.draggable-word)');
+            images.forEach(image => {
+                image.addEventListener('click', () => {
+                    img.src = image.src;
+                    overlay.classList.add('active');
+                });
+            });
+
+            // Close on background click
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) {
+                    overlay.classList.remove('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
