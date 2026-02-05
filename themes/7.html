@@ -612,121 +612,138 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TASK 1 -->
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span class="font-italic">Car mechanics team includes different types of staff members. Can you match
+                    these pictures below? There is one missing.</span>
+
+                <div class="mt-4 text-center">
+                    <img src="../images/image7.1.png" alt="Car mechanics staff pictures" class="img-fluid shadow-sm">
+                </div>
+
+                <div class="word-bank mt-4">
+                    <span class="word-item">Garage supervisor</span>
+                    <span class="word-item">Senior mechanic</span>
+                    <span class="word-item">Junior mechanic</span>
+                    <span class="word-item">Diagnosis specialist</span>
+                    <span class="word-item">Electrical repair mechanic</span>
+                    <span class="word-item">Welder</span>
+                    <span class="word-item">Air conditioning mechanic</span>
+                    <span class="word-item">Accountant</span>
+                    <span class="word-item">Brake technician</span>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span class="font-italic">Complete the sentences with the words above.</span>
+
+                <ul class="gap-fill-list mt-3">
+                    <li>
+                        1. The
+                        <input class="gap-input task2-input" type="text"
+                            data-answer="electrical repair mechanic|electric repair mechanic">
+                        checks the electrical systems in car.
+                    </li>
+                    <li class="mt-2">
+                        2. The
+                        <input class="gap-input task2-input" type="text"
+                            data-answer="brake technician|brake mechanic">
+                        works with wheel alignment, punctures or flat wheels.
+                    </li>
+                    <li class="mt-2">
+                        3. A
+                        <input class="gap-input task2-input" type="text"
+                            data-answer="garage supervisor|supervisor">
+                        is the person who sells and buys cars.
+                    </li>
+                    <li class="mt-2">
+                        4. A
+                        <input class="gap-input task2-input" type="text"
+                            data-answer="senior mechanic|experienced mechanic">
+                        is a mechanic with a lot of experience.
+                    </li>
+                    <li class="mt-2">
+                        5. A
+                        <input class="gap-input task2-input" type="text"
+                            data-answer="diagnosis specialist|diagnostics specialist">
+                        is the mechanic that finds out the problem.
+                    </li>
+                    <li class="mt-2">
+                        6. A
+                        <input class="gap-input task2-input" type="text"
+                            data-answer="welder">
+                        need some special protection for work.
+                    </li>
+                </ul>
+
+                <div class="check-buttons">
+                    <button type="button" class="check-btn" onclick="checkTask2()">Check Answers</button>
+                    <button type="button" class="clear-btn" onclick="clearTask2()">Clear</button>
+                </div>
+                <p id="task2-result" class="correct-answer-display"></p>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span class="font-italic">Write your own composition as a future electrical repair mechanic.</span>
+
+                <div class="mt-4 text-center">
+                    <img src="../images/image7.2.png" alt="Writing lines" class="img-fluid shadow-sm mb-3">
+                </div>
+
+                <textarea class="task-input" placeholder="Write your composition here..."></textarea>
+            </div>
+
+            <!-- TASK 4 -->
+            <div class="task-section">
+                <span class="task-label">TASK 4</span>
+                <span class="font-italic">Listen to the audio and fill in the gaps.</span>
+
+                <div class="mt-3 mb-3">
+                    <audio controls>
+                        <source src="../audios/Track%207.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="text-block">
+                    <p>
+                        An auto electrician is a car
+                        <input class="gap-input task4-input" type="text" placeholder="...">
+                        who puts in, checks, keeps up, and fixes all the electrical
+                        <input class="gap-input task4-input" type="text" placeholder="...">
+                        of cars. They usually fix cars, trucks, buses, and other
+                        <input class="gap-input task4-input" type="text" placeholder="...">
+                        in the transportation business. Some car electricians also check and fix farm
+                        <input class="gap-input task4-input" type="text" placeholder="...">
+                        . Electricians work in factories and make sure the electrical
+                        <input class="gap-input task4-input" type="text" placeholder="...">
+                        used in making things works well. Electricians put together, check and fix
+                        <input class="gap-input task4-input" type="text" placeholder="...">
+                        , change parts, figure out how much it will cost and keep track of the machines they work on.
+                    </p>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <img src="../images/image7.3.png" alt="Auto electrician at work" class="img-fluid shadow-sm">
+                </div>
+
+                <p class="mt-3">
+                    For more information visit:
+                    <a href="https://www.autojobs.com/jobs/automotive-electrical-technician-job-description/"
+                        target="_blank" rel="noopener">
+                        https://www.autojobs.com/jobs/automotive-electrical-technician-job-description/
+                    </a>
+                </p>
+            </div>
         </div>
     </section>
-
-
-
-<section>
-
-<!-- TASK 1 -->
-<div class="task-section">
-    <span class="task-label">TASK 1</span>
-    <p class="mt-3">
-        Car mechanics team includes different types of staff members.
-        Can you match these pictures below? There is one missing.
-    </p>
-
-    <div class="row text-center mt-4">
-        <div class="col-md-4 mb-4">
-            <img src="images/image7.1.png" class="img-fluid" alt="Mechanic 1">
-            <div class="image-caption">A</div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <img src="images/image7.2.png" class="img-fluid" alt="Mechanic 2">
-            <div class="image-caption">B</div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <img src="images/image7.3.png" class="img-fluid" alt="Mechanic 3">
-            <div class="image-caption">C</div>
-        </div>
-    </div>
-
-    <div class="word-bank">
-        <span class="word-item">Garage supervisor</span>
-        <span class="word-item">Senior mechanic</span>
-        <span class="word-item">Junior mechanic</span>
-        <span class="word-item">Diagnosis specialist</span>
-        <span class="word-item">Electrical repair mechanic</span>
-        <span class="word-item">Welder</span>
-        <span class="word-item">Air conditioning mechanic</span>
-        <span class="word-item">Accountant</span>
-        <span class="word-item">Brake technician</span>
-    </div>
-</div>
-
-<!-- TASK 2 -->
-<div class="task-section">
-    <span class="task-label">TASK 2</span>
-    <p class="mt-3">Complete the sentences with the words above.</p>
-
-    <ul class="gap-fill-list">
-        <li>
-            1. The <input class="gap-input" type="text"> checks the electrical systems in a car.
-        </li>
-        <li>
-            2. The <input class="gap-input" type="text"> works with wheel alignment, punctures or flat wheels.
-        </li>
-        <li>
-            3. A <input class="gap-input" type="text"> is the person who sells and buys cars.
-        </li>
-        <li>
-            4. A <input class="gap-input" type="text"> is a mechanic with a lot of experience.
-        </li>
-        <li>
-            5. A <input class="gap-input" type="text"> is the mechanic that finds out the problem.
-        </li>
-        <li>
-            6. A <input class="gap-input" type="text"> needs some special protection for work.
-        </li>
-    </ul>
-</div>
-
-<!-- TASK 3 -->
-<div class="task-section">
-    <span class="task-label">TASK 3</span>
-    <p class="mt-3">
-        Write your own composition as a future electrical repair mechanic.
-    </p>
-
-    <textarea class="task-input" placeholder="Write your composition here..."></textarea>
-</div>
-
-<!-- TASK 4 -->
-<div class="task-section">
-    <span class="task-label">TASK 4</span>
-    <p class="mt-3">
-        Listen to the audio and fill in the gaps.
-    </p>
-
-    <audio controls class="mb-4">
-        <source src="audios/Track 7.mp3" type="audio/mp3">
-        Your browser does not support the audio element.
-    </audio>
-
-    <div class="text-block">
-        An auto electrician is a car
-        <input class="gap-input" type="text"> who puts in, checks, keeps up,
-        and fixes all the electrical
-        <input class="gap-input" type="text"> of cars.
-        They usually fix cars, trucks, buses, and other
-        <input class="gap-input" type="text"> in the transportation business.
-        Some car electricians also check and fix farm
-        <input class="gap-input" type="text">.
-        Electricians work in factories and make sure the electrical
-        <input class="gap-input" type="text"> used in making things works well.
-        Electricians put together, check and fix
-        <input class="gap-input" type="text">,
-        change parts, figure out how much it will cost and keep track of the machines they work on.
-    </div>
-</div>
-</section>
-
-
-
-
-
-
+    <!-- Lesson Content Section End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
@@ -752,6 +769,60 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        (function () {
+            function normalize(value) {
+                return (value || '').trim().toLowerCase();
+            }
+
+            function answerMatches(actual, answerAttr) {
+                var expectedList = (answerAttr || '').split('|').map(function (s) { return normalize(s); });
+                var a = normalize(actual);
+                return expectedList.some(function (exp) { return exp && a.indexOf(exp) !== -1; });
+            }
+
+            window.checkTask2 = function () {
+                var inputs = document.querySelectorAll('.task2-input');
+                var correct = 0;
+
+                inputs.forEach(function (input) {
+                    var expected = input.getAttribute('data-answer');
+                    var actual = input.value;
+
+                    input.classList.remove('input-correct', 'input-incorrect');
+
+                    if (!actual) {
+                        input.classList.add('input-incorrect');
+                    } else if (answerMatches(actual, expected)) {
+                        input.classList.add('input-correct');
+                        correct++;
+                    } else {
+                        input.classList.add('input-incorrect');
+                    }
+                });
+
+                var result = document.getElementById('task2-result');
+                if (result) {
+                    result.style.display = 'block';
+                    result.textContent = 'You answered ' + correct + ' / ' + inputs.length + ' correctly.';
+                }
+            };
+
+            window.clearTask2 = function () {
+                var inputs = document.querySelectorAll('.task2-input');
+                inputs.forEach(function (input) {
+                    input.value = '';
+                    input.classList.remove('input-correct', 'input-incorrect');
+                });
+
+                var result = document.getElementById('task2-result');
+                if (result) {
+                    result.style.display = 'none';
+                    result.textContent = '';
+                }
+            };
+        })();
+    </script>
 </body>
 
 </html>
