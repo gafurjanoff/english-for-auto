@@ -613,6 +613,278 @@
         </div>
     </section>
 
+
+
+
+
+    <body>
+
+        <div class="container">
+
+        <!-- TASK 1 – Clearer, with list of terms to define + show model answers -->
+        <div class="task-section">
+            <h4><span class="task-label">TASK 1</span> Read the text below and write short definitions for each **bolded** term.</h4>
+
+            <div style="text-align:center; margin: 30px 0;">
+                <img src="../images/image10.1.png" 
+                    alt="Industrial robots in automated production line" 
+                    class="img-fluid" 
+                    style="max-height:420px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.12);">
+                <p class="image-caption" style="margin-top:12px;">Example of automated manufacturing system</p>
+            </div>
+
+            <div style="background:#f9fafb; padding:28px; border-radius:10px; border:1px solid #e5e7eb; margin:25px 0;">
+                <p style="margin-bottom:20px;">
+                    <strong>Automated systems</strong> are technologies or processes designed to 
+                    <strong>operate independently</strong> with <strong>minimal human intervention</strong>. 
+                    They utilize <strong>software</strong>, <strong>machinery</strong>, and algorithms to perform tasks such as 
+                    <strong>data processing</strong>, <strong>manufacturing</strong>, and <strong>control functions</strong>. 
+                    These systems enhance <strong>efficiency</strong>, <strong>accuracy</strong>, and <strong>speed</strong> by automating 
+                    <strong>repetitive</strong> or <strong>complex tasks</strong>.
+                </p>
+
+                <p style="font-weight:600; margin:25px 0 15px;">Define the following terms in your own words (1–2 sentences each):</p>
+
+                <ol style="padding-left:24px; line-height:1.9;">
+                    <li><strong>operate independently</strong></li>
+                    <li><strong>minimal human intervention</strong></li>
+                    <li><strong>software</strong></li>
+                    <li><strong>data processing</strong></li>
+                    <li><strong>manufacturing</strong></li>
+                    <li><strong>control functions</strong></li>
+                    <li><strong>efficiency</strong></li>
+                    <li><strong>accuracy</strong></li>
+                    <li><strong>repetitive tasks</strong></li>
+                    <li><strong>complex tasks</strong></li>
+                </ol>
+            </div>
+
+            <div style="text-align:center; margin-top:35px;">
+                <button class="btn-show" onclick="document.getElementById('task1Model').style.display='block'">Show model definitions</button>
+                <div id="task1Model" style="display:none; margin-top:25px; padding:20px; background:#f0f9ff; border-radius:10px; border:1px solid #bfdbfe; text-align:left;">
+                    <strong>Example definitions:</strong><br><br>
+                    1. <strong>operate independently</strong> — work without needing constant control or input from a person<br>
+                    2. <strong>minimal human intervention</strong> — very little or no involvement of people during operation<br>
+                    3. <strong>software</strong> — computer programs and instructions that tell machines what to do<br>
+                    4. <strong>data processing</strong> — collecting, analyzing, and transforming data into useful information<br>
+                    5. <strong>manufacturing</strong> — the process of making products using machines and tools<br>
+                    6. <strong>control functions</strong> — operations that manage and regulate how a system behaves<br>
+                    7. <strong>efficiency</strong> — achieving maximum results with minimum time, energy or resources<br>
+                    8. <strong>accuracy</strong> — being correct, precise and without errors<br>
+                    9. <strong>repetitive tasks</strong> — actions that are done many times in the same way<br>
+                    10. <strong>complex tasks</strong> — difficult activities that require many steps or decisions
+                </div>
+            </div>
+        </div>
+        
+            <!-- TASK 2 -->
+            <div class="task-section">
+                <h4><span class="task-label">TASK 2</span> Reflect on how these elements work together in real-life scenarios.</h4>
+                <p>For example, discuss a specific industry where automated systems have made a significant impact.</p>
+        
+                <div class="mindmap-container">
+                    <div class="mindmap-center">
+                        Car automated<br>systems
+                    </div>
+        
+                    <div class="mindmap-word" style="top:0; left:38%;">Operate independently</div>
+                    <div class="mindmap-word" style="top:18%; left:10%;">Software</div>
+                    <div class="mindmap-word" style="top:18%; right:10%;">Human intervention</div>
+                    <div class="mindmap-word" style="top:45%; left:0;">Machinery</div>
+                    <div class="mindmap-word" style="top:45%; right:0;">Manufacturing</div>
+                    <div class="mindmap-word" style="bottom:18%; left:10%;">Data processing</div>
+                    <div class="mindmap-word" style="bottom:18%; right:10%;">Control functions</div>
+                    <div class="mindmap-word" style="bottom:0; left:38%;">Complex tasks</div>
+                </div>
+        
+                <textarea class="form-control" rows="6" placeholder="Write your thoughts here... (e.g. automotive industry, assembly lines, self-driving technology, etc.)"></textarea>
+            </div>
+        
+        <!-- TASK 3 – Drag-and-drop with ability to remove (click to return to bank) -->
+        <div class="task-section">
+            <h4><span class="task-label">TASK 3</span> Fill in the blanks using the words from the list. Each word can only be used once.</h4>
+
+            <div class="word-bank" id="wordBankTask3">
+                <div class="draggable-word" draggable="true">manufacturing</div>
+                <div class="draggable-word" draggable="true">operate independently</div>
+                <div class="draggable-word" draggable="true">human intervention</div>
+                <div class="draggable-word" draggable="true">software</div>
+                <div class="draggable-word" draggable="true">accuracy</div>
+                <div class="draggable-word" draggable="true">control functions</div>
+                <div class="draggable-word" draggable="true">data processing</div>
+            </div>
+
+            <ul style="list-style:none; padding-left:0; line-height:2.3; margin:35px 0; font-size:1.05rem;">
+                <li>• In modern <span class="drop-zone" data-id="1"></span>, robots are often designed to <span class="drop-zone" data-id="2"></span> without requiring constant <span class="drop-zone" data-id="3"></span> from operators.</li>
+
+                <li>• Advanced <span class="drop-zone" data-id="4"></span> can improve the <span class="drop-zone" data-id="5"></span> of produced items by minimizing errors during production.</li>
+
+                <li>• Effective <span class="drop-zone" data-id="6"></span> are essential for managing and optimizing the performance of automated systems that perform <span class="drop-zone" data-id="7"></span>.</li>
+            </ul>
+
+            <div style="text-align:center; margin:40px 0;">
+                <button class="btn-check" onclick="checkTask3()">Check answers</button>
+                <button class="btn-show" onclick="resetTask3()">Reset all</button>
+                <div id="task3Feedback" class="feedback" style="margin-top:18px; font-size:1.1rem;"></div>
+            </div>
+        </div>
+        
+            <!-- TASK 4 -->
+            <div class="task-section">
+                <h4><span class="task-label">TASK 4</span> Listen and answer the questions. Describe some benefits of automated car systems.</h4>
+        
+                <div style="text-align:center; margin:30px 0;">
+                    <audio controls style="width:100%; max-width:480px;">
+                        <source src="../audios/Track 10.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+        
+                <div style="margin:30px 0;">
+                    <img src="../images/image10.3.png" alt="Autonomous vehicle sensors diagram" class="img-fluid" style="max-height:420px; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                    <p class="image-caption" style="margin-top:12px;">Sensors used in automated / autonomous vehicles</p>
+                </div>
+        
+                <ul style="list-style:none; padding-left:0;">
+                    <li><strong>• How do they enhance safety for drivers and pedestrians?</strong></li>
+                    <li><textarea class="form-control" rows="4" placeholder="Your answer..."></textarea></li>
+        
+                    <li style="margin-top:35px;"><strong>• In what ways might they improve traffic flow and reduce congestion?</strong></li>
+                    <li><textarea class="form-control" rows="4" placeholder="Your answer..."></textarea></li>
+                </ul>
+        
+                <div style="text-align:center; margin-top:40px;">
+                    <button class="btn-show" onclick="showTask4Answers()">Show suggested benefits</button>
+                    <div id="task4Answers" style="display:none; margin-top:25px; padding:20px; background:#f1f5f9; border-radius:10px;">
+                        <strong>Possible / model answers:</strong><br><br>
+                        <strong>Safety:</strong> Automated systems use sensors (LIDAR, radar, cameras) to detect obstacles, pedestrians, and other vehicles in real time. They can react much faster than humans and apply emergency braking automatically, reducing accidents caused by distraction, fatigue or slow reaction.<br><br>
+                        <strong>Traffic flow & congestion:</strong> Vehicles communicate with each other and infrastructure (V2V, V2I), optimize speed and spacing, avoid sudden braking, choose the most efficient routes, and reduce stop-and-go traffic — leading to smoother flow and less congestion.
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        // Task 1 – simple definition check (example – you can expand)
+        function checkDefinitions() {
+            const feedback = document.getElementById('defFeedback');
+            feedback.innerHTML = '<span style="color:#059669;">Good effort! Compare your definitions with the text or discuss with a teacher.</span>';
+        }
+        
+      // ──────────────────────────────────────────────
+// Task 3 – Drag & Drop with removable items
+// ──────────────────────────────────────────────
+const task3Correct = {
+    "1": "manufacturing",
+    "2": "operate independently",
+    "3": "human intervention",
+    "4": "software",
+    "5": "accuracy",
+    "6": "control functions",
+    "7": "data processing"
+};
+
+function initTask3DragDrop() {
+    // Make all words in bank draggable
+    document.querySelectorAll('#wordBankTask3 .draggable-word').forEach(el => {
+        el.addEventListener('dragstart', dragStartTask3);
+    });
+
+    // Drop zones
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.addEventListener('dragover', e => e.preventDefault());
+        zone.addEventListener('drop', dropTask3);
+    });
+}
+
+function dragStartTask3(e) {
+    e.dataTransfer.setData('text/plain', e.target.textContent.trim());
+    setTimeout(() => e.target.style.opacity = '0.4', 0);
+}
+
+function dropTask3(e) {
+    e.preventDefault();
+    const word = e.dataTransfer.getData('text/plain');
+    if (!word) return;
+
+    // Only allow drop if slot is empty
+    if (e.target.children.length === 0) {
+        const span = document.createElement('span');
+        span.className = 'placed-word';
+        span.textContent = word;
+        span.style.cursor = 'pointer';
+        span.style.fontWeight = '600';
+        span.style.color = '#1e40af';
+        e.target.appendChild(span);
+        e.target.classList.add('filled');
+
+        // Click to remove
+        span.onclick = function() {
+            // Return to bank
+            const back = document.createElement('div');
+            back.className = 'draggable-word';
+            back.draggable = true;
+            back.textContent = word;
+            document.getElementById('wordBankTask3').appendChild(back);
+            back.addEventListener('dragstart', dragStartTask3);
+            // Clear slot
+            e.target.innerHTML = '';
+            e.target.classList.remove('filled');
+        };
+
+        // Remove original from bank
+        const original = Array.from(document.querySelectorAll('#wordBankTask3 .draggable-word'))
+            .find(el => el.textContent.trim() === word);
+        if (original) original.remove();
+    }
+}
+
+function checkTask3() {
+    let correct = 0;
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+        const id = zone.dataset.id;
+        const placed = zone.textContent.trim();
+        zone.classList.remove('correct', 'incorrect');
+
+        if (placed === task3Correct[id]) {
+            zone.classList.add('correct');
+            correct++;
+        } else if (placed !== '') {
+            zone.classList.add('incorrect');
+        }
+    });
+
+    document.getElementById('task3Feedback').innerHTML = 
+        correct === 7 ?
+        '<span style="color:#059669;">Excellent! All 7 correct.</span>' :
+        `<span style="color:#dc2626;">${correct}/7 correct – try again!</span>`;
+}
+
+function resetTask3() {
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.innerHTML = '';
+        zone.classList.remove('filled', 'correct', 'incorrect');
+    });
+    document.getElementById('task3Feedback').innerHTML = '';
+    // You can re-init words here if needed, but since they return on click it's usually ok
+}
+
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initTask3DragDrop);
+        
+        // Task 4 – show answers
+        function showTask4Answers() {
+            document.getElementById('task4Answers').style.display = 'block';
+        }
+        </script>
+
+
+
+
+
+
+
+
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
         <div class="container">
