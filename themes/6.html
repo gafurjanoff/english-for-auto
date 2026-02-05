@@ -24,7 +24,6 @@
     <link rel="stylesheet" href="../css/style.css" type="text/css">
 
     <style>
-        /* GLOBAL MOBILE OVERFLOW FIX */
         html,
         body {
             width: 100%;
@@ -47,17 +46,14 @@
             height: auto;
         }
 
-        /* Prevent text overflow */
         body {
             word-break: break-word;
             overflow-wrap: anywhere;
         }
 
-        /* Layout container safety */
         .container,
         .container-fluid {
             max-width: 900px;
-            /* Force a reasonable centered width */
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
@@ -106,60 +102,12 @@
             margin-bottom: 40px;
         }
 
-        .image-caption {
-            background-color: #d1d9e6;
-            padding: 10px;
-            text-align: center;
-            font-weight: 700;
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
-
         .text-block {
             background-color: #f2f2f2;
             padding: 30px;
             border-radius: 5px;
             line-height: 1.8;
             text-align: justify;
-        }
-
-        .lesson-table th,
-        .lesson-table td {
-            border: 1px solid #000 !important;
-            padding: 15px;
-            text-align: center;
-            vertical-align: middle;
-        }
-
-        .lesson-table th {
-            font-weight: 700;
-        }
-
-        .gap-fill-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .gap-fill-list li {
-            margin-bottom: 15px;
-            font-size: 18px;
-        }
-
-        .gap-line {
-            display: inline-block;
-            width: 150px;
-            border-bottom: 2px solid #000;
-            margin: 0 5px;
-        }
-
-        .qr-placeholder {
-            width: 80px;
-            height: 80px;
-            border: 1px dashed #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
         }
 
         .word-bank {
@@ -178,26 +126,33 @@
             padding: 5px 10px;
         }
 
-        .discussion-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .discussion-list li {
+        .task1-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 10px 25px;
+            margin-top: 20px;
             position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
+            z-index: 2;
         }
 
-        .discussion-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #2b78c5;
-            font-weight: bold;
+        .task1-item-label {
+            font-weight: 700;
+            margin-right: 5px;
         }
 
-        /* Interactive Inputs Styles */
+        .task1-select {
+            width: 100%;
+            max-width: 260px;
+            padding: 6px 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            font-family: 'Lato', sans-serif;
+            position: relative;
+            z-index: 3;
+            pointer-events: auto;
+            background-color: #ffffff;
+        }
+
         .task-input {
             border: 1px solid #ccc;
             background: #fff;
@@ -214,7 +169,8 @@
         }
 
         .gap-input {
-            width: 150px;
+            width: 160px;
+            max-width: 100%;
             text-align: center;
             display: inline-block;
             border: none;
@@ -235,30 +191,6 @@
             justify-content: center;
         }
 
-        .correct-answer {
-            color: #28a745;
-            font-size: 0.9rem;
-            margin-top: 5px;
-            font-weight: bold;
-            display: none;
-            /* Hidden by default */
-        }
-
-        .show-answer-btn {
-            background-color: #2b78c5;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .show-answer-btn:hover {
-            background-color: #1a5a9c;
-        }
-
         .check-btn {
             background-color: #28a745;
             color: white;
@@ -274,6 +206,21 @@
             background-color: #218838;
         }
 
+        .clear-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .clear-btn:hover {
+            background-color: #5a6268;
+        }
+
         .input-correct {
             border-color: #28a745 !important;
             background-color: #e6ffec !important;
@@ -284,11 +231,6 @@
             background-color: #ffe6e6 !important;
         }
 
-        textarea.task-input {
-            resize: vertical;
-            min-height: 80px;
-        }
-
         .correct-answer-display {
             color: #28a745;
             font-size: 0.85rem;
@@ -297,118 +239,7 @@
             display: none;
         }
 
-        /* Drag and Drop Styles */
-        .draggable-word {
-            display: inline-block;
-            padding: 5px 15px;
-            margin: 5px;
-            background-color: #fff;
-            border: 1px solid #2b78c5;
-            border-radius: 20px;
-            cursor: move;
-            font-weight: bold;
-            color: #2b78c5;
-            /* PERFORMANCE FIX: Instant Drag */
-            transition: none !important;
-            animation: none !important;
-            will-change: transform;
-            touch-action: none;
-            /* Prevent browser scrolling handling on the element itself if possible, though we handle it in JS */
-        }
-
-        .draggable-word:hover {
-            background-color: #2b78c5;
-            color: #fff;
-        }
-
-        .draggable-word .remove-btn {
-            display: none;
-            margin-left: 8px;
-            color: #dc3545;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        /* Show remove button when inside drop zone */
-        .drop-zone .draggable-word .remove-btn {
-            display: inline-block;
-        }
-
-        .drop-zone .draggable-word {
-            position: relative;
-            padding-right: 20px;
-            /* Space for x button */
-        }
-
-        .drop-zone .draggable-word .remove-btn {
-            position: absolute;
-            top: 2px;
-            right: 5px;
-        }
-
-        .draggable-word.dragging {
-            opacity: 0.5;
-        }
-
-        .drop-zone {
-            display: inline-block;
-            min-width: 120px;
-            min-height: 30px;
-            border-bottom: 2px solid #000;
-            vertical-align: middle;
-            margin: 0 5px;
-            text-align: center;
-            padding: 0 10px;
-            transition: background 0.2s;
-        }
-
-        .drop-zone.drag-over {
-            background-color: #e3f2fd;
-            border-bottom-color: #2b78c5;
-        }
-
-        .drop-zone .draggable-word {
-            margin: 0;
-            padding: 2px 10px;
-            cursor: pointer;
-        }
-
-        .draggable-word.selected {
-            background-color: #2b78c5;
-            color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transform: scale(1.05);
-        }
-
-        /* Fixed Word Bank Style */
-        .word-bank {
-            position: -webkit-sticky;
-            /* Safari */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #f6f8f1;
-            border-bottom: 2px solid #e0e6d6;
-            padding: 15px 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Mobile Responsiveness Fixes */
         @media (max-width: 768px) {
-
-            html,
-            body {
-                overflow-x: hidden;
-                width: 100vw;
-            }
-
-            .pl-4,
-            .ml-5 {
-                padding-left: 10px !important;
-                margin-left: 0 !important;
-            }
 
             .task-label {
                 font-size: 12px;
@@ -425,129 +256,13 @@
                 line-height: 1.3;
             }
 
-            /* Responsive Inputs */
             .gap-input {
-                width: 100px;
-                max-width: 100%;
-                /* Safety */
-            }
-
-            .task-input {
-                width: 100%;
-            }
-
-            .word-bank .word-item,
-            .draggable-word {
-                padding: 6px 12px;
-                /* Bigger touch target */
-                font-size: 14px;
-                margin: 4px;
-                max-width: 100%;
+                width: 120px;
             }
 
             .text-block {
                 text-align: left !important;
             }
-
-            .drop-zone {
-                min-width: 80px;
-                height: 30px;
-                margin-bottom: 5px;
-                display: inline-block;
-                padding: 0 5px;
-                background-color: #f8f9fa;
-                border: 1px dashed #2b78c5;
-                vertical-align: middle;
-            }
-
-            .word-bank.is-fixed {
-                padding: 10px 5px;
-                width: 100%;
-                /* Explicit width */
-                left: 0;
-                box-sizing: border-box;
-                /* Include padding in width */
-            }
-
-            /* Table adjustments */
-            .lesson-table th,
-            .lesson-table td {
-                padding: 8px;
-                font-size: 14px;
-            }
-
-            /* Task 5 / Debate Section Mobile Fixes */
-            .task-section img {
-                display: block;
-                margin: 0 auto 15px auto;
-                /* Center image */
-            }
-
-            /* FORCE Gutter/Padding on Mobile */
-            .container,
-            .container-fluid,
-            .task-section,
-            .col-lg-7,
-            .mt-4 {
-                padding-left: 15px !important;
-                padding-right: 15px !important;
-            }
-
-            /* Fix Row Margins on Mobile */
-            .row {
-                margin-left: 0 !important;
-                margin-right: 0 !important;
-            }
-
-            .col-md-6 {
-                width: 100%;
-                padding: 0 !important;
-                /* Let parent handle padding */
-                margin-bottom: 15px;
-            }
-
-            /* Center Headers if requested */
-            .mt-4 h6 {
-                text-align: center;
-            }
-        }
-
-        /* Lightbox Styles */
-        .lightbox-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            z-index: 10000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            cursor: zoom-out;
-        }
-
-        .lightbox-img {
-            max-width: 90%;
-            max-height: 90vh;
-            border-radius: 5px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            transform: scale(0.9);
-            transition: transform 0.3s ease;
-            cursor: default;
-        }
-
-        .lightbox-overlay.active {
-            display: flex;
-        }
-
-        .lightbox-overlay.active .lightbox-img {
-            transform: scale(1);
-        }
-
-        .img-fluid {
-            cursor: zoom-in;
-            /* Indicate clickable */
         }
     </style>
 </head>
@@ -611,8 +326,381 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TASK 1 -->
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span class="font-italic">Match the correct verb phrases with the pictures.</span>
+
+                <div class="word-bank mt-3">
+                    <span class="word-item">come home</span>
+                    <span class="word-item">finish work</span>
+                    <span class="word-item">get up</span>
+                    <span class="word-item">go to bed</span>
+                    <span class="word-item">have a shower</span>
+                    <span class="word-item">make dinner</span>
+                    <span class="word-item">start work</span>
+                    <span class="word-item">watch TV</span>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <img src="../images/image6.png" alt="Daily routine pictures" class="img-fluid shadow-sm">
+                </div>
+
+                <div class="task1-grid">
+                    <div>
+                        <span class="task1-item-label">come home</span>
+                        <select class="task1-select" data-answer="g">
+                            <option value="">Choose letter (A–H)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="task1-item-label">finish work</span>
+                        <select class="task1-select" data-answer="a">
+                            <option value="">Choose letter (A–H)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="task1-item-label">get up</span>
+                        <select class="task1-select" data-answer="e">
+                            <option value="">Choose letter (A–H)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="task1-item-label">go to bed</span>
+                        <select class="task1-select" data-answer="h">
+                            <option value="">Choose letter (A–H)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="task1-item-label">have a shower</span>
+                        <select class="task1-select" data-answer="b">
+                            <option value="">Choose letter (A–H)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="task1-item-label">make dinner</span>
+                        <select class="task1-select" data-answer="c">
+                            <option value="">Choose letter (A–H)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="task1-item-label">start work</span>
+                        <select class="task1-select" data-answer="d">
+                            <option value="">Choose letter (A–H)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                    <div>
+                        <span class="task1-item-label">watch TV</span>
+                        <select class="task1-select" data-answer="f">
+                            <option value="">Choose letter (A–H)</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                            <option value="E">E</option>
+                            <option value="F">F</option>
+                            <option value="G">G</option>
+                            <option value="H">H</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="check-buttons">
+                    <button type="button" class="check-btn" onclick="checkTask1()">Check Answers</button>
+                    <button type="button" class="clear-btn" onclick="clearTask1()">Clear</button>
+                </div>
+                <p id="task1-result" class="correct-answer-display"></p>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span class="font-italic">Read the following text and answer the questions.</span>
+
+                <div class="text-block mt-3">
+                    <p>
+                        Hello! My name is Marc. I am a mechanic and I work in a garage in London. I am 23 years old.
+                        I live with my parents and my brother. His name is Tom and he is a mechanic, too. He has got
+                        his own garage. I get up at 7am every day. Then, I have breakfast with my mother and later I go
+                        cycling to work. I start working at 8. We have lunch break at 12 and then I go back to work.
+                        I finish work at 5 and then I go home, and I usually have a shower. Later, in the evening I
+                        normally meet my friends. After that, I go home for dinner and then I go to bed around 9pm
+                        because I have to get up early the next day.
+                    </p>
+                </div>
+
+                <ol class="mt-3">
+                    <li>How old is Marc?
+                        <input type="text" class="task-input task2-input" data-answer="23|23 years">
+                    </li>
+                    <li class="mt-2">Where does Marc live?
+                        <input type="text" class="task-input task2-input" data-answer="london|in london">
+                    </li>
+                    <li class="mt-2">How does he get to work?
+                        <input type="text" class="task-input task2-input" data-answer="by bike|by bicycle|cycling to work|cycle to work">
+                    </li>
+                    <li class="mt-2">What time does he finish work?
+                        <input type="text" class="task-input task2-input" data-answer="5|5 o'clock|5 pm|at 5">
+                    </li>
+                    <li class="mt-2">What does Marc do in the evening?
+                        <input type="text" class="task-input task2-input" data-answer="meet friends|meets friends|see friends">
+                    </li>
+                </ol>
+
+                <div class="check-buttons">
+                    <button type="button" class="check-btn" onclick="checkTask2()">Check Answers</button>
+                    <button type="button" class="clear-btn" onclick="clearTask2()">Clear</button>
+                </div>
+                <p id="task2-result" class="correct-answer-display"></p>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span class="font-italic">Read the text and retell it.</span>
+
+                <div class="mt-4 text-center">
+                    <img src="../images/image6.2.png" alt="Marc and Anvar texts" class="img-fluid shadow-sm">
+                </div>
+            </div>
+
+            <!-- TASK 4 -->
+            <div class="task-section">
+                <span class="task-label">TASK 4</span>
+                <span class="font-italic">Listen to the audio and fill in the gaps.</span>
+
+                <div class="mt-3 mb-3">
+                    <audio controls>
+                        <source src="../audios/Track%206.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="text-block">
+                    <p>
+                        Hello! My name is Anvar and I am a mechanic
+                        <input type="text" class="gap-input" placeholder="...">.
+                        I am 20 years old and I
+                        <input type="text" class="gap-input" placeholder="...">
+                        in Karshi, a small city in Uzbekistan. I
+                        <input type="text" class="gap-input" placeholder="...">
+                        at 7 am. I have
+                        <input type="text" class="gap-input" placeholder="...">
+                        with my roommates because I live in
+                        <input type="text" class="gap-input" placeholder="...">
+                        dormitory and I go to the Department of Transportation Engineering at Karshi Engineering
+                        Economic Institute. I
+                        <input type="text" class="gap-input" placeholder="...">
+                        to be a mechanic because cars are my passion. In the department professional
+                        <input type="text" class="gap-input" placeholder="...">
+                        teach us about how to be a good mechanic and set up a financially balanced
+                        <input type="text" class="gap-input" placeholder="...">
+                        after graduation.
+                    </p>
+                    <p>
+                        I have a lot of
+                        <input type="text" class="gap-input" placeholder="...">
+                        at the institute. All of them are boys, actually very few girls study in our department.
+                        After the institute, I go to the
+                        <input type="text" class="gap-input" placeholder="...">
+                        and cook dinner and have it with my
+                        <input type="text" class="gap-input" placeholder="...">
+                        . In the evening I do my homework,
+                        <input type="text" class="gap-input" placeholder="...">
+                        TV and go to bed.
+                    </p>
+                </div>
+
+                <p class="mt-3">
+                    For more information visit:
+                    <a href="https://www.vocabulary.cl/Lists/Daily_Routines.htm" target="_blank" rel="noopener">
+                        https://www.vocabulary.cl/Lists/Daily_Routines.htm
+                    </a>
+                </p>
+            </div>
         </div>
     </section>
+    <!-- Lesson Content Section End -->
+
+
+
+    <!-- Js Plugins -->
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.nice-select.min.js"></script>
+    <script src="../js/jquery-ui.min.js"></script>
+    <script src="../js/jquery.magnific-popup.min.js"></script>
+    <script src="../js/mixitup.min.js"></script>
+    <script src="../js/jquery.slicknav.js"></script>
+    <script src="../js/owl.carousel.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        (function () {
+            function normalize(value) {
+                return (value || '').trim().toLowerCase();
+            }
+
+            window.checkTask1 = function () {
+                var selects = document.querySelectorAll('.task1-select');
+                var correct = 0;
+                var TOTAL = selects.length;
+
+                selects.forEach(function (sel) {
+                    sel.classList.remove('input-correct', 'input-incorrect');
+                    var val = normalize(sel.value);
+                    var expected = normalize(sel.getAttribute('data-answer'));
+
+                    if (!val) {
+                        sel.classList.add('input-incorrect');
+                    } else if (val === expected) {
+                        sel.classList.add('input-correct');
+                        correct++;
+                    } else {
+                        sel.classList.add('input-incorrect');
+                    }
+                });
+
+                var result = document.getElementById('task1-result');
+                if (result) {
+                    result.style.display = 'block';
+                    result.textContent = 'You matched ' + correct + ' / ' + TOTAL + ' correctly.';
+                }
+            };
+
+            window.clearTask1 = function () {
+                var selects = document.querySelectorAll('.task1-select');
+                selects.forEach(function (sel) {
+                    sel.value = '';
+                    sel.classList.remove('input-correct', 'input-incorrect');
+                });
+                var result = document.getElementById('task1-result');
+                if (result) {
+                    result.style.display = 'none';
+                    result.textContent = '';
+                }
+            };
+
+            function answerMatches(actual, answerAttr) {
+                var expectedList = (answerAttr || '').split('|').map(function (s) { return normalize(s); });
+                var a = normalize(actual);
+                return expectedList.some(function (exp) { return exp && a.indexOf(exp) !== -1; });
+            }
+
+            window.checkTask2 = function () {
+                var inputs = document.querySelectorAll('.task2-input');
+                var correct = 0;
+
+                inputs.forEach(function (input) {
+                    var expected = input.getAttribute('data-answer');
+                    var actual = input.value;
+
+                    input.classList.remove('input-correct', 'input-incorrect');
+
+                    if (!actual) {
+                        input.classList.add('input-incorrect');
+                    } else if (answerMatches(actual, expected)) {
+                        input.classList.add('input-correct');
+                        correct++;
+                    } else {
+                        input.classList.add('input-incorrect');
+                    }
+                });
+
+                var result = document.getElementById('task2-result');
+                if (result) {
+                    result.style.display = 'block';
+                    result.textContent = 'You answered ' + correct + ' / ' + inputs.length + ' correctly.';
+                }
+            };
+
+            window.clearTask2 = function () {
+                var inputs = document.querySelectorAll('.task2-input');
+                inputs.forEach(function (input) {
+                    input.value = '';
+                    input.classList.remove('input-correct', 'input-incorrect');
+                });
+
+                var result = document.getElementById('task2-result');
+                if (result) {
+                    result.style.display = 'none';
+                    result.textContent = '';
+                }
+            };
+
+            // Ensure external "nice-select" plugin does NOT hijack these dropdowns
+            if (window.jQuery && jQuery.fn && typeof jQuery.fn.niceSelect === 'function') {
+                jQuery(function ($) {
+                    $('.task1-select').each(function () {
+                        try {
+                            $(this).niceSelect('destroy');
+                        } catch (e) {
+                            // ignore if not yet initialized
+                        }
+                    });
+                });
+            }
+        })();
+    </script>
+
+
+
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">

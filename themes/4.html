@@ -274,6 +274,21 @@
             background-color: #218838;
         }
 
+        .clear-btn {
+            background-color: #6c757d;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .clear-btn:hover {
+            background-color: #5a6268;
+        }
+
         .input-correct {
             border-color: #28a745 !important;
             background-color: #e6ffec !important;
@@ -612,6 +627,227 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TASK 1 -->
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span class="font-italic">Look at the job application questions and complete the questions with a word
+                    from the box.</span>
+
+                <div class="word-bank mt-3">
+                    <span class="word-item">address</span>
+                    <span class="word-item">e-mail</span>
+                    <span class="word-item">old</span>
+                    <span class="word-item">in</span>
+                    <span class="word-item">phone</span>
+                    <span class="word-item">spell</span>
+                </div>
+
+                <div class="mt-4 text-center">
+                    <img src="../images/image4.png" alt="Job interview" class="img-fluid shadow-sm">
+                </div>
+
+                <ol class="mt-4">
+                    <li>How
+                        <input type="text" class="gap-input task1-input" data-answer="old">
+                        are you?
+                    </li>
+                    <li>Are you married or single?</li>
+                    <li>What’s your
+                        <input type="text" class="gap-input task1-input" data-answer="phone">
+                        number?
+                    </li>
+                    <li>What’s your
+                        <input type="text" class="gap-input task1-input" data-answer="address">
+                        here in Edinburgh?
+                    </li>
+                    <li>Where are you from, Anton?</li>
+                    <li>Where are you from
+                        <input type="text" class="gap-input task1-input" data-answer="in">
+                        Russia?
+                    </li>
+                    <li>What’s your name?</li>
+                    <li>How do you
+                        <input type="text" class="gap-input task1-input" data-answer="spell">
+                        Alekseev?
+                    </li>
+                    <li>What’s the postcode?</li>
+                </ol>
+
+                <div class="check-buttons">
+                    <button type="button" class="check-btn" onclick="checkTask1()">Check Answers</button>
+                    <button type="button" class="clear-btn" onclick="clearTask1()">Clear</button>
+                </div>
+                <p id="task1-result" class="correct-answer-display"></p>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span class="font-italic">Listen to the audio and fill in the application form.</span>
+
+                <div class="mt-3 mb-3">
+                    <audio controls>
+                        <source src="../audios/Track%204%201.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+                <div class="text-block">
+                    <h5 class="text-center font-weight-bold mb-4">REGISTRATION FORM</h5>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>Name:
+                                <input type="text" class="task-input" placeholder="Name">
+                            </p>
+                            <p>From:
+                                <input type="text" class="task-input" placeholder="City, Country">
+                            </p>
+                            <p>Age:
+                                <input type="text" class="task-input" placeholder="Age">
+                            </p>
+                            <p>Married:
+                                <input type="text" class="task-input" placeholder="Yes / No">
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p>Address:
+                                <input type="text" class="task-input" placeholder="Address">
+                            </p>
+                            <p>Phone number:
+                                <input type="text" class="task-input" placeholder="Phone number">
+                            </p>
+                            <p>Email address:
+                                <input type="text" class="task-input" placeholder="Email address">
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span class="font-italic">Read the information. <strong class="text-danger">DO YOU KNOW?</strong></span>
+
+                <div class="text-block mt-3">
+                    <p><strong>A:</strong> What’s your email address?</p>
+                    <p><strong>B:</strong> It’s jane.smith@email.com</p>
+                    <p>@ = at<br>
+                        . = dot<br>
+                        .com = dot com<br>
+                        - = dash<br>
+                        _ = underscore
+                    </p>
+                    <p class="font-italic">‘jane dot smith at email dot com’</p>
+                </div>
+            </div>
+
+            <!-- TASK 4 -->
+            <div class="task-section">
+                <span class="task-label">TASK 4</span>
+                <span class="font-italic">Write your own details and fill in the gaps.</span>
+
+
+
+                <div class="mt-3">
+                    <p>1. I live in
+                        <input type="text" class="task-input" placeholder="Place you live">
+                        .
+                    </p>
+                    <p>2. My phone number is
+                        <input type="text" class="task-input" placeholder="Phone number">
+                        .
+                    </p>
+                    <p>3. My email address is
+                        <input type="text" class="task-input" placeholder="Email address">
+                        .
+                    </p>
+                </div>
+            </div>
+
+            <!-- TASK 5 -->
+            <div class="task-section">
+                <span class="task-label">TASK 5</span>
+                <span class="font-italic">Read the interview and make a role play in the classroom.</span>
+
+                <div class="text-block mt-3">
+                    <p><strong>Interviewer:</strong> Good morning, thank you for coming in today. To start, could you
+                        please tell me a little about yourself and your experience as a car mechanic?</p>
+                    <p><strong>Mechanic:</strong> Good morning, thank you for having me. I’ve been working as an
+                        <strong>automotive mechanic</strong> for over eight years now. I started as an apprentice and
+                        gradually gained experience in various areas, including diagnostics, engine repair,
+                        suspension, and electrical systems. I’ve worked in both independent shops and larger service
+                        centers, which has helped me develop a wide <strong>skill set</strong>.</p>
+                    <p><strong>Interviewer:</strong> Impressive! What <strong>tools</strong> and
+                        <strong>equipment</strong> are you most familiar with using?</p>
+                    <p><strong>Mechanic:</strong> I’m experienced with a range of diagnostic tools, from basic hand
+                        tools to more advanced equipment like <strong>OBD-II scanners</strong>, <strong>multimeters</strong>,
+                        and <strong>tire changers</strong>. I’ve also worked with computerized diagnostic systems and
+                        <strong>alignment machines</strong>. I'm comfortable working with both <strong>manual</strong>
+                        and automated equipment, depending on the situation.</p>
+                    <p><strong>Interviewer:</strong> Great to hear! How do you stay up-to-date with the latest
+                        <strong>automotive technologies</strong> and trends?</p>
+                    <p><strong>Mechanic:</strong> I regularly attend workshops and training courses to keep my
+                        knowledge current. I’m also subscribed to a few industry magazines and follow online forums and
+                        communities. Since automotive technology evolves so rapidly, I make sure I’m always learning
+                        about the newest systems, like <strong>electric vehicles</strong> and
+                        <strong>hybrid engines</strong>.</p>
+                    <p><strong>Interviewer:</strong> Sounds like you’re committed to continuous learning, which is
+                        essential in this industry.</p>
+                </div>
+            </div>
+
+            <!-- TASK 6 -->
+            <div class="task-section">
+                <span class="task-label">TASK 6</span>
+                <span class="font-italic">Do the test on the interview in Task 5.</span>
+
+                <div class="text-block">
+                    <p><strong>1. How many years of experience does the mechanic have?</strong></p>
+                    <div>
+                        <label><input type="radio" name="q1" value="A"> A. 5 years</label><br>
+                        <label><input type="radio" name="q1" value="B" data-correct="true"> B. 8 years</label><br>
+                        <label><input type="radio" name="q1" value="C"> C. 10 years</label><br>
+                        <label><input type="radio" name="q1" value="D"> D. 12 years</label>
+                    </div>
+
+                    <p class="mt-3"><strong>2. What was the challenging repair the mechanic discussed during the
+                            interview?</strong></p>
+                    <div>
+                        <label><input type="radio" name="q2" value="A"> A. Replacing a transmission</label><br>
+                        <label><input type="radio" name="q2" value="B" data-correct="true"> B. Diagnosing a faulty
+                            ignition coil</label><br>
+                        <label><input type="radio" name="q2" value="C"> C. Fixing a flat tire</label><br>
+                        <label><input type="radio" name="q2" value="D"> D. Repairing a brake system</label>
+                    </div>
+
+                    <p class="mt-3"><strong>3. Which tools does the mechanic mention being familiar with?</strong></p>
+                    <div>
+                        <label><input type="radio" name="q3" value="A" data-correct="true"> A. Diagnostic scanners,
+                            multimeters, and alignment machines</label><br>
+                        <label><input type="radio" name="q3" value="B"> B. Welding equipment and painting tools</label><br>
+                        <label><input type="radio" name="q3" value="C"> C. Chainsaws and woodworking tools</label><br>
+                        <label><input type="radio" name="q3" value="D"> D. None of the above</label>
+                    </div>
+
+                    <p class="mt-3"><strong>4. How does the mechanic stay up-to-date with the latest automotive
+                            technologies?</strong></p>
+                    <div>
+                        <label><input type="radio" name="q4" value="A"> A. By watching YouTube tutorials</label><br>
+                        <label><input type="radio" name="q4" value="B"> B. By reading books only</label><br>
+                        <label><input type="radio" name="q4" value="C" data-correct="true"> C. By attending workshops,
+                            training, and following industry news</label><br>
+                        <label><input type="radio" name="q4" value="D"> D. By experimenting on their own vehicles</label>
+                    </div>
+
+                    <div class="check-buttons mt-4">
+                        <button type="button" class="check-btn" onclick="checkTask6()">Check Answers</button>
+                        <button type="button" class="clear-btn" onclick="clearTask6()">Clear</button>
+                    </div>
+                    <p id="task6-result" class="correct-answer-display"></p>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -639,6 +875,91 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        (function () {
+            function normalize(value) {
+                return (value || '').trim().toLowerCase();
+            }
+
+            window.checkTask1 = function () {
+                var inputs = document.querySelectorAll('.task1-input');
+                var correct = 0;
+
+                inputs.forEach(function (input) {
+                    var expected = normalize(input.getAttribute('data-answer'));
+                    var actual = normalize(input.value);
+
+                    input.classList.remove('input-correct', 'input-incorrect');
+
+                    if (!actual) {
+                        input.classList.add('input-incorrect');
+                    } else if (actual === expected) {
+                        input.classList.add('input-correct');
+                        correct++;
+                    } else {
+                        input.classList.add('input-incorrect');
+                    }
+                });
+
+                var result = document.getElementById('task1-result');
+                if (result) {
+                    result.style.display = 'block';
+                    result.textContent = 'You got ' + correct + ' / ' + inputs.length + ' correct.';
+                }
+            };
+
+            window.clearTask1 = function () {
+                var inputs = document.querySelectorAll('.task1-input');
+                inputs.forEach(function (input) {
+                    input.value = '';
+                    input.classList.remove('input-correct', 'input-incorrect');
+                });
+                var result = document.getElementById('task1-result');
+                if (result) {
+                    result.style.display = 'none';
+                    result.textContent = '';
+                }
+            };
+
+            window.checkTask6 = function () {
+                var questions = [1, 2, 3, 4];
+                var correct = 0;
+
+                questions.forEach(function (num) {
+                    var options = document.querySelectorAll('input[name="q' + num + '"]');
+                    var isCorrect = false;
+
+                    options.forEach(function (opt) {
+                        if (opt.checked && opt.getAttribute('data-correct') === 'true') {
+                            isCorrect = true;
+                        }
+                    });
+
+                    if (isCorrect) {
+                        correct++;
+                    }
+                });
+
+                var result = document.getElementById('task6-result');
+                if (result) {
+                    result.style.display = 'block';
+                    result.textContent = 'You answered ' + correct + ' / ' + questions.length + ' questions correctly.';
+                }
+            };
+
+            window.clearTask6 = function () {
+                var options = document.querySelectorAll('input[name^="q"]');
+                options.forEach(function (opt) {
+                    opt.checked = false;
+                });
+                var result = document.getElementById('task6-result');
+                if (result) {
+                    result.style.display = 'none';
+                    result.textContent = '';
+                }
+            };
+        })();
+    </script>
 </body>
 
 </html>
