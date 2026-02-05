@@ -347,21 +347,57 @@
             right: 5px;
         }
 
-        .draggable-word.dragging {
-            opacity: 0.5;
-        }
-
         .drop-zone {
-            display: inline-block;
-            min-width: 120px;
-            min-height: 30px;
-            border-bottom: 2px solid #000;
-            vertical-align: middle;
-            margin: 0 5px;
-            text-align: center;
-            padding: 0 10px;
-            transition: background 0.2s;
-        }
+    width: 100px;
+    height: 44px;
+    margin: 6px auto;
+    border: 2px dashed #64748b;
+    border-radius: 8px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    transition: all 0.18s;
+}
+
+.drop-zone.filled {
+    background: #ecfdf5;
+    border: 2px solid #10b981;
+    color: #065f46;
+}
+
+.drop-zone .word {
+    padding: 4px 10px;
+    background: #e0f2fe;
+    border-radius: 9999px;
+    font-size: 0.9rem;
+    color: #1e40af;
+    cursor: pointer;
+    user-select: none;
+}
+
+.drop-zone.correct {
+    background: #d1fae5 !important;
+    border-color: #059669 !important;
+}
+
+.drop-zone.incorrect {
+    background: #fee2e2 !important;
+    border-color: #dc2626 !important;
+}
+
+.correct-answer-display {
+    margin-top: 6px;
+    font-size: 0.85rem;
+    color: #059669;
+    font-weight: 600;
+    min-height: 20px;
+    display: none;
+}
 
         .drop-zone.drag-over {
             background-color: #e3f2fd;
@@ -599,6 +635,11 @@
     </div>
     <!-- Breadcrumb End -->
 
+
+
+
+
+
     <!-- Lesson Content Section Begin -->
     <section class="lesson-content spad bg-white">
         <div class="container">
@@ -610,8 +651,159 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10 task-content">
+
+<!-- TASK 1 -->
+<div class="task-section">
+    <h4><span class="task-label">TASK 1</span> Can you identify the car parts? Match the words to the pictures.</h4>
+
+    <p style="text-align:center; font-style:italic; margin:15px 0;">
+        Drag each word to the correct number (1–8). Click a placed word to remove it.
+    </p>
+
+    <div style="text-align:center; margin:30px 0;">
+        <img src="../images/image9.1.png" 
+             alt="Car parts - 8 numbered illustrations"
+             class="img-fluid"
+             style="max-height:600px; border:1px solid #ccc; border-radius:8px;">
+        <p class="image-caption">Match words to numbers 1–8</p>
+    </div>
+
+    <div class="word-bank" id="wordBank">
+        <div class="draggable-word" draggable="true">body</div>
+        <div class="draggable-word" draggable="true">chassis</div>
+        <div class="draggable-word" draggable="true">engine</div>
+        <div class="draggable-word" draggable="true">pedals</div>
+        <div class="draggable-word" draggable="true">brakes</div>
+        <div class="draggable-word" draggable="true">wheel</div>
+        <div class="draggable-word" draggable="true">steering wheel</div>
+        <div class="draggable-word" draggable="true">steering system</div>
+    </div>
+
+
+
+    <div style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px 40px; margin:30px 0;">
+        <div style="text-align:center;"><strong>1</strong><div class="drop-zone" data-num="1"></div></div>
+        <div style="text-align:center;"><strong>2</strong><div class="drop-zone" data-num="2"></div></div>
+        <div style="text-align:center;"><strong>3</strong><div class="drop-zone" data-num="3"></div></div>
+        <div style="text-align:center;"><strong>4</strong><div class="drop-zone" data-num="4"></div></div>
+        <div style="text-align:center;"><strong>5</strong><div class="drop-zone" data-num="5"></div></div>
+        <div style="text-align:center;"><strong>6</strong><div class="drop-zone" data-num="6"></div></div>
+        <div style="text-align:center;"><strong>7</strong><div class="drop-zone" data-num="7"></div></div>
+        <div style="text-align:center;"><strong>8</strong><div class="drop-zone" data-num="8"></div></div>
+    </div>
+
+    <div style="text-align:center; margin-top:30px;">
+        <button class="btn-check" onclick="checkTask1()">Check answers</button>
+        <!-- <button class="btn-show" onclick="showCorrectTask1()">Show correct answers</button> -->
+        <div id="task1Feedback" class="feedback" style="margin-top:15px; min-height:24px;"></div>
+    </div>
+</div>
+
+
+
+<!-- TASK 2 -->
+<div class="task-section">
+    <h4><span class="task-label">TASK 2</span> Label the car parts</h4>
+    <p>Write the name of each part next to its number (engine, transmission, brakes, suspension, exhaust system, battery).</p>
+
+    <div style="text-align:center; margin:30px 0;">
+        <img src="../images/image9.2.png" alt="Car diagram" class="img-fluid" style="max-height:500px;">
+    </div>
+
+    <div class="car-parts-inputs">
+        <div class="part-row"><label>1.</label> <input type="text" class="task-input part-input" data-part="1"></div>
+        <div class="part-row"><label>2.</label> <input type="text" class="task-input part-input" data-part="2"></div>
+        <div class="part-row"><label>3.</label> <input type="text" class="task-input part-input" data-part="3"></div>
+        <div class="part-row"><label>4.</label> <input type="text" class="task-input part-input" data-part="4"></div>
+        <div class="part-row"><label>5.</label> <input type="text" class="task-input part-input" data-part="5"></div>
+        <div class="part-row"><label>6.</label> <input type="text" class="task-input part-input" data-part="6"></div>
+    </div>
+
+    <div style="text-align:center;">
+        <button class="btn-check" onclick="checkTask2()">Check answers</button>
+        <div id="task2Feedback" class="feedback"></div>
+    </div>
+</div>
+
+<!-- TASK 3 – Full text version with gaps -->
+<div class="task-section">
+    <h4><span class="task-label">TASK 3</span> Listen to the lecture about car components and write no more than A WORD for each gap.</h4>
+
+    <div style="margin: 25px 0; text-align: center;">
+        <audio controls>
+            <source src="../audios/Track 9.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
+    <h5 style="text-align: center; margin: 20px 0; font-weight: bold;">COMPONENTS OF A CAR CONSTRUCTION</h5>
+
+    <ul style="list-style: none; padding-left: 0; line-height: 2.1; max-width: 800px; margin: 0 auto;">
+        <li>
+            <strong>Dashboard.</strong> It is an elaborate “command center” that allows the driver to control many systems, such as air conditioning, 
+            <input type="text" class="gap-input" id="gap1"> and lights.
+        </li>
+        <li>
+            Dashboard is a place for icons and symbols, as well as the car 
+            <input type="text" class="gap-input" id="gap2">.
+        </li>
+        <li>
+            <strong>Main car components.</strong> The design of a car includes many important systems, such as suspension, braking, steering, drive,
+            <input type="text" class="gap-input" id="gap3">, cooling and lighting.
+        </li>
+        <li>
+            <strong>Car body.</strong> The body consists of the supporting structure, bodywork, hull, 
+            <input type="text" class="gap-input" id="gap4"> and equipment.
+        </li>
+        <li>
+            <strong>Engine.</strong> Car construction and operating principle cannot be complete without an engine, that is, a machine that converts the energy supplied to the vehicle into 
+            <input type="text" class="gap-input" id="gap5"> energy. Depending on the type of propulsion system, the energy source can be gasoline, diesel, electricity and sometimes even hydrogen. The generation of mechanical energy allows the car to be put into motion.
+        </li>
+    </ul>
+
+    <div style="text-align: center; margin: 35px 0;">
+        <button class="btn-check" onclick="checkGaps()">Check Answers</button>
+        <button class="btn-show" onclick="showAnswers()">Show Answers</button>
+        <div id="gapFeedback" class="feedback" style="margin-top: 15px; min-height: 24px; font-weight: bold;"></div>
+    </div>
+
+    <div id="correctAnswers" style="margin: 30px auto; padding: 20px; background: #f1f5f9; border-radius: 8px; max-width: 800px; display: none;">
+        <strong>Model / suggested answers:</strong><br><br>
+        1. air conditioning / climate control<br>
+        2. controls / instruments / display<br>
+        3. transmission<br>
+        4. trimmings / panels / upholstery<br>
+        5. mechanical
+    </div>
+</div>
+
+
+<!-- TASK 4 -->
+<div class="task-section">
+    <h4><span class="task-label">TASK 4</span> Design Your Own Car</h4>
+    <p>Describe your concept (body shape, engine type, safety features, technology, etc.)</p>
+    <textarea class="form-control" rows="8" placeholder="My car concept..."></textarea>
+</div>
+                </div>
+            </div>
         </div>
     </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
@@ -628,6 +820,9 @@ opyright &copy;
     </footer>
     <!-- Footer Section End -->
 
+
+
+
     <!-- Js Plugins -->
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.min.js"></script>
@@ -638,6 +833,172 @@ opyright &copy;
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+
+
+    <!-- Custom Drag & Drop + Gap Check Script -->
+    <script>
+        // ──────────────────────────────────────────────
+        // Task 1 – Drag & Drop
+        // ──────────────────────────────────────────────
+// Correct matches (based on your original description)
+const correctMatches = {
+    "1": "body",
+    "2": "chassis",
+    "3": "engine",
+    "4": "pedals",
+    "5": "brakes",
+    "6": "steering wheel",
+    "7": "wheel",
+    "8": "steering system"
+};
+
+// Drag start
+document.querySelectorAll('.draggable-word').forEach(el => {
+    el.addEventListener('dragstart', e => {
+        e.dataTransfer.setData('text/plain', el.textContent.trim());
+        setTimeout(() => el.style.opacity = '0.3', 0);
+    });
+    el.addEventListener('dragend', () => el.style.opacity = '1');
+});
+
+// Drop zone events
+document.querySelectorAll('.drop-zone').forEach(zone => {
+    zone.addEventListener('dragover', e => e.preventDefault());
+
+    zone.addEventListener('drop', e => {
+        e.preventDefault();
+        const word = e.dataTransfer.getData('text/plain');
+        if (!word) return;
+
+        // Clear previous content if any
+        while (zone.firstChild) {
+            zone.removeChild(zone.firstChild);
+        }
+
+        const wordSpan = document.createElement('span');
+        wordSpan.className = 'word';
+        wordSpan.textContent = word;
+        zone.appendChild(wordSpan);
+        zone.classList.add('filled');
+
+        // Click to remove
+        wordSpan.addEventListener('click', () => {
+            // Return word to bank
+            const bankWord = document.createElement('div');
+            bankWord.className = 'draggable-word';
+            bankWord.draggable = true;
+            bankWord.textContent = word;
+            document.getElementById('wordBank').appendChild(bankWord);
+            // Re-attach dragstart listener
+            bankWord.addEventListener('dragstart', e => {
+                e.dataTransfer.setData('text/plain', bankWord.textContent.trim());
+                setTimeout(() => bankWord.style.opacity = '0.3', 0);
+            });
+            bankWord.addEventListener('dragend', () => bankWord.style.opacity = '1');
+            zone.innerHTML = '';
+            zone.classList.remove('filled');
+        });
+    });
+});
+
+// Check answers
+function checkTask1() {
+    let correctCount = 0;
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+        const num = zone.dataset.num;
+        const placed = zone.textContent.trim().toLowerCase();
+        zone.classList.remove('correct', 'incorrect');
+
+        if (placed === correctMatches[num]) {
+            zone.classList.add('correct');
+            correctCount++;
+        } else if (placed !== '') {
+            zone.classList.add('incorrect');
+        }
+    });
+
+    const feedback = document.getElementById('task1Feedback');
+    if (correctCount === 8) {
+        feedback.innerHTML = '<span style="color:#059669; font-weight:bold;">Perfect! All 8 correct.</span>';
+    } else {
+        feedback.innerHTML = `<span style="color:#dc2626; font-weight:bold;">${correctCount}/8 correct</span>`;
+    }
+}
+
+// Show correct answers
+// function showCorrectTask1() {
+//     document.querySelectorAll('.correct-answer-display').forEach(el => {
+//         const num = el.dataset.for;
+//         el.textContent = correctMatches[num];
+//         el.style.display = 'block';
+//     });
+// }
+
+
+        // ──────────────────────────────────────────────
+        // Task 2 – Label parts
+        // ──────────────────────────────────────────────
+        const task2Correct = {
+            "1": "engine",
+            "2": "transmission",
+            "3": "brakes",
+            "4": "suspension",
+            "5": "exhaust system",
+            "6": "battery"
+        };
+
+        function checkTask2() {
+            let correct = 0;
+            document.querySelectorAll('.part-input').forEach(input => {
+                const val = input.value.trim().toLowerCase();
+                const expected = task2Correct[input.dataset.part] || "";
+                input.classList.remove('correct', 'incorrect');
+                if (val === expected) {
+                    input.classList.add('correct');
+                    correct++;
+                } else if (val !== "") {
+                    input.classList.add('incorrect');
+                }
+            });
+            document.getElementById('task2Feedback').innerHTML = 
+                correct === 6 ?
+                '<span style="color:#10b981;">Excellent! All parts correct.</span>' :
+                `<span style="color:#ef4444;">${correct}/6 correct</span>`;
+        }
+
+        // ──────────────────────────────────────────────
+        // Task 3 – Gap fill (already good – just styling)
+        // ──────────────────────────────────────────────
+        function checkGaps() {
+            const answers = {
+                gap1: ['air conditioning', 'climate control'],
+                gap2: ['controls', 'instruments', 'display'],
+                gap3: ['transmission'],
+                gap4: ['trimmings', 'panels'],
+                gap5: ['mechanical']
+            };
+            let score = 0;
+            for (let i = 1; i <= 5; i++) {
+                const el = document.getElementById('gap' + i);
+                const val = el.value.trim().toLowerCase();
+                el.classList.remove('correct','incorrect');
+                if (answers['gap'+i].some(a => a.toLowerCase() === val)) {
+                    el.classList.add('correct');
+                    score++;
+                } else if (val !== '') {
+                    el.classList.add('incorrect');
+                }
+            }
+            document.getElementById('gapFeedback').innerHTML = 
+                score === 5 ?
+                '<span style="color:#10b981;">All correct!</span>' :
+                `<span style="color:#ef4444;">${score}/5 correct</span>`;
+        }
+
+        function showAnswers() {
+            document.getElementById('correctAnswers').style.display = 'block';
+        }
+    </script>
 </body>
 
 </html>
