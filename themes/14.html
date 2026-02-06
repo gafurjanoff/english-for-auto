@@ -548,6 +548,113 @@
             cursor: zoom-in;
             /* Indicate clickable */
         }
+
+
+
+
+        body { font-family: 'Lato', sans-serif; line-height: 1.7; }
+        .lesson-title {
+            background: #e6f0fa;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 960px;
+        }
+        .task-section { margin: 50px 0; }
+        .task-label {
+            background: #d9e7f4;
+            padding: 6px 22px;
+            border-radius: 20px 0 0 20px;
+            font-weight: bold;
+            font-style: italic;
+            display: inline-block;
+        }
+        .word-bank {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 25px 0;
+        }
+        .draggable-word {
+            display: inline-block;
+            padding: 8px 18px;
+            margin: 6px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 9999px;
+            cursor: move;
+            font-weight: 600;
+            color: #1d4ed8;
+            user-select: none;
+            transition: all 0.2s;
+        }
+        .drop-zone {
+            display: inline-block;
+            min-width: 220px;
+            min-height: 50px;
+            margin: 10px 15px;
+            padding: 10px 14px;
+            border: 2px dashed #64748b;
+            border-radius: 10px;
+            background: #f1f5f9;
+            text-align: center;
+            font-weight: 500;
+            color: #475569;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .drop-zone.filled { 
+            background: #ecfdf5; 
+            border-color: #10b981; 
+            color: #065f46;
+        }
+        .drop-zone .placed-word {
+            cursor: pointer;
+            font-weight: 600;
+            color: #1e40af;
+            background: #dbeafe;
+            border-radius: 9999px;
+            padding: 6px 14px;
+        }
+        .drop-zone.correct { border-color: #059669; background: #d1fae5; }
+        .drop-zone.incorrect { border-color: #dc2626; background: #fee2e2; }
+        .gap-input {
+            width: 180px;
+            text-align: center;
+            border: none;
+            border-bottom: 2px solid #000;
+            background: transparent;
+            padding: 4px 8px;
+            font-size: 1.05rem;
+        }
+        .input-correct { border-bottom-color: #10b981 !important; color: #065f46; background: #ecfdf5; }
+        .input-incorrect { border-bottom-color: #ef4444 !important; color: #991b1b; background: #fee2e2; }
+        .btn-check, .btn-show {
+            padding: 10px 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 8px 12px;
+        }
+        .btn-check { background: #10b981; color: white; }
+        .btn-show  { background: #3b82f6; color: white; }
+        .feedback { margin: 15px 0; font-weight: bold; min-height: 26px; }
+        .model-answers {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            display: none;
+        }
+        .question-list li { margin-bottom: 18px; }
+        @media (max-width: 768px) {
+            .gap-input { width: 140px; }
+            .drop-zone { min-width: 180px; min-height: 44px; font-size: 0.95rem; }
+        }
     </style>
 </head>
 
@@ -602,15 +709,272 @@
     <!-- Lesson Content Section Begin -->
     <section class="lesson-content spad bg-white">
         <div class="container">
-            <!-- Lesson Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="lesson-title font-Cambria">
-                        <h2>LESSON 14. Cooling system in an internal combustion engine</h2>
-                    </div>
-                </div>
+           <!-- TASK 1 -->
+    <div class="task-section">
+        <h4><span class="task-label">TASK 1</span> Listen to the information and define the bolded words.</h4>
+
+        <div style="text-align:center; margin:30px 0;">
+            <audio controls style="width:100%; max-width:520px;">
+                <source src="../audios/Track 14.mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+
+        <div style="text-align:center; margin:25px 0;">
+            <img src="../images/image14.png" 
+                 alt="Cooling system diagram with labeled components" 
+                 class="img-fluid" 
+                 style="max-height:520px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+            <p class="image-caption" style="margin-top:12px;">Cooling circuit and main components</p>
+        </div>
+
+        <div style="background:#f9fafb; padding:28px; border-radius:10px; border:1px solid #e5e7eb; margin:25px 0;">
+            <p>
+                The cooling system works by constantly passing <strong>coolant</strong> through <strong>channels</strong> in the 
+                <strong>engine block</strong>. <strong>Coolant</strong>, driven by a <strong>water pump</strong>, is pushed through the 
+                <strong>cylinder block</strong>. As the solution passes through these channels, it <strong>absorbs</strong> 
+                <strong>heat</strong> from the engine. The vehicle's cooling system keeps the engine from <strong>burning up</strong> 
+                from its own heat by pushing coolant that is cooled in the <strong>radiator</strong> through passages on the engine 
+                block and head. The system is somewhat more complex than that, with power <strong>transferred</strong> from the 
+                <strong>serpentine belt</strong> to the water pump to keep the system moving.
+            </p>
+        </div>
+
+        <div style="margin:35px 0;">
+            <h5>Define the following bolded terms:</h5>
+            <ul style="list-style:none; padding-left:0; line-height:2.2;">
+                <li><strong>coolant</strong> <input type="text" class="gap-input" id="def1"></li>
+                <li><strong>channels</strong> <input type="text" class="gap-input" id="def2"></li>
+                <li><strong>engine block</strong> <input type="text" class="gap-input" id="def3"></li>
+                <li><strong>absorbs heat</strong> <input type="text" class="gap-input" id="def4"></li>
+                <li><strong>burning up</strong> <input type="text" class="gap-input" id="def5"></li>
+                <li><strong>transferred</strong> <input type="text" class="gap-input" id="def6"></li>
+                <li><strong>serpentine belt</strong> <input type="text" class="gap-input" id="def7"></li>
+            </ul>
+        </div>
+
+        <div style="text-align:center; margin-top:30px;">
+            <button class="btn-check" onclick="checkTask1()">Check answers</button>
+            <button class="btn-show" onclick="document.getElementById('task1Model').style.display='block'">Show model answers</button>
+            <div id="task1Feedback" class="feedback"></div>
+        </div>
+
+        <div id="task1Model" class="model-answers">
+            <strong>Model definitions:</strong><br><br>
+            coolant → liquid (usually water + antifreeze) that carries heat away from engine<br>
+            channels → passages/tunnels inside engine block for coolant flow<br>
+            engine block → main structural part of engine containing cylinders<br>
+            absorbs heat → takes in/collects heat from surrounding metal<br>
+            burning up → overheating severely and getting damaged<br>
+            transferred → moved/passed from one part to another (here: power to pump)<br>
+            serpentine belt → long belt driving multiple engine accessories including water pump
+        </div>
+    </div>
+
+    <!-- TASK 2 -->
+    <div class="task-section">
+        <h4><span class="task-label">TASK 2</span> Answer the questions.</h4>
+
+        <ol class="question-list" style="line-height:2.1;">
+            <li>What is the function of coolant?</li>
+            <li>Name four devices that are important in cooling.</li>
+            <li>Explain the cooling process step by step.</li>
+        </ol>
+
+        <textarea class="form-control" rows="10" placeholder="Write your answers here..."></textarea>
+
+        <div style="text-align:center; margin-top:35px;">
+            <button class="btn-show" onclick="document.getElementById('task2Model').style.display='block'">Show model answers</button>
+        </div>
+
+        <div id="task2Model" class="model-answers">
+            <strong>Model answers:</strong><br><br>
+            1. Coolant absorbs heat from the engine and carries it to the radiator to be cooled.<br><br>
+            2. Four important devices: water pump, thermostat, radiator, radiator fan (also: hoses, expansion tank, etc.)<br><br>
+            3. Step-by-step cooling process:<br>
+            - Water pump circulates coolant through engine block and head<br>
+            - Coolant absorbs heat from hot engine parts<br>
+            - Hot coolant flows to radiator<br>
+            - Airflow (driving) + fan cools coolant in radiator<br>
+            - Cooled coolant returns to engine → cycle repeats
+        </div>
+    </div>
+
+    <!-- TASK 3 -->
+    <div class="task-section">
+        <h4><span class="task-label">TASK 3</span> Group Discussion on Cooling system in an internal combustion engine</h4>
+
+        <div style="background:#f9fafb; padding:25px; border-radius:10px; border:1px solid #e5e7eb;">
+            <p><strong>Purpose:</strong> Encourage deeper understanding and the use of technical vocabulary.</p>
+            <p><strong>Instructions:</strong> Divide participants into groups (3 people per group). Assign each group one aspect of the cooling system to focus on:</p>
+            <ul>
+                <li><strong>Group A:</strong> Explain how a water-cooling system works.</li>
+                <li><strong>Group B:</strong> Discuss the consequences of a failed cooling system (e.g., overheating, engine damage, performance issues).</li>
+            </ul>
+            <p><strong>Group Task:</strong> Each group has 5 minutes to discuss their topic. Then, they prepare a 3-minute explanation to present to the class, answering potential questions like:</p>
+            <ul>
+                <li>How does the system function?</li>
+                <li>What components are essential?</li>
+                <li>What are the advantages and disadvantages?</li>
+            </ul>
+            <p><strong>Presentation:</strong> After group discussions, each group presents its findings. Other participants are encouraged to ask questions to clarify understanding.</p>
+            <p>For more information visit: 
+                <a href="https://www.youtube.com/watch?v=y5pIF_dVJU" target="_blank">Cooling System Explained (YouTube)</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- TASK 4 -->
+    <div class="task-section">
+        <h4><span class="task-label">TASK 4</span> Match the definition of the words.</h4>
+
+        <p>Drag each component to the correct definition. Click a placed item to remove it if mistaken.</p>
+
+        <div class="word-bank" id="matchBank">
+            <div class="draggable-word" draggable="true">1. Coolant</div>
+            <div class="draggable-word" draggable="true">2. Thermostat</div>
+            <div class="draggable-word" draggable="true">3. Water pump</div>
+            <div class="draggable-word" draggable="true">4. Radiator fan</div>
+            <div class="draggable-word" draggable="true">5. Cabin heat exchanger</div>
+        </div>
+
+        <div style="margin:30px 0;">
+            <div style="background:#f9fafb; padding:18px; border-radius:8px; margin-bottom:15px;">
+                <strong>A.</strong> A mechanical component that circulates coolant through the engine block, hoses, and radiator.
+                <div class="drop-zone" data-id="3"></div>
+            </div>
+            <div style="background:#f9fafb; padding:18px; border-radius:8px; margin-bottom:15px;">
+                <strong>B.</strong> A valve that regulates the flow of coolant in the engine.
+                <div class="drop-zone" data-id="2"></div>
+            </div>
+            <div style="background:#f9fafb; padding:18px; border-radius:8px; margin-bottom:15px;">
+                <strong>C.</strong> A small radiator-like device located inside the vehicle’s cabin that transfers heat from the engine’s coolant to the air used for heating the passenger compartment.
+                <div class="drop-zone" data-id="5"></div>
+            </div>
+            <div style="background:#f9fafb; padding:18px; border-radius:8px; margin-bottom:15px;">
+                <strong>D.</strong> A specially formulated liquid (usually a mix of water and antifreeze) that circulates through the engine’s cooling system.
+                <div class="drop-zone" data-id="1"></div>
+            </div>
+            <div style="background:#f9fafb; padding:18px; border-radius:8px;">
+                <strong>E.</strong> A fan located near the radiator that helps draw air through the radiator’s cooling fins, aiding in cooling the hot coolant.
+                <div class="drop-zone" data-id="4"></div>
             </div>
         </div>
+
+        <div style="text-align:center; margin-top:35px;">
+            <button class="btn-check" onclick="checkTask4()">Check answers</button>
+            <button class="btn-show" onclick="resetTask4()">Reset</button>
+            <div id="task4Feedback" class="feedback"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+// Task 1 check
+function checkTask1() {
+    const defs = {
+        def1: document.getElementById('def1'),
+        def2: document.getElementById('def2'),
+        def3: document.getElementById('def3'),
+        def4: document.getElementById('def4'),
+        def5: document.getElementById('def5'),
+        def6: document.getElementById('def6'),
+        def7: document.getElementById('def7')
+    };
+    let score = 0;
+    // Simple presence check – adjust keywords as needed
+    if (defs.def1.value.trim().toLowerCase().includes('coolant') || defs.def1.value.trim().toLowerCase().includes('liquid')) score++;
+    if (defs.def2.value.trim().toLowerCase().includes('channel') || defs.def2.value.trim().toLowerCase().includes('passage')) score++;
+    if (defs.def3.value.trim().toLowerCase().includes('block') || defs.def3.value.trim().toLowerCase().includes('engine block')) score++;
+    if (defs.def4.value.trim().toLowerCase().includes('absorb') || defs.def4.value.trim().toLowerCase().includes('take heat')) score++;
+    if (defs.def5.value.trim().toLowerCase().includes('burn') || defs.def5.value.trim().toLowerCase().includes('overheat')) score++;
+    if (defs.def6.value.trim().toLowerCase().includes('transfer') || defs.def6.value.trim().toLowerCase().includes('move power')) score++;
+    if (defs.def7.value.trim().toLowerCase().includes('serpentine') || defs.def7.value.trim().toLowerCase().includes('belt')) score++;
+
+    document.getElementById('task1Feedback').innerHTML = 
+        score >= 5 ? '<span style="color:#059669;">Good job! Most definitions are correct.</span>' : 
+        `<span style="color:#dc2626;">${score}/7 good definitions – review the text</span>`;
+}
+
+// Task 4 – Drag & drop matching
+const task4Correct = {
+    "1": "D",
+    "2": "B",
+    "3": "A",
+    "4": "E",
+    "5": "C"
+};
+
+function initTask4() {
+    document.querySelectorAll('#matchBank .draggable-word').forEach(el => {
+        el.addEventListener('dragstart', e => {
+            e.dataTransfer.setData('text/plain', el.textContent.trim());
+            setTimeout(() => el.style.opacity = '0.4', 0);
+        });
+        el.addEventListener('dragend', () => el.style.opacity = '1');
+    });
+
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+        zone.addEventListener('dragover', e => e.preventDefault());
+        zone.addEventListener('drop', e => {
+            e.preventDefault();
+            const word = e.dataTransfer.getData('text/plain');
+            if (zone.children.length === 0 && word) {
+                const span = document.createElement('span');
+                span.className = 'placed-word';
+                span.textContent = word;
+                zone.appendChild(span);
+                zone.classList.add('filled');
+                const orig = Array.from(document.querySelectorAll('#matchBank .draggable-word'))
+                    .find(el => el.textContent.trim() === word);
+                if (orig) orig.remove();
+                span.onclick = () => {
+                    const back = document.createElement('div');
+                    back.className = 'draggable-word';
+                    back.draggable = true;
+                    back.textContent = word;
+                    document.getElementById('matchBank').appendChild(back);
+                    back.addEventListener('dragstart', e => {
+                        e.dataTransfer.setData('text/plain', word);
+                        setTimeout(() => back.style.opacity = '0.4', 0);
+                    });
+                    zone.innerHTML = '';
+                    zone.classList.remove('filled');
+                };
+            }
+        });
+    });
+}
+
+function checkTask4() {
+    let correct = 0;
+    document.querySelectorAll('.drop-zone').forEach(zone => {
+        const id = zone.dataset.id;
+        const placedNum = zone.textContent.trim().charAt(0); // e.g. "1.", "2."
+        zone.classList.remove('correct','incorrect');
+        if (placedNum === task4Correct[id]) {
+            zone.classList.add('correct');
+            correct++;
+        } else if (placedNum) {
+            zone.classList.add('incorrect');
+        }
+    });
+    document.getElementById('task4Feedback').innerHTML = 
+        correct === 5 ? '<span style="color:#059669;">Perfect match! 5/5</span>' : 
+        `<span style="color:#dc2626;">${correct}/5 correct</span>`;
+}
+
+function resetTask4() {
+    document.querySelectorAll('.drop-zone').forEach(z => {
+        z.innerHTML = '';
+        z.classList.remove('filled','correct','incorrect');
+    });
+    document.getElementById('task4Feedback').innerHTML = '';
+}
+
+// Initialize drag-drop
+document.addEventListener('DOMContentLoaded', initTask4);
+</script>
     </section>
 
     <!-- Footer Section Begin -->

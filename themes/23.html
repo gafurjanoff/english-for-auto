@@ -56,7 +56,6 @@
         .container,
         .container-fluid {
             max-width: 900px;
-            /* Force a reasonable centered width */
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
@@ -105,15 +104,6 @@
             margin-bottom: 40px;
         }
 
-        .image-caption {
-            background-color: #d1d9e6;
-            padding: 10px;
-            text-align: center;
-            font-weight: 700;
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
-
         .text-block {
             background-color: #f2f2f2;
             padding: 30px;
@@ -144,74 +134,7 @@
             font-size: 18px;
         }
 
-        .gap-line {
-            display: inline-block;
-            width: 150px;
-            border-bottom: 2px solid #000;
-            margin: 0 5px;
-        }
-
-        .qr-placeholder {
-            width: 80px;
-            height: 80px;
-            border: 1px dashed #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-
-        .word-bank {
-            background-color: #f6f8f1;
-            border: 1px solid #e0e6d6;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .word-bank .word-item {
-            display: inline-block;
-            margin: 5px 15px;
-            padding: 5px 10px;
-        }
-
-        .discussion-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .discussion-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        .discussion-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #2b78c5;
-            font-weight: bold;
-        }
-
         /* Interactive Inputs Styles */
-        .task-input {
-            border: 1px solid #ccc;
-            background: #fff;
-            padding: 8px;
-            border-radius: 4px;
-            width: 100%;
-            font-family: 'Lato', sans-serif;
-            transition: border-color 0.3s;
-        }
-
-        .task-input:focus {
-            border-color: #2b78c5;
-            outline: none;
-        }
-
         .gap-input {
             width: 150px;
             text-align: center;
@@ -220,6 +143,8 @@
             border-bottom: 2px solid #000;
             background: transparent;
             padding: 0 5px;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
         }
 
         .gap-input:focus {
@@ -232,6 +157,7 @@
             gap: 10px;
             margin-top: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .correct-answer {
@@ -240,10 +166,11 @@
             margin-top: 5px;
             font-weight: bold;
             display: none;
-            /* Hidden by default */
         }
 
-        .show-answer-btn {
+        .show-answer-btn,
+        .check-btn,
+        .clear-btn {
             background-color: #2b78c5;
             color: white;
             border: none;
@@ -254,23 +181,26 @@
             transition: background 0.3s;
         }
 
-        .show-answer-btn:hover {
+        .show-answer-btn:hover,
+        .check-btn:hover,
+        .clear-btn:hover {
             background-color: #1a5a9c;
         }
 
         .check-btn {
             background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
         }
 
         .check-btn:hover {
             background-color: #218838;
+        }
+
+        .clear-btn {
+            background-color: #dc3545;
+        }
+
+        .clear-btn:hover {
+            background-color: #c82333;
         }
 
         .input-correct {
@@ -283,115 +213,93 @@
             background-color: #ffe6e6 !important;
         }
 
-        textarea.task-input {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .correct-answer-display {
-            color: #28a745;
-            font-size: 0.85rem;
-            margin-top: 5px;
+        .feedback-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
             font-weight: bold;
-            display: none;
-        }
-
-        /* Drag and Drop Styles */
-        .draggable-word {
-            display: inline-block;
-            padding: 5px 15px;
-            margin: 5px;
-            background-color: #fff;
-            border: 1px solid #2b78c5;
-            border-radius: 20px;
-            cursor: move;
-            font-weight: bold;
-            color: #2b78c5;
-            /* PERFORMANCE FIX: Instant Drag */
-            transition: none !important;
-            animation: none !important;
-            will-change: transform;
-            touch-action: none;
-            /* Prevent browser scrolling handling on the element itself if possible, though we handle it in JS */
-        }
-
-        .draggable-word:hover {
-            background-color: #2b78c5;
-            color: #fff;
-        }
-
-        .draggable-word .remove-btn {
-            display: none;
-            margin-left: 8px;
-            color: #dc3545;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        /* Show remove button when inside drop zone */
-        .drop-zone .draggable-word .remove-btn {
-            display: inline-block;
-        }
-
-        .drop-zone .draggable-word {
-            position: relative;
-            padding-right: 20px;
-            /* Space for x button */
-        }
-
-        .drop-zone .draggable-word .remove-btn {
-            position: absolute;
-            top: 2px;
-            right: 5px;
-        }
-
-        .draggable-word.dragging {
-            opacity: 0.5;
-        }
-
-        .drop-zone {
-            display: inline-block;
-            min-width: 120px;
-            min-height: 30px;
-            border-bottom: 2px solid #000;
-            vertical-align: middle;
-            margin: 0 5px;
             text-align: center;
-            padding: 0 10px;
-            transition: background 0.2s;
+            display: none;
         }
 
-        .drop-zone.drag-over {
-            background-color: #e3f2fd;
+        .feedback-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .activity-content {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 5px;
+            line-height: 1.8;
+        }
+
+        .activity-content a {
+            color: #2b78c5;
+            text-decoration: underline;
+        }
+
+        .word-box {
+            background-color: #f2f2f2;
+            border: 2px solid #ccc;
+            padding: 15px 20px;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 17px;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .definition-list {
+            list-style-type: lower-alpha;
+            padding-left: 25px;
+        }
+
+        .definition-list li {
+            margin-bottom: 12px;
+            font-size: 17px;
+            line-height: 1.6;
+        }
+
+        .device-label-input {
+            width: 200px;
+            text-align: center;
+            display: inline-block;
+            border: none;
+            border-bottom: 2px solid #000;
+            background: transparent;
+            padding: 0 5px;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
+        }
+
+        .device-label-input:focus {
             border-bottom-color: #2b78c5;
+            outline: none;
         }
 
-        .drop-zone .draggable-word {
-            margin: 0;
-            padding: 2px 10px;
-            cursor: pointer;
+        .report-textarea {
+            width: 100%;
+            min-height: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
+            resize: vertical;
+            line-height: 1.8;
         }
 
-        .draggable-word.selected {
-            background-color: #2b78c5;
-            color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transform: scale(1.05);
-        }
-
-        /* Fixed Word Bank Style */
-        .word-bank {
-            position: -webkit-sticky;
-            /* Safari */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #f6f8f1;
-            border-bottom: 2px solid #e0e6d6;
-            padding: 15px 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .report-textarea:focus {
+            border-color: #2b78c5;
+            outline: none;
         }
 
         /* Mobile Responsiveness Fixes */
@@ -424,65 +332,18 @@
                 line-height: 1.3;
             }
 
-            /* Responsive Inputs */
-            .gap-input {
+            .gap-input,
+            .device-label-input {
                 width: 100px;
                 max-width: 100%;
-                /* Safety */
             }
 
-            .task-input {
-                width: 100%;
-            }
-
-            .word-bank .word-item,
-            .draggable-word {
-                padding: 6px 12px;
-                /* Bigger touch target */
-                font-size: 14px;
-                margin: 4px;
-                max-width: 100%;
-            }
-
-            .text-block {
-                text-align: left !important;
-            }
-
-            .drop-zone {
-                min-width: 80px;
-                height: 30px;
-                margin-bottom: 5px;
-                display: inline-block;
-                padding: 0 5px;
-                background-color: #f8f9fa;
-                border: 1px dashed #2b78c5;
-                vertical-align: middle;
-            }
-
-            .word-bank.is-fixed {
-                padding: 10px 5px;
-                width: 100%;
-                /* Explicit width */
-                left: 0;
-                box-sizing: border-box;
-                /* Include padding in width */
-            }
-
-            /* Table adjustments */
             .lesson-table th,
             .lesson-table td {
                 padding: 8px;
                 font-size: 14px;
             }
 
-            /* Task 5 / Debate Section Mobile Fixes */
-            .task-section img {
-                display: block;
-                margin: 0 auto 15px auto;
-                /* Center image */
-            }
-
-            /* FORCE Gutter/Padding on Mobile */
             .container,
             .container-fluid,
             .task-section,
@@ -492,7 +353,6 @@
                 padding-right: 15px !important;
             }
 
-            /* Fix Row Margins on Mobile */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
@@ -501,13 +361,7 @@
             .col-md-6 {
                 width: 100%;
                 padding: 0 !important;
-                /* Let parent handle padding */
                 margin-bottom: 15px;
-            }
-
-            /* Center Headers if requested */
-            .mt-4 h6 {
-                text-align: center;
             }
         }
 
@@ -546,7 +400,6 @@
 
         .img-fluid {
             cursor: zoom-in;
-            /* Indicate clickable */
         }
     </style>
 </head>
@@ -606,12 +459,203 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="lesson-title font-Cambria">
-                        <h2>LESSON 23. Understanding measuring devices</h2>
+                        <h2>Lesson 23. Understanding measuring devices</h2>
                     </div>
                 </div>
             </div>
+
+            <!-- Hero Image -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="text-center mb-4">
+                        <img src="../images/image23.1.png" alt="Car speedometer showing km/h" class="img-fluid"
+                             onclick="openLightbox(this)" style="max-width: 500px;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 1 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 1</span>
+                            <span style="font-style: italic;">
+                                23. Listen and comprehend the information.
+                            </span>
+                        </div>
+
+                        <div class="text-block mt-4">
+                            <p>
+                                Cars are equipped with several measuring devices to monitor performance,
+                                safety, and overall functionality. The measuring devices in a car serve various
+                                important purposes to ensure the vehicle operates safely, efficiently, and reliably.
+                                The importance of measuring devices in a car lies in their ability to ensure the
+                                vehicle operates efficiently, safely, and reliably.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 2</span>
+                            <span style="font-style: italic;">
+                                Match the words in the box with their definitions.
+                            </span>
+                        </div>
+
+                        <div class="word-box">
+                            1 Speedometer, 2 Odometer, 3 Fuel Gauge, 4 Tachometer, 5 Temperature Gauge,
+                            6 Battery Voltage Meter, 7 Oil Pressure Gauge, 8 Tire Pressure Monitoring System (TPMS),
+                            9 Clock, 10 Compass or GPS Navigation
+                        </div>
+
+                        <ol class="definition-list">
+                            <li>
+                                Measures: The amount of fuel remaining in the fuel tank.
+                                <br><input type="text" class="gap-input" id="t2gap1" data-answer="3">
+                            </li>
+                            <li>
+                                Measures: The speed of the car (in kilometers per hour or miles per hour).
+                                <br><input type="text" class="gap-input" id="t2gap2" data-answer="1">
+                            </li>
+                            <li>
+                                Measures: The total distance the car has traveled.
+                                <br><input type="text" class="gap-input" id="t2gap3" data-answer="2">
+                            </li>
+                            <li>
+                                Measures: The engine's revolutions per minute (RPM).
+                                <br><input type="text" class="gap-input" id="t2gap4" data-answer="4">
+                            </li>
+                            <li>
+                                Measures: The air pressure in each tire.
+                                <br><input type="text" class="gap-input" id="t2gap5" data-answer="8">
+                            </li>
+                            <li>
+                                Measures: The oil pressure in the engine.
+                                <br><input type="text" class="gap-input" id="t2gap6" data-answer="7">
+                            </li>
+                            <li>
+                                Measures: The voltage level of the car's battery.
+                                <br><input type="text" class="gap-input" id="t2gap7" data-answer="6">
+                            </li>
+                            <li>
+                                Measures: The temperature of the engine coolant.
+                                <br><input type="text" class="gap-input" id="t2gap8" data-answer="5">
+                            </li>
+                            <li>
+                                Measures: Direction (compass) or location and route (GPS).
+                                <br><input type="text" class="gap-input" id="t2gap9" data-answer="10">
+                            </li>
+                            <li>
+                                Measures: Time.
+                                <br><input type="text" class="gap-input" id="t2gap10" data-answer="9">
+                            </li>
+                        </ol>
+
+                        <div class="check-buttons">
+                            <button class="check-btn" onclick="checkTask2()">Check Answers</button>
+                            <button class="show-answer-btn" onclick="showTask2Answers()">Show Answers</button>
+                            <button class="clear-btn" onclick="resetTask2()">Clear</button>
+                        </div>
+
+                        <div class="feedback-message" id="task2-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 3</span>
+                            <span style="font-style: italic;">
+                                Write the names of the measuring devices of a car.
+                            </span>
+                        </div>
+
+                        <div class="text-center mt-4 mb-4">
+                            <img src="../images/image23.2.png" alt="Six measuring devices of a car" class="img-fluid"
+                                 onclick="openLightbox(this)">
+                        </div>
+
+                        <div class="activity-content">
+                            <div class="row">
+                                <div class="col-md-4 text-center mb-3">
+                                    <p>1. <input type="text" class="device-label-input" id="t3gap1" data-answer="Battery Voltage Meter"></p>
+                                </div>
+                                <div class="col-md-4 text-center mb-3">
+                                    <p>2. <input type="text" class="device-label-input" id="t3gap2" data-answer="Tachometer"></p>
+                                </div>
+                                <div class="col-md-4 text-center mb-3">
+                                    <p>3. <input type="text" class="device-label-input" id="t3gap3" data-answer="Speedometer"></p>
+                                </div>
+                                <div class="col-md-4 text-center mb-3">
+                                    <p>4. <input type="text" class="device-label-input" id="t3gap4" data-answer="Clock"></p>
+                                </div>
+                                <div class="col-md-4 text-center mb-3">
+                                    <p>5. <input type="text" class="device-label-input" id="t3gap5" data-answer="Fuel Gauge"></p>
+                                </div>
+                                <div class="col-md-4 text-center mb-3">
+                                    <p>6. <input type="text" class="device-label-input" id="t3gap6" data-answer="Oil Pressure Gauge"></p>
+                                </div>
+                            </div>
+
+                            <div class="check-buttons">
+                                <button class="check-btn" onclick="checkTask3()">Check Answers</button>
+                                <button class="show-answer-btn" onclick="showTask3Answers()">Show Answers</button>
+                                <button class="clear-btn" onclick="resetTask3()">Clear</button>
+                            </div>
+
+                            <div class="feedback-message" id="task3-feedback"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 4 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 4</span>
+                            <span style="font-style: italic;">
+                                Read the text and write a report of your own.
+                            </span>
+                        </div>
+
+                        <div class="text-block mt-4">
+                            <p>
+                                Measuring devices in a car play a critical role in ensuring safety, efficiency,
+                                and performance. These devices provide drivers with essential information about
+                                the car's status, allowing them to make informed decisions and maintain the
+                                vehicle properly. In summary, measuring devices in a car are indispensable for
+                                maintaining the vehicle's safety, performance, and longevity.
+                            </p>
+                        </div>
+
+                        <div class="mt-4">
+                            <h5 style="font-weight: 700; margin-bottom: 10px;">Write your report:</h5>
+                            <textarea class="report-textarea" placeholder="Write your report here..."></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+    <!-- Lesson Content Section End -->
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Enlarged image" class="lightbox-img" id="lightbox-img">
+    </div>
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
@@ -637,7 +681,126 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
-</body>
 
+    <script>
+        // Lightbox functionality
+        function openLightbox(img) {
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // TASK 2: Match words with definitions
+        function checkTask2() {
+            var correct = 0;
+            var total = 10;
+            for (var i = 1; i <= total; i++) {
+                var input = document.getElementById('t2gap' + i);
+                var userAnswer = input.value.trim();
+                var correctAnswer = input.dataset.answer;
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('input-incorrect');
+                    input.classList.add('input-correct');
+                    correct++;
+                } else {
+                    input.classList.remove('input-correct');
+                    input.classList.add('input-incorrect');
+                }
+            }
+
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            if (correct === total) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = 'Perfect! You got all ' + total + ' answers correct!';
+            } else {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = 'You got ' + correct + ' out of ' + total + ' correct. Try again!';
+            }
+        }
+
+        function showTask2Answers() {
+            for (var i = 1; i <= 10; i++) {
+                var input = document.getElementById('t2gap' + i);
+                input.value = input.dataset.answer;
+                input.classList.remove('input-incorrect');
+                input.classList.add('input-correct');
+            }
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback-message feedback-success';
+            feedback.textContent = 'All answers have been revealed!';
+        }
+
+        function resetTask2() {
+            for (var i = 1; i <= 10; i++) {
+                var input = document.getElementById('t2gap' + i);
+                input.value = '';
+                input.classList.remove('input-correct', 'input-incorrect');
+            }
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'none';
+        }
+
+        // TASK 3: Write device names
+        function checkTask3() {
+            var correct = 0;
+            var total = 6;
+            for (var i = 1; i <= total; i++) {
+                var input = document.getElementById('t3gap' + i);
+                var userAnswer = input.value.trim().toLowerCase();
+                var correctAnswer = input.dataset.answer.toLowerCase();
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('input-incorrect');
+                    input.classList.add('input-correct');
+                    correct++;
+                } else {
+                    input.classList.remove('input-correct');
+                    input.classList.add('input-incorrect');
+                }
+            }
+
+            var feedback = document.getElementById('task3-feedback');
+            feedback.style.display = 'block';
+            if (correct === total) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = 'Perfect! You got all ' + total + ' answers correct!';
+            } else {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = 'You got ' + correct + ' out of ' + total + ' correct. Try again!';
+            }
+        }
+
+        function showTask3Answers() {
+            for (var i = 1; i <= 6; i++) {
+                var input = document.getElementById('t3gap' + i);
+                input.value = input.dataset.answer;
+                input.classList.remove('input-incorrect');
+                input.classList.add('input-correct');
+            }
+            var feedback = document.getElementById('task3-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback-message feedback-success';
+            feedback.textContent = 'All answers have been revealed!';
+        }
+
+        function resetTask3() {
+            for (var i = 1; i <= 6; i++) {
+                var input = document.getElementById('t3gap' + i);
+                input.value = '';
+                input.classList.remove('input-correct', 'input-incorrect');
+            }
+            var feedback = document.getElementById('task3-feedback');
+            feedback.style.display = 'none';
+        }
+    </script>
+</body>
 
 </html>

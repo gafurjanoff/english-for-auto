@@ -56,7 +56,6 @@
         .container,
         .container-fluid {
             max-width: 900px;
-            /* Force a reasonable centered width */
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
@@ -205,6 +204,7 @@
             width: 100%;
             font-family: 'Lato', sans-serif;
             transition: border-color 0.3s;
+            font-size: 16px;
         }
 
         .task-input:focus {
@@ -220,6 +220,8 @@
             border-bottom: 2px solid #000;
             background: transparent;
             padding: 0 5px;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
         }
 
         .gap-input:focus {
@@ -232,6 +234,7 @@
             gap: 10px;
             margin-top: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .correct-answer {
@@ -240,10 +243,11 @@
             margin-top: 5px;
             font-weight: bold;
             display: none;
-            /* Hidden by default */
         }
 
-        .show-answer-btn {
+        .show-answer-btn,
+        .check-btn,
+        .clear-btn {
             background-color: #2b78c5;
             color: white;
             border: none;
@@ -254,23 +258,26 @@
             transition: background 0.3s;
         }
 
-        .show-answer-btn:hover {
+        .show-answer-btn:hover,
+        .check-btn:hover,
+        .clear-btn:hover {
             background-color: #1a5a9c;
         }
 
         .check-btn {
             background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
         }
 
         .check-btn:hover {
             background-color: #218838;
+        }
+
+        .clear-btn {
+            background-color: #dc3545;
+        }
+
+        .clear-btn:hover {
+            background-color: #c82333;
         }
 
         .input-correct {
@@ -285,7 +292,7 @@
 
         textarea.task-input {
             resize: vertical;
-            min-height: 80px;
+            min-height: 120px;
         }
 
         .correct-answer-display {
@@ -296,102 +303,66 @@
             display: none;
         }
 
-        /* Drag and Drop Styles */
-        .draggable-word {
-            display: inline-block;
-            padding: 5px 15px;
-            margin: 5px;
-            background-color: #fff;
-            border: 1px solid #2b78c5;
-            border-radius: 20px;
-            cursor: move;
+        .feedback-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
             font-weight: bold;
-            color: #2b78c5;
-            /* PERFORMANCE FIX: Instant Drag */
-            transition: none !important;
-            animation: none !important;
-            will-change: transform;
-            touch-action: none;
-            /* Prevent browser scrolling handling on the element itself if possible, though we handle it in JS */
-        }
-
-        .draggable-word:hover {
-            background-color: #2b78c5;
-            color: #fff;
-        }
-
-        .draggable-word .remove-btn {
-            display: none;
-            margin-left: 8px;
-            color: #dc3545;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        /* Show remove button when inside drop zone */
-        .drop-zone .draggable-word .remove-btn {
-            display: inline-block;
-        }
-
-        .drop-zone .draggable-word {
-            position: relative;
-            padding-right: 20px;
-            /* Space for x button */
-        }
-
-        .drop-zone .draggable-word .remove-btn {
-            position: absolute;
-            top: 2px;
-            right: 5px;
-        }
-
-        .draggable-word.dragging {
-            opacity: 0.5;
-        }
-
-        .drop-zone {
-            display: inline-block;
-            min-width: 120px;
-            min-height: 30px;
-            border-bottom: 2px solid #000;
-            vertical-align: middle;
-            margin: 0 5px;
             text-align: center;
-            padding: 0 10px;
-            transition: background 0.2s;
+            display: none;
         }
 
-        .drop-zone.drag-over {
-            background-color: #e3f2fd;
-            border-bottom-color: #2b78c5;
+        .feedback-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
         }
 
-        .drop-zone .draggable-word {
-            margin: 0;
-            padding: 2px 10px;
-            cursor: pointer;
+        .feedback-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
-        .draggable-word.selected {
-            background-color: #2b78c5;
-            color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transform: scale(1.05);
+        .qr-code {
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
         }
 
-        /* Fixed Word Bank Style */
-        .word-bank {
-            position: -webkit-sticky;
-            /* Safari */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #f6f8f1;
-            border-bottom: 2px solid #e0e6d6;
-            padding: 15px 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .activity-content {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 5px;
+            line-height: 1.8;
+        }
+
+        .activity-content h5 {
+            font-weight: 700;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: #000;
+        }
+
+        .activity-content strong {
+            color: #000;
+        }
+
+        .activity-content ul, .activity-content ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .activity-content li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .activity-content a {
+            color: #2b78c5;
+            text-decoration: underline;
         }
 
         /* Mobile Responsiveness Fixes */
@@ -424,21 +395,17 @@
                 line-height: 1.3;
             }
 
-            /* Responsive Inputs */
             .gap-input {
                 width: 100px;
                 max-width: 100%;
-                /* Safety */
             }
 
             .task-input {
                 width: 100%;
             }
 
-            .word-bank .word-item,
-            .draggable-word {
+            .word-bank .word-item {
                 padding: 6px 12px;
-                /* Bigger touch target */
                 font-size: 14px;
                 margin: 4px;
                 max-width: 100%;
@@ -448,41 +415,12 @@
                 text-align: left !important;
             }
 
-            .drop-zone {
-                min-width: 80px;
-                height: 30px;
-                margin-bottom: 5px;
-                display: inline-block;
-                padding: 0 5px;
-                background-color: #f8f9fa;
-                border: 1px dashed #2b78c5;
-                vertical-align: middle;
-            }
-
-            .word-bank.is-fixed {
-                padding: 10px 5px;
-                width: 100%;
-                /* Explicit width */
-                left: 0;
-                box-sizing: border-box;
-                /* Include padding in width */
-            }
-
-            /* Table adjustments */
             .lesson-table th,
             .lesson-table td {
                 padding: 8px;
                 font-size: 14px;
             }
 
-            /* Task 5 / Debate Section Mobile Fixes */
-            .task-section img {
-                display: block;
-                margin: 0 auto 15px auto;
-                /* Center image */
-            }
-
-            /* FORCE Gutter/Padding on Mobile */
             .container,
             .container-fluid,
             .task-section,
@@ -492,7 +430,6 @@
                 padding-right: 15px !important;
             }
 
-            /* Fix Row Margins on Mobile */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
@@ -501,13 +438,7 @@
             .col-md-6 {
                 width: 100%;
                 padding: 0 !important;
-                /* Let parent handle padding */
                 margin-bottom: 15px;
-            }
-
-            /* Center Headers if requested */
-            .mt-4 h6 {
-                text-align: center;
             }
         }
 
@@ -546,7 +477,6 @@
 
         .img-fluid {
             cursor: zoom-in;
-            /* Indicate clickable */
         }
     </style>
 </head>
@@ -606,12 +536,141 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="lesson-title font-Cambria">
-                        <h2>LESSON 17. Auto factory tour</h2>
+                        <h2>Lesson 17. Auto factory tour</h2>
                     </div>
                 </div>
             </div>
+
+            <!-- TASK 1 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 1</span>
+                            <span style="font-style: italic;">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=../audios/Track1.mp3"
+                                     alt="QR Code" class="qr-code">
+                                <i class="fa fa-headphones"></i>
+                                17. Listen to the information and define the bolded words.
+                            </span>
+                        </div>
+
+                        <div style="margin: 20px 0;">
+                            <audio controls style="width: 100%;">
+                                <source src="../audios/Track 1.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+
+                        <div class="text-block mt-4">
+                            <p>
+                                Plant visits, also known as <strong>factory tours</strong>, are planned walk-throughs
+                                of a <strong>manufacturing facility</strong> or shop floor. They are usually organized to show
+                                <strong>customers</strong>, <strong>suppliers</strong>, <strong>investors</strong>, and other <strong>stakeholders</strong> an in-depth look at the
+                                daily operations of the business.
+                            </p>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <img src="../images/image17.png" alt="Auto Factory" class="img-fluid"
+                                 onclick="openLightbox(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 2</span>
+                            <span style="font-style: italic;">Fill in the gaps with bolded words in Task 1.</span>
+                        </div>
+
+                        <ul class="gap-fill-list">
+                            <li>
+                                1. The company recently opened a new <input type="text" class="gap-input" id="gap1" data-answer="manufacturing facility"> to increase production capacity and meet growing demand.
+                            </li>
+                            <li>
+                                2. To enhance transparency, the business organizes regular <input type="text" class="gap-input" id="gap2" data-answer="factory tours">, allowing visitors to see the production process.
+                            </li>
+                            <li>
+                                3. Strong relationships with <input type="text" class="gap-input" id="gap3" data-answer="suppliers"> are essential for ensuring a steady supply of raw materials.
+                            </li>
+                            <li>
+                                4. The company values feedback from its <input type="text" class="gap-input" id="gap4" data-answer="customers"> to improve product quality and service.
+                            </li>
+                            <li>
+                                5. The board presented the annual financial report to the <input type="text" class="gap-input" id="gap5" data-answer="investors"> during the shareholder meeting.
+                            </li>
+                            <li>
+                                6. Effective communication with all <input type="text" class="gap-input" id="gap6" data-answer="stakeholders">, including employees, government agencies, and the community, is key to sustainable growth.
+                            </li>
+                        </ul>
+
+                        <div class="check-buttons">
+                            <button class="check-btn" onclick="checkTask2()">Check Answers</button>
+                            <button class="show-answer-btn" onclick="showTask2Answers()">Show Answers</button>
+                            <button class="clear-btn" onclick="resetTask2()">Clear</button>
+                        </div>
+
+                        <div class="feedback-message" id="task2-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 3</span>
+                            <span style="font-style: italic;">Perform the activity in the class. <strong>Build an Assembly Line</strong></span>
+                        </div>
+
+                        <div class="activity-content">
+                            <h5><strong>Objective:</strong> Participants will simulate an auto factory's assembly line to understand how cars are made, the importance of teamwork, and how efficiency impacts production.</h5>
+
+                            <h5><strong>Steps of the Activity:</strong></h5>
+
+                            <h5>1. Introductory Discussion (10 minutes)</h5>
+                            <ul>
+                                <li>Briefly explain how an auto factory operates.</li>
+                                <li>Highlight concepts like assembly lines, specialization of labor, and efficiency.</li>
+                                <li>Show a short video or images of real auto factories in action to inspire ideas.</li>
+                            </ul>
+
+                            <h5>2. Factory Simulation (30 minutes)</h5>
+
+                            <h5><strong>Round 1:</strong></h5>
+                            <ul>
+                                <li>Participants simulate building a simple car using the materials provided.</li>
+                                <li>Measure the time taken to produce a single car.</li>
+                                <li>Inspect quality and note errors.</li>
+                            </ul>
+
+                            <h5><strong>Round 2:</strong></h5>
+                            <ul>
+                                <li>Reflect on Round 1. Encourage participants to brainstorm ways to improve the process (e.g., reorganizing the assembly line, redistributing roles).</li>
+                                <li>Implement improvements and repeat the production process.</li>
+                                <li>Measure time and quality again.</li>
+                            </ul>
+
+                            <h5 style="margin-top: 25px;"><strong>For further information:</strong> <a href="https://www.youtube.com/watch?v=Zn6sCKf7k_0" target="_blank">https://www.youtube.com/watch?v=Zn6sCKf7k_0</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+    <!-- Lesson Content Section End -->
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Enlarged image" class="lightbox-img" id="lightbox-img">
+    </div>
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
@@ -637,8 +696,74 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(img) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // TASK 2: Gap Fill Exercise
+        function checkTask2() {
+            let correct = 0;
+            let total = 6;
+            const inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5, #gap6');
+
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.dataset.answer.toLowerCase();
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('input-incorrect');
+                    input.classList.add('input-correct');
+                    correct++;
+                } else {
+                    input.classList.remove('input-correct');
+                    input.classList.add('input-incorrect');
+                }
+            });
+
+            const feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            if (correct === total) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = `Perfect! You got all ${total} answers correct!`;
+            } else {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = `You got ${correct} out of ${total} correct. Try again!`;
+            }
+        }
+
+        function showTask2Answers() {
+            const inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5, #gap6');
+            inputs.forEach(input => {
+                input.value = input.dataset.answer;
+                input.classList.remove('input-incorrect');
+                input.classList.add('input-correct');
+            });
+            const feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback-message feedback-success';
+            feedback.textContent = 'All answers have been revealed!';
+        }
+
+        function resetTask2() {
+            const inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5, #gap6');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('input-correct', 'input-incorrect');
+            });
+            const feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'none';
+        }
+    </script>
 </body>
-
-
 
 </html>

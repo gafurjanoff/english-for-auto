@@ -548,6 +548,52 @@
             cursor: zoom-in;
             /* Indicate clickable */
         }
+
+
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+        * { box-sizing: border-box; max-width: 100%; }
+        img, video, table, iframe { max-width: 100%; height: auto; }
+        body { word-break: break-word; overflow-wrap: anywhere; }
+
+        .container { max-width: 900px; width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; }
+
+        .lesson-title { background-color: #b8d1ea; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .lesson-title h2 { font-weight: 900; color: #000; margin: 0; text-transform: uppercase; }
+
+        .task-label { background-color: #d9e7f4; display: inline-block; padding: 5px 25px; border-radius: 20px 0 0 20px; font-weight: 700; font-style: italic; margin-right: 15px; position: relative; }
+        .task-label::after { content: ""; position: absolute; right: -20px; top: 0; border-top: 17px solid transparent; border-bottom: 17px solid transparent; border-left: 20px solid #d9e7f4; }
+
+        .task-section { margin-bottom: 40px; }
+        .text-block { background-color: #f2f2f2; padding: 30px; border-radius: 20px; line-height: 1.8; text-align: justify; }
+
+        .audio-container { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd; }
+        
+        /* Interactive Inputs */
+        .gap-input { width: 120px; text-align: center; border: none; border-bottom: 2px solid #000; background: transparent; padding: 0 5px; font-size: 16px; font-family: 'Lato', sans-serif; }
+        .gap-input:focus { border-bottom-color: #2b78c5; outline: none; }
+        
+        .check-buttons { display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap; }
+        .check-btn { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .show-answer-btn { background-color: #2b78c5; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .clear-btn { background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
+        .input-correct { border-color: #28a745 !important; background-color: #e6ffec !important; }
+        .input-incorrect { border-color: #dc3545 !important; background-color: #ffe6e6 !important; }
+
+        .feedback-message { margin-top: 10px; padding: 10px; border-radius: 5px; font-weight: bold; text-align: center; display: none; }
+        .feedback-success { background-color: #d4edda; color: #155724; }
+        .feedback-error { background-color: #f8d7da; color: #721c24; }
+
+        .matching-table td { padding: 15px; border: 1px solid #dee2e6; vertical-align: middle; }
+        .matching-table tr:nth-child(even) { background-color: #f9f9f9; }
+
+        .role-play-box { background-color: #fffaf0; border-left: 5px solid #ffcc80; padding: 20px; border-radius: 5px; margin-top: 20px; line-height: 1.6; }
+        .speaker-name { font-weight: bold; color: #333; }
+
+        /* Lightbox */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: none; justify-content: center; align-items: center; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; }
+        .lightbox-overlay.active { display: flex; }
     </style>
 </head>
 
@@ -581,37 +627,203 @@
     </header>
     <!-- Header Section End -->
 
-    <!-- Breadcrumb Begin -->
-    <div class="breadcrumb-option set-bg" data-setbg="../img/breadcrumb-bg.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb__text">
-                        <h2>Lesson 27</h2>
-                        <div class="breadcrumb__links">
-                            <a href="../index.html"><i class="fa fa-home"></i> Home</a>
-                            <span>Lesson 27</span>
+        <!-- Breadcrumb Begin -->
+        <div class="breadcrumb-option set-bg" data-setbg="../img/breadcrumb-bg.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <div class="breadcrumb__text">
+                            <h2>Lesson 27</h2>
+                            <div class="breadcrumb__links">
+                                <a href="../index.html"><i class="fa fa-home"></i> Home</a>
+                                <span>Lesson 27</span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Breadcrumb End -->
+        <!-- Breadcrumb End -->
 
-    <!-- Lesson Content Section Begin -->
+    <!-- Breadcrumb Begin -->
     <section class="lesson-content spad bg-white">
         <div class="container">
-            <!-- Lesson Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="lesson-title font-Cambria">
-                        <h2>LESSON 27. Recycling</h2>
-                    </div>
+            <div class="lesson-title"><h2>Lesson 27. Recycling</h2></div>
+
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span style="font-style: italic;">27. Listen to the information and define the bolded words.</span>
+                
+                <div class="audio-container text-center mt-4">
+                    <audio controls><source src="../audios/Track 27.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
                 </div>
+
+                <div class="text-center mt-3">
+                                        <img src="../images/image27.png" alt="Car Recycling Cycle" class="img-fluid" onclick="openLightbox(this)" style="max-width: 600px; border-radius: 10px;">
+                </div>
+
+                <div class="text-block mt-4">
+                    When a <b>car manufacturer</b> produces a vehicle, many different materials are used, including metal, plastic, and rubber. However, when a car reaches the end of its life, it becomes a <b>scrapped car</b>, meaning it is no longer functional and must be recycled.
+                    <br><br>
+                    The first step in the recycling process is the <b>removal of plastic parts</b> such as bumpers, dashboards, and seats. After that, the remaining metal structure undergoes <b>crushing</b> to reduce its size. Next, the crushed material goes through a <b>cleaning</b> process to remove dirt, oil, and other contaminants.
+                    <br><br>
+                    One of the most important steps is <b>metal removal</b>, where valuable metals like steel and aluminum are separated for reuse. These materials are then melted and transformed into a new <b>compound</b> that can be used in manufacturing. Finally, these recycled materials return to <b>parts production</b>, where they are shaped into new car components, completing the cycle of sustainability.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span style="font-style: italic;">Read the text in Task 1 and answer the questions.</span>
+                
+                <div class="mt-4">
+                    <ol class="question-list" style="list-style: decimal; padding-left: 20px;">
+                        <li class="mb-4">What materials are used by a car manufacturer to produce a vehicle?
+                            <textarea class="form-control mt-2" rows="2" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-4">What happens when a car reaches the end of its life?
+                            <textarea class="form-control mt-2" rows="2" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-4">What is the first step in the car recycling process?
+                            <textarea class="form-control mt-2" rows="2" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-4">Why is crushing necessary in the recycling process?
+                            <textarea class="form-control mt-2" rows="2" placeholder="Your answer..."></textarea>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span style="font-style: italic;">Read and act the dialogue in the classroom.</span>
+                
+                <h5 class="text-center mt-3"><b>THE CAR RECYCLING PROCESS</b></h5>
+                <div class="role-play-box">
+                    <p><span class="speaker-name">Alex:</span> Hey, Lisa! I just read about how old cars are recycled. Did you know that almost every part of a <b>scrapped car</b> can be reused?</p>
+                    <p><span class="speaker-name">Lisa:</span> Really? I thought scrapped cars were just thrown away. How does the process work?</p>
+                    <p><span class="speaker-name">Alex:</span> Well, first, the <b>car manufacturer</b> designs the vehicle using different materials like metal, plastic, and rubber. But when a car reaches the end of its life, it becomes a <b>scrapped car</b> and is sent to a recycling center.</p>
+                    <p><span class="speaker-name">Lisa:</span> So, what happens there?</p>
+                    <p><span class="speaker-name">Alex:</span> The first step is the <b>removal of plastic parts</b> like bumpers, dashboards, and seats. These can be recycled separately.</p>
+                    <p><span class="speaker-name">Lisa:</span> And what about the rest of the car?</p>
+                    <p><span class="speaker-name">Alex:</span> After removing the plastic, the metal structure goes through <b>crushing</b> to make it smaller and easier to process. Then, it is <b>cleaned</b> to remove dirt, oil, and other waste.</p>
+                    <p><span class="speaker-name">Lisa:</span> That makes sense! But how do they separate different metals?</p>
+                    <p><span class="speaker-name">Alex:</span> That’s the <b>metal removal</b> step. Valuable metals like steel and aluminum are separated for reuse.</p>
+                    <p><span class="speaker-name">Lisa:</span> That’s amazing!</p>
+                </div>
+                <p class="mt-3">For more information, watch: <a href="https://www.youtube.com/watch?v=X7YMfdB37Us" target="_blank">YouTube: Car Recycling Process</a></p>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 4</span>
+                <span style="font-style: italic;">Match the words with their definition.</span>
+                
+                <div class="table-responsive mt-4">
+                    <table class="table matching-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Word</th>
+                                <th style="width: 15%;">Answer</th>
+                                <th style="width: 45%;">Definition</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Metal removal</td>
+                                <td><input type="text" class="gap-input" id="t4g1" data-answer="C" placeholder="A-G"></td>
+                                <td>A. The process of taking out plastic components such as bumpers and dashboards before recycling.</td>
+                            </tr>
+                            <tr>
+                                <td>2. Car manufacturer</td>
+                                <td><input type="text" class="gap-input" id="t4g2" data-answer="B" placeholder="A-G"></td>
+                                <td>B. A company that produces vehicles using various materials like metal, plastic, and rubber.</td>
+                            </tr>
+                            <tr>
+                                <td>3. Compound</td>
+                                <td><input type="text" class="gap-input" id="t4g3" data-answer="G" placeholder="A-G"></td>
+                                <td>C. The separation of valuable metals, such as steel and aluminum, from the rest of the car.</td>
+                            </tr>
+                            <tr>
+                                <td>4. Scrapped car</td>
+                                <td><input type="text" class="gap-input" id="t4g4" data-answer="D" placeholder="A-G"></td>
+                                <td>D. A vehicle that is no longer functional and is sent for recycling.</td>
+                            </tr>
+                            <tr>
+                                <td>5. Crushing</td>
+                                <td><input type="text" class="gap-input" id="t4g5" data-answer="E" placeholder="A-G"></td>
+                                <td>E. The process of pressing the car’s metal structure into smaller pieces to make recycling easier.</td>
+                            </tr>
+                            <tr>
+                                <td>6. Cleaning</td>
+                                <td><input type="text" class="gap-input" id="t4g6" data-answer="F" placeholder="A-G"></td>
+                                <td>F. The step where dirt, oil, and other contaminants are removed from crushed materials.</td>
+                            </tr>
+                            <tr>
+                                <td>7. Removal of plastic parts</td>
+                                <td><input type="text" class="gap-input" id="t4g7" data-answer="A" placeholder="A-G"></td>
+                                <td>G. A mixture of different materials, often used in manufacturing after recycling.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="check-buttons">
+                    <button class="check-btn" onclick="checkTask4()">Check Answers</button>
+                    <button class="show-answer-btn" onclick="showTask4()">Show Answers</button>
+                    <button class="clear-btn" onclick="resetTask4()">Clear</button>
+                </div>
+                <div class="feedback-message" id="t4-feedback"></div>
             </div>
         </div>
     </section>
+
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()"><img src="" class="lightbox-img" id="lightbox-img"></div>
+
+
+    <script>
+        function openLightbox(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').classList.add('active'); }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+
+        function checkTask4() {
+            let score = 0;
+            let total = 7;
+            for(let i=1; i<=total; i++) {
+                let input = document.getElementById('t4g' + i);
+                if(input.value.trim().toUpperCase() === input.dataset.answer) {
+                    input.className = "gap-input input-correct"; score++;
+                } else {
+                    input.className = "gap-input input-incorrect";
+                }
+            }
+            let fb = document.getElementById('t4-feedback');
+            fb.style.display = 'block';
+            fb.className = score === total ? "feedback-message feedback-success" : "feedback-message feedback-error";
+            fb.innerHTML = `You got ${score} out of ${total} correct.`;
+        }
+
+        function showTask4() {
+            for(let i=1; i<=7; i++) {
+                let input = document.getElementById('t4g' + i);
+                input.value = input.dataset.answer;
+                input.className = "gap-input input-correct";
+            }
+        }
+
+        function resetTask4() {
+            for(let i=1; i<=7; i++) {
+                let input = document.getElementById('t4g' + i);
+                input.value = "";
+                input.className = "gap-input";
+            }
+            document.getElementById('t4-feedback').style.display = 'none';
+        }
+    </script>
+    <!-- Breadcrumb End -->
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">

@@ -548,6 +548,57 @@
             cursor: zoom-in;
             /* Indicate clickable */
         }
+
+
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+        * { box-sizing: border-box; max-width: 100%; }
+        img, video, table, iframe { max-width: 100%; height: auto; }
+        body { word-break: break-word; overflow-wrap: anywhere; }
+
+        .container { max-width: 900px; width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; }
+
+        .lesson-title { background-color: #b8d1ea; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .lesson-title h2 { font-weight: 900; color: #000; margin: 0; text-transform: uppercase; }
+
+        .task-label { background-color: #d9e7f4; display: inline-block; padding: 5px 25px; border-radius: 20px 0 0 20px; font-weight: 700; font-style: italic; margin-right: 15px; position: relative; }
+        .task-label::after { content: ""; position: absolute; right: -20px; top: 0; border-top: 17px solid transparent; border-bottom: 17px solid transparent; border-left: 20px solid #d9e7f4; }
+
+        .task-section { margin-bottom: 40px; }
+        .text-block { background-color: #f2f2f2; padding: 30px; border-radius: 20px; line-height: 1.8; text-align: justify; }
+
+        .audio-container { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd; }
+        
+        /* Interactive Inputs */
+        .gap-input { width: 180px; text-align: center; border: none; border-bottom: 2px solid #000; background: transparent; padding: 0 5px; font-size: 16px; font-family: 'Lato', sans-serif; }
+        .gap-input:focus { border-bottom-color: #2b78c5; outline: none; }
+        
+        /* Role Play Styles */
+        .role-play-container { display: flex; justify-content: space-around; flex-wrap: wrap; margin-top: 30px; gap: 20px; }
+        .speech-bubble { background: #ffe0b2; border-radius: 50%; width: 280px; height: 280px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 25px; position: relative; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        .speech-bubble::after { content: ''; position: absolute; bottom: -20px; left: 50%; border-width: 20px 20px 0; border-style: solid; border-color: #ffe0b2 transparent; display: block; width: 0; margin-left: -20px; }
+        .bubble-title { font-weight: bold; margin-top: 15px; color: #333; }
+
+        /* Notepad Style for Task 3 */
+        .notepad-container { background: #fff; border: 1px solid #ddd; border-left: 30px solid #f8f9fa; border-radius: 4px; padding: 20px; position: relative; box-shadow: 2px 2px 10px rgba(0,0,0,0.05); }
+        .notepad-container::before { content: ''; position: absolute; left: -15px; top: 0; bottom: 0; width: 2px; background: #ffcdd2; box-shadow: 4px 0 0 #ffcdd2; }
+        .notepad-textarea { width: 100%; min-height: 250px; border: none; background: repeating-linear-gradient(#fff, #fff 31px, #e0e0e0 31px, #e0e0e0 32px); line-height: 32px; padding: 8px 10px; font-size: 16px; color: #444; resize: vertical; }
+        .notepad-textarea:focus { outline: none; }
+
+        .check-buttons { display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap; }
+        .check-btn { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .show-answer-btn { background-color: #2b78c5; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .clear-btn { background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
+        .input-correct { border-color: #28a745 !important; background-color: #e6ffec !important; }
+        .input-incorrect { border-color: #dc3545 !important; background-color: #ffe6e6 !important; }
+
+        .feedback-message { margin-top: 10px; padding: 10px; border-radius: 5px; font-weight: bold; text-align: center; display: none; }
+        .feedback-success { background-color: #d4edda; color: #155724; }
+
+        /* Lightbox */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: none; justify-content: center; align-items: center; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; }
+        .lightbox-overlay.active { display: flex; }
     </style>
 </head>
 
@@ -599,19 +650,192 @@
     </div>
     <!-- Breadcrumb End -->
 
-    <!-- Lesson Content Section Begin -->
     <section class="lesson-content spad bg-white">
         <div class="container">
-            <!-- Lesson Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="lesson-title font-Cambria">
-                        <h2>LESSON 30. Education to practice</h2>
+            <div class="lesson-title"><h2>Lesson 30. Education to practice</h2></div>
+
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span style="font-style: italic;">30. Listen to the information and pay attention to the bolded words.</span>
+                
+                <div class="text-center mt-3">
+                    <img src="../images/image30.1.png" alt="Mechanics" class="img-fluid" onclick="openLightbox(this)" style="max-width: 600px; border-radius: 10px;">
+                </div>
+
+                <div class="audio-container text-center mt-4">
+                    <audio controls><source src="../audios/Track 30.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+                </div>
+
+                <div class="text-block mt-4">
+                    For automobile students, bridging the gap between theoretical knowledge and practical application is crucial.
+                    <br><br>
+                    <b>1. Hands-on Workshops & Labs</b><br>
+                    Engage in practical sessions involving <b>engine disassembly and assembly</b>. Conduct <b>diagnostic tests</b> using OBD scanners. Work with <b>3D models and simulations</b> of automotive systems.
+                    <br><br>
+                    <b>2. Internships & Apprenticeships</b><br>
+                    Join automotive workshops, service centers, or manufacturing plants. Work under skilled mechanics and engineers to learn <b>real-world problem-solving</b>.
+                    <br><br>
+                    <b>3. Project-Based Learning</b><br>
+                    Design and build <b>miniature models</b> of engines or transmission systems. Participate in <b>electric vehicle (EV) conversions</b>. Work on <b>fuel efficiency optimization</b> projects.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span style="font-style: italic;">ROLE PLAY ACTIVITY: Ask 2 different students to play the roles.</span>
+                
+                <div class="text-center mt-4">
+                    <p>To have more detailed information, first watch: <a href="https://www.youtube.com/watch?v=rOBKvYkNIUc" target="_blank" style="color: #2b78c5; text-decoration: underline;">Engine Assembly Video</a></p>
+                </div>
+
+                <div class="role-play-container">
+                    <div class="speech-bubble">
+                        <p>"Good morning, Sir. Where should I start assembling the engine?"</p>
+                        <div class="bubble-title">Student</div>
+                    </div>
+                    <div class="speech-bubble">
+                        <p>"Assembling an engine starts with careful planning and preparation. First..."</p>
+                        <div class="bubble-title">Mechanic</div>
                     </div>
                 </div>
             </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span style="font-style: italic;">Ask other students to make notes as mechanic explains the whole process in details.</span>
+                
+                <div class="notepad-container mt-4">
+                    <textarea class="notepad-textarea" placeholder="Start taking notes here as the mechanic explains the engine assembly process..."></textarea>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 4</span>
+                <span style="font-style: italic;">Learn the flowchart of assembling engine and fill in the gaps.</span>
+                
+                <div class="text-center mt-3">
+                    <img src="../images/image30.2.png" alt="Engine Flowchart" class="img-fluid" onclick="openLightbox(this)" style="max-width: 100%;">
+                </div>
+
+                <div class="mt-4">
+                    <ol class="list-group list-group-flush">
+                        <li class="list-group-item">1. The <input type="text" class="gap-input" id="t4g1" data-answer="engine block"> is the main structure of the engine that houses cylinders and other components.</li>
+                        <li class="list-group-item">2. The <input type="text" class="gap-input" id="t4g2" data-answer="crankshaft"> converts the up-and-down motion of the pistons into rotational motion.</li>
+                        <li class="list-group-item">3. The <input type="text" class="gap-input" id="t4g3" data-answer="carburetor"> is responsible for mixing air and fuel before combustion in older engines, while modern engines use a <input type="text" class="gap-input" id="t4g4" data-answer="fuel injection"> system.</li>
+                        <li class="list-group-item">4. The <input type="text" class="gap-input" id="t4g5" data-answer="camshaft"> is a rotating component that opens and closes the engine valves at the right time.</li>
+                        <li class="list-group-item">5. The <input type="text" class="gap-input" id="t4g6" data-answer="cylinder head gasket"> seals the combustion chamber and ensures efficient compression.</li>
+                        <li class="list-group-item">6. The <input type="text" class="gap-input" id="t4g7" data-answer="piston"> moves up and down inside the cylinders due to the combustion process.</li>
+                        <li class="list-group-item">7. The <input type="text" class="gap-input" id="t4g8" data-answer="cooling"> system cools down the engine to prevent overheating.</li>
+                        <li class="list-group-item">8. The <input type="text" class="gap-input" id="t4g9" data-answer="oil system"> supplies oil to lubricate moving parts and reduce friction.</li>
+                    </ol>
+                </div>
+
+                <div class="check-buttons">
+                    <button class="check-btn" onclick="checkTask4()">Check Answers</button>
+                    <button class="show-answer-btn" onclick="showTask4()">Show Answers</button>
+                    <button class="clear-btn" onclick="resetTask4()">Clear</button>
+                </div>
+                <div class="feedback-message" id="t4-feedback"></div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 5</span>
+                <span style="font-style: italic;">Fill in the blanks with the correct word(s) related to car suspension and steering.</span>
+                
+                <div class="mt-4">
+                    <ol class="list-group list-group-flush">
+                        <li class="list-group-item">1. The <input type="text" class="gap-input" id="t5g1" data-answer="suspension"> system in a car is designed to absorb shocks and maintain contact between the tires and the road.</li>
+                        <li class="list-group-item">2. <input type="text" class="gap-input" id="t5g2" data-answer="Shock absorber"> is the component of the suspension system that helps to cushion the ride and dampen vibrations.</li>
+                        <li class="list-group-item">3. In a power steering system, <input type="text" class="gap-input" id="t5g3" data-answer="power steering"> fluid is used to make steering easier for the driver.</li>
+                        <li class="list-group-item">4. The <input type="text" class="gap-input" id="t5g4" data-answer="steering link"> connects the steering wheel to the steering mechanism, allowing the driver to control the direction of the car.</li>
+                        <li class="list-group-item">5. A <input type="text" class="gap-input" id="t5g5" data-answer="stabilizer"> bar is used in the suspension system to reduce body roll during cornering.</li>
+                        <li class="list-group-item">6. The <input type="text" class="gap-input" id="t5g6" data-answer="ball"> joint allows the suspension to move freely while the wheels are steered.</li>
+                        <li class="list-group-item">7. A car’s <input type="text" class="gap-input" id="t5g7" data-answer="wheel alignment"> geometry refers to the alignment of the wheels, which affects handling and tire wear.</li>
+                        <li class="list-group-item">8. The <input type="text" class="gap-input" id="t5g8" data-answer="control"> arm is a suspension component that connects the wheel assembly to the vehicle frame or body.</li>
+                        <li class="list-group-item">9. The <input type="text" class="gap-input" id="t5g9" data-answer="air"> suspension system uses air-filled bags instead of traditional springs for improved ride comfort.</li>
+                        <li class="list-group-item">10. The <input type="text" class="gap-input" id="t5g10" data-answer="steering"> column is the shaft that transmits the driver’s steering input to the steering mechanism.</li>
+                    </ol>
+                </div>
+
+                <div class="check-buttons">
+                    <button class="check-btn" onclick="checkTask5()">Check Answers</button>
+                    <button class="show-answer-btn" onclick="showTask5()">Show Answers</button>
+                    <button class="clear-btn" onclick="resetTask5()">Clear</button>
+                </div>
+                <div class="feedback-message" id="t5-feedback"></div>
+            </div>
         </div>
     </section>
+
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()"><img src="" class="lightbox-img" id="lightbox-img"></div>
+
+
+    <script>
+        function openLightbox(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').classList.add('active'); }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+
+        function checkTask4() {
+            let score = 0; let total = 9;
+            for(let i=1; i<=total; i++) {
+                let input = document.getElementById('t4g' + i);
+                if(input && input.value.trim().toLowerCase() === input.dataset.answer.toLowerCase()) {
+                    input.className = "gap-input input-correct"; score++;
+                } else if(input) { input.className = "gap-input input-incorrect"; }
+            }
+            let fb = document.getElementById('t4-feedback'); fb.style.display = 'block';
+            fb.innerHTML = `You got ${score} out of ${total} correct.`;
+        }
+
+        function showTask4() {
+            for(let i=1; i<=9; i++) {
+                let input = document.getElementById('t4g' + i);
+                if(input) { input.value = input.dataset.answer; input.className = "gap-input input-correct"; }
+            }
+        }
+
+        function resetTask4() {
+            for(let i=1; i<=9; i++) {
+                let input = document.getElementById('t4g' + i);
+                if(input) { input.value = ""; input.className = "gap-input"; }
+            }
+            document.getElementById('t4-feedback').style.display = 'none';
+        }
+
+        function checkTask5() {
+            let score = 0; let total = 10;
+            for(let i=1; i<=total; i++) {
+                let input = document.getElementById('t5g' + i);
+                if(input && input.value.trim().toLowerCase() === input.dataset.answer.toLowerCase()) {
+                    input.className = "gap-input input-correct"; score++;
+                } else if(input) { input.className = "gap-input input-incorrect"; }
+            }
+            let fb = document.getElementById('t5-feedback'); fb.style.display = 'block';
+            fb.innerHTML = `You got ${score} out of ${total} correct.`;
+        }
+
+        function showTask5() {
+            for(let i=1; i<=10; i++) {
+                let input = document.getElementById('t5g' + i);
+                if(input) { input.value = input.dataset.answer; input.className = "gap-input input-correct"; }
+            }
+        }
+
+        function resetTask5() {
+            for(let i=1; i<=10; i++) {
+                let input = document.getElementById('t5g' + i);
+                if(input) { input.value = ""; input.className = "gap-input"; }
+            }
+            document.getElementById('t5-feedback').style.display = 'none';
+        }
+    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">

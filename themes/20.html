@@ -56,7 +56,6 @@
         .container,
         .container-fluid {
             max-width: 900px;
-            /* Force a reasonable centered width */
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
@@ -105,15 +104,6 @@
             margin-bottom: 40px;
         }
 
-        .image-caption {
-            background-color: #d1d9e6;
-            padding: 10px;
-            text-align: center;
-            font-weight: 700;
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
-
         .text-block {
             background-color: #f2f2f2;
             padding: 30px;
@@ -144,82 +134,17 @@
             font-size: 18px;
         }
 
-        .gap-line {
-            display: inline-block;
-            width: 150px;
-            border-bottom: 2px solid #000;
-            margin: 0 5px;
-        }
-
-        .qr-placeholder {
-            width: 80px;
-            height: 80px;
-            border: 1px dashed #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-
-        .word-bank {
-            background-color: #f6f8f1;
-            border: 1px solid #e0e6d6;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .word-bank .word-item {
-            display: inline-block;
-            margin: 5px 15px;
-            padding: 5px 10px;
-        }
-
-        .discussion-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .discussion-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        .discussion-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #2b78c5;
-            font-weight: bold;
-        }
-
         /* Interactive Inputs Styles */
-        .task-input {
-            border: 1px solid #ccc;
-            background: #fff;
-            padding: 8px;
-            border-radius: 4px;
-            width: 100%;
-            font-family: 'Lato', sans-serif;
-            transition: border-color 0.3s;
-        }
-
-        .task-input:focus {
-            border-color: #2b78c5;
-            outline: none;
-        }
-
         .gap-input {
-            width: 150px;
+            width: 220px;
             text-align: center;
             display: inline-block;
             border: none;
             border-bottom: 2px solid #000;
             background: transparent;
             padding: 0 5px;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
         }
 
         .gap-input:focus {
@@ -232,6 +157,7 @@
             gap: 10px;
             margin-top: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .correct-answer {
@@ -240,10 +166,11 @@
             margin-top: 5px;
             font-weight: bold;
             display: none;
-            /* Hidden by default */
         }
 
-        .show-answer-btn {
+        .show-answer-btn,
+        .check-btn,
+        .clear-btn {
             background-color: #2b78c5;
             color: white;
             border: none;
@@ -254,23 +181,26 @@
             transition: background 0.3s;
         }
 
-        .show-answer-btn:hover {
+        .show-answer-btn:hover,
+        .check-btn:hover,
+        .clear-btn:hover {
             background-color: #1a5a9c;
         }
 
         .check-btn {
             background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
         }
 
         .check-btn:hover {
             background-color: #218838;
+        }
+
+        .clear-btn {
+            background-color: #dc3545;
+        }
+
+        .clear-btn:hover {
+            background-color: #c82333;
         }
 
         .input-correct {
@@ -283,115 +213,72 @@
             background-color: #ffe6e6 !important;
         }
 
-        textarea.task-input {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .correct-answer-display {
-            color: #28a745;
-            font-size: 0.85rem;
-            margin-top: 5px;
+        .feedback-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
             font-weight: bold;
-            display: none;
-        }
-
-        /* Drag and Drop Styles */
-        .draggable-word {
-            display: inline-block;
-            padding: 5px 15px;
-            margin: 5px;
-            background-color: #fff;
-            border: 1px solid #2b78c5;
-            border-radius: 20px;
-            cursor: move;
-            font-weight: bold;
-            color: #2b78c5;
-            /* PERFORMANCE FIX: Instant Drag */
-            transition: none !important;
-            animation: none !important;
-            will-change: transform;
-            touch-action: none;
-            /* Prevent browser scrolling handling on the element itself if possible, though we handle it in JS */
-        }
-
-        .draggable-word:hover {
-            background-color: #2b78c5;
-            color: #fff;
-        }
-
-        .draggable-word .remove-btn {
-            display: none;
-            margin-left: 8px;
-            color: #dc3545;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        /* Show remove button when inside drop zone */
-        .drop-zone .draggable-word .remove-btn {
-            display: inline-block;
-        }
-
-        .drop-zone .draggable-word {
-            position: relative;
-            padding-right: 20px;
-            /* Space for x button */
-        }
-
-        .drop-zone .draggable-word .remove-btn {
-            position: absolute;
-            top: 2px;
-            right: 5px;
-        }
-
-        .draggable-word.dragging {
-            opacity: 0.5;
-        }
-
-        .drop-zone {
-            display: inline-block;
-            min-width: 120px;
-            min-height: 30px;
-            border-bottom: 2px solid #000;
-            vertical-align: middle;
-            margin: 0 5px;
             text-align: center;
-            padding: 0 10px;
-            transition: background 0.2s;
+            display: none;
         }
 
-        .drop-zone.drag-over {
-            background-color: #e3f2fd;
-            border-bottom-color: #2b78c5;
+        .feedback-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
         }
 
-        .drop-zone .draggable-word {
-            margin: 0;
-            padding: 2px 10px;
-            cursor: pointer;
+        .feedback-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
-        .draggable-word.selected {
-            background-color: #2b78c5;
-            color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transform: scale(1.05);
+        .activity-content {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 5px;
+            line-height: 1.8;
         }
 
-        /* Fixed Word Bank Style */
-        .word-bank {
-            position: -webkit-sticky;
-            /* Safari */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #f6f8f1;
-            border-bottom: 2px solid #e0e6d6;
-            padding: 15px 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .activity-content a {
+            color: #2b78c5;
+            text-decoration: underline;
+        }
+
+        .word-box {
+            background-color: #f0f4fa;
+            border: 2px solid #b8d1ea;
+            border-radius: 8px;
+            padding: 15px 25px;
+            text-align: center;
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .dialogue-block {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 5px;
+            line-height: 2;
+            font-style: italic;
+        }
+
+        .dialogue-block .speaker {
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        /* Audio player */
+        .audio-player {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .audio-player audio {
+            width: 100%;
+            max-width: 500px;
         }
 
         /* Mobile Responsiveness Fixes */
@@ -424,65 +311,17 @@
                 line-height: 1.3;
             }
 
-            /* Responsive Inputs */
             .gap-input {
-                width: 100px;
-                max-width: 100%;
-                /* Safety */
-            }
-
-            .task-input {
-                width: 100%;
-            }
-
-            .word-bank .word-item,
-            .draggable-word {
-                padding: 6px 12px;
-                /* Bigger touch target */
-                font-size: 14px;
-                margin: 4px;
+                width: 140px;
                 max-width: 100%;
             }
 
-            .text-block {
-                text-align: left !important;
-            }
-
-            .drop-zone {
-                min-width: 80px;
-                height: 30px;
-                margin-bottom: 5px;
-                display: inline-block;
-                padding: 0 5px;
-                background-color: #f8f9fa;
-                border: 1px dashed #2b78c5;
-                vertical-align: middle;
-            }
-
-            .word-bank.is-fixed {
-                padding: 10px 5px;
-                width: 100%;
-                /* Explicit width */
-                left: 0;
-                box-sizing: border-box;
-                /* Include padding in width */
-            }
-
-            /* Table adjustments */
             .lesson-table th,
             .lesson-table td {
                 padding: 8px;
                 font-size: 14px;
             }
 
-            /* Task 5 / Debate Section Mobile Fixes */
-            .task-section img {
-                display: block;
-                margin: 0 auto 15px auto;
-                /* Center image */
-            }
-
-            /* FORCE Gutter/Padding on Mobile */
             .container,
             .container-fluid,
             .task-section,
@@ -492,7 +331,6 @@
                 padding-right: 15px !important;
             }
 
-            /* Fix Row Margins on Mobile */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
@@ -501,13 +339,7 @@
             .col-md-6 {
                 width: 100%;
                 padding: 0 !important;
-                /* Let parent handle padding */
                 margin-bottom: 15px;
-            }
-
-            /* Center Headers if requested */
-            .mt-4 h6 {
-                text-align: center;
             }
         }
 
@@ -546,7 +378,6 @@
 
         .img-fluid {
             cursor: zoom-in;
-            /* Indicate clickable */
         }
     </style>
 </head>
@@ -606,12 +437,135 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="lesson-title font-Cambria">
-                        <h2>LESSON 20. Gas distribution mechanism</h2>
+                        <h2>Lesson 20. Gas distribution mechanism</h2>
                     </div>
                 </div>
             </div>
+
+            <!-- TASK 1 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 1</span>
+                            <span style="font-style: italic;">
+                                Read and define the bolded words.
+                            </span>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <img src="../images/image20.png" alt="Detailed diagram of a valve mechanism showing valve guide, valve, valve spring, fasteners, valve head, valve rod, valve disk, valve oil seal, grooves, valve spring support washer, valve seat, and cylinder head" class="img-fluid"
+                                 onclick="openLightbox(this)">
+                        </div>
+
+                        <div class="text-block mt-4">
+                            <p>
+                                The <strong>gas distribution mechanism</strong> (also known as the <strong>valve timing mechanism</strong>) in a car is responsible for controlling the flow of <strong>air-fuel mixture</strong> into the <strong>engine cylinders</strong> and the <strong>expulsion of exhaust gases</strong>. This mechanism works in <strong>synchronization</strong> with the crankshaft to ensure efficient combustion and <strong>engine performance</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 2</span>
+                            <span style="font-style: italic;">
+                                Complete the gaps with the words in box.
+                            </span>
+                        </div>
+
+                        <div class="word-box">
+                            gas distribution mechanism, air-fuel mixture, engine cylinders,<br>
+                            expulsion of exhaust gases, engine performance
+                        </div>
+
+                        <ul class="gap-fill-list">
+                            <li>
+                                1. The <input type="text" class="gap-input" id="gap1" data-answer="air-fuel mixture"> ensures that the right amount of fuel and air is mixed and delivered for combustion.
+                            </li>
+                            <li>
+                                2. Proper synchronization of the <input type="text" class="gap-input" id="gap2" data-answer="gas distribution mechanism"> is crucial for optimizing the timing of intake and exhaust.
+                            </li>
+                            <li>
+                                3. The combustion process takes place inside the <input type="text" class="gap-input" id="gap3" data-answer="engine cylinders">, where the fuel is ignited to generate power.
+                            </li>
+                            <li>
+                                4. The <input type="text" class="gap-input" id="gap4" data-answer="expulsion of exhaust gases"> is critical for removing waste gases after the combustion process is completed.
+                            </li>
+                            <li>
+                                5. Regular maintenance of the <input type="text" class="gap-input" id="gap5" data-answer="engine performance"> can improve efficiency and extend the lifespan of the vehicle.
+                            </li>
+                        </ul>
+
+                        <div class="check-buttons">
+                            <button class="check-btn" onclick="checkTask2()">Check Answers</button>
+                            <button class="show-answer-btn" onclick="showTask2Answers()">Show Answers</button>
+                            <button class="clear-btn" onclick="resetTask2()">Clear</button>
+                        </div>
+
+                        <div class="feedback-message" id="task2-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 3</span>
+                            <span style="font-style: italic;">
+                                20. Listen to the conversation and make a role play.
+                            </span>
+                        </div>
+
+                        <!-- Audio Player -->
+                        <div class="audio-player">
+                            <audio controls>
+                                <source src="../audios/Track 20.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+
+                        <div class="dialogue-block">
+                            <p>
+                                <span class="speaker">Anvar:</span> I've been reading up on how car engines work, and it's fascinating how everything is so interconnected. Did you know the <strong>gas distribution mechanism</strong> plays a huge role in engine efficiency?
+                            </p>
+                            <p>
+                                <span class="speaker">Jamshid:</span> Yeah, it's responsible for controlling how the fuel and air enter the engine and how the exhaust gases leave. Without it working properly, the whole system could be thrown off.
+                            </p>
+                            <p>
+                                <span class="speaker">Anvar:</span> Exactly. It works hand in hand with the <strong>air-fuel mixture</strong>. If the mixture isn't right&mdash;too much fuel or too much air&mdash;it can seriously affect combustion.
+                            </p>
+                            <p>
+                                <span class="speaker">Jamshid:</span> That's true. And the combustion itself happens inside the <strong>engine cylinders</strong>, right? That's where the magic happens&mdash;fuel ignites, and the energy is released.
+                            </p>
+                            <p>
+                                <span class="speaker">Anvar:</span> Right! But don't forget, after the combustion, the <strong>expulsion of exhaust gases</strong> is just as important. If those gases don't leave efficiently, it can reduce power and even damage the engine.
+                            </p>
+                            <p>
+                                <span class="speaker">Jamshid:</span> Makes sense. So basically, all these processes impact the overall <strong>engine performance</strong>. No wonder regular maintenance is so crucial to keep everything running smoothly!
+                            </p>
+                            <p>
+                                <span class="speaker">Anvar:</span> Totally agree. It's amazing how every component has to work perfectly together.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+    <!-- Lesson Content Section End -->
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Enlarged image" class="lightbox-img" id="lightbox-img">
+    </div>
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
@@ -637,7 +591,74 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(img) {
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // TASK 2: Gap Fill Exercise
+        function checkTask2() {
+            var correct = 0;
+            var total = 5;
+            var inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5');
+
+            inputs.forEach(function(input) {
+                var userAnswer = input.value.trim().toLowerCase();
+                var correctAnswer = input.dataset.answer.toLowerCase();
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('input-incorrect');
+                    input.classList.add('input-correct');
+                    correct++;
+                } else {
+                    input.classList.remove('input-correct');
+                    input.classList.add('input-incorrect');
+                }
+            });
+
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            if (correct === total) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = 'Perfect! You got all ' + total + ' answers correct!';
+            } else {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = 'You got ' + correct + ' out of ' + total + ' correct. Try again!';
+            }
+        }
+
+        function showTask2Answers() {
+            var inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5');
+            inputs.forEach(function(input) {
+                input.value = input.dataset.answer;
+                input.classList.remove('input-incorrect');
+                input.classList.add('input-correct');
+            });
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback-message feedback-success';
+            feedback.textContent = 'All answers have been revealed!';
+        }
+
+        function resetTask2() {
+            var inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5');
+            inputs.forEach(function(input) {
+                input.value = '';
+                input.classList.remove('input-correct', 'input-incorrect');
+            });
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
-

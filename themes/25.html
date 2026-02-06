@@ -548,6 +548,62 @@
             cursor: zoom-in;
             /* Indicate clickable */
         }
+
+
+
+
+
+
+
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+        * { box-sizing: border-box; max-width: 100%; }
+        img, video, table, iframe { max-width: 100%; height: auto; }
+        body { word-break: break-word; overflow-wrap: anywhere; }
+
+        .container { max-width: 900px; width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; }
+
+        .lesson-title { background-color: #b8d1ea; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .lesson-title h2 { font-weight: 900; color: #000; margin: 0; text-transform: uppercase; }
+
+        .task-label { background-color: #d9e7f4; display: inline-block; padding: 5px 25px; border-radius: 20px 0 0 20px; font-weight: 700; font-style: italic; margin-right: 15px; position: relative; }
+        .task-label::after { content: ""; position: absolute; right: -20px; top: 0; border-top: 17px solid transparent; border-bottom: 17px solid transparent; border-left: 20px solid #d9e7f4; }
+
+        .task-section { margin-bottom: 40px; }
+        .text-block { background-color: #f2f2f2; padding: 30px; border-radius: 20px; line-height: 1.8; text-align: justify; }
+
+        .audio-container { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd; }
+        
+        /* Interactive Inputs */
+        .gap-input { width: 100%; max-width: 250px; border: none; border-bottom: 2px solid #000; background: transparent; padding: 0 5px; font-size: 16px; text-align: center; }
+        .gap-input:focus { border-bottom-color: #2b78c5; outline: none; }
+        
+        .check-buttons { display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap; }
+        .check-btn { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .show-answer-btn { background-color: #2b78c5; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        .clear-btn { background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+        
+        .input-correct { border-color: #28a745 !important; background-color: #e6ffec !important; }
+        .input-incorrect { border-color: #dc3545 !important; background-color: #ffe6e6 !important; }
+
+        .feedback-message { margin-top: 10px; padding: 10px; border-radius: 5px; font-weight: bold; text-align: center; display: none; }
+        .feedback-success { background-color: #d4edda; color: #155724; }
+        .feedback-error { background-color: #f8d7da; color: #721c24; }
+
+        .lesson-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        .lesson-table th, .lesson-table td { border: 1px solid #dee2e6; padding: 12px; text-align: left; }
+        .lesson-table th { background-color: #f8f9fa; }
+
+        .activity-card { background: #fffaf0; border-left: 5px solid #ffcc80; padding: 20px; border-radius: 5px; margin-top: 20px; }
+        
+        .image-caption-box { text-align: center; margin-bottom: 30px; }
+        .image-caption-box img { border-radius: 10px; margin-bottom: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+
+        /* Lightbox */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: none; justify-content: center; align-items: center; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; }
+        .lightbox-overlay.active { display: flex; }
+
+
     </style>
 </head>
 
@@ -601,16 +657,144 @@
 
     <!-- Lesson Content Section Begin -->
     <section class="lesson-content spad bg-white">
+
         <div class="container">
-            <!-- Lesson Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="lesson-title font-Cambria">
-                        <h2>LESSON 25. Regulations and standards</h2>
+            <div class="lesson-title"><h2>Lesson 25. Regulations and standards</h2></div>
+
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span style="font-style: italic;">25. Listen, read the text and write the bolded words under the pictures.</span>
+                
+                <div class="audio-container text-center mt-4">
+                    <audio controls><source src="../audios/Track 25.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+                </div>
+
+                <div class="text-block mb-4">
+                    Car regulations and standards ensure that vehicles are safe, secure, and environmentally friendly. These regulations cover a variety of areas, including safety, emissions, and <b>fuel economy</b>. <b>Seat belts</b> must be fitted during manufacturing and assembly, and anchorages must be able to withstand a crash. Cars must pass <b>lane departure warning</b>, <b>crash tests</b> (frontal, side, and rollover) before being sold. Some countries have legal requirements for the minimum safety standards of vehicles.
+                </div>
+    
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8 image-caption-box">
+                            <img src="../images/image25.1.png" alt="Car Regulations and Standards" class="img-fluid mb-4" onclick="openLightbox(this)" style="max-width: 100%; border-radius: 10px;">
+                            
+                            <div class="row text-left">
+                                <div class="col-md-6 mb-3">
+                                    1. <input type="text" class="gap-input" id="t1p1" data-answer="crash tests" style="width: 80%;">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    2. <input type="text" class="gap-input" id="t1p2" data-answer="fuel economy" style="width: 80%;">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    3. <input type="text" class="gap-input" id="t1p3" data-answer="lane departure warning" style="width: 80%;">
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    4. <input type="text" class="gap-input" id="t1p4" data-answer="seat belts" style="width: 80%;">
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                
+
+                <div class="check-buttons">
+                    <button class="check-btn" onclick="checkTask1()">Check Answers</button>
+                    <button class="show-answer-btn" onclick="showTask1()">Show Answers</button>
+                    <button class="clear-btn" onclick="resetTask1()">Clear</button>
+                </div>
+                <div class="feedback-message" id="t1-feedback"></div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span style="font-style: italic;">Write definition to each standard. For more information, visit: <a href="https://www.youtube.com/watch?v=zl4jkltmOgk" target="_blank">YouTube link</a></span>
+                
+                <h5 class="text-center mt-4"><b>MOTOR VEHICLE STANDARDS REQUIREMENTS</b></h5>
+                
+                <table class="lesson-table">
+                    <tr><th>Requirement</th><th>Requirement</th></tr>
+                    <tr><td>controls</td><td>displays</td></tr>
+                    <tr><td>rear view mirrors</td><td>the order of gear shifting</td></tr>
+                    <tr><td>brake systems</td><td>headlights, brake lights, blinkers (turning signals), backing lights</td></tr>
+                    <tr><td>tyre standard</td><td>tyre rim standard</td></tr>
+                    <tr><td>safety glass for windows</td><td>seatbelts and anchoring them correctly</td></tr>
+                    <tr><td>vehicle noise</td><td>smoke/gas emissions</td></tr>
+                </table>
+
+                <div class="mt-4 activity-card">
+                    <p><b>Example:</b> <i>Displays – The screens and meters on the dashboard that show important information, such as speed, fuel level, and warning lights.</i></p>
+                    <textarea class="form-control" rows="10" placeholder="Write your definitions here..."></textarea>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span style="font-style: italic;">CAR SAFETY & STANDARDS MATCHING GAME (Classroom Activity)</span>
+                
+                <div class="activity-card">
+                    <h6><b>Materials:</b></h6>
+                    <ul>
+                        <li>Printed cards with words (e.g., Seatbelt, Headlights, Brake System, Tyre Standard, Smoke Emissions)</li>
+                        <li>Printed cards with definitions or descriptions</li>
+                    </ul>
+                    <h6 class="mt-3"><b>Instructions:</b></h6>
+                    <ol>
+                        <li><b>Introduction:</b> Discuss why cars have rules (keep people safe, protect environment).</li>
+                        <li><b>Matching Game:</b> Match word cards to definitions. Explain importance upon matching.</li>
+                    </ol>
+                    <h6 class="mt-3"><b>Discussion:</b></h6>
+                    <ul>
+                        <li>“What would happen if cars didn’t have brake lights?”</li>
+                        <li>“Why is it important to reduce car smoke emissions?”</li>
+                    </ul>
                 </div>
             </div>
         </div>
+    </section>
+
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()"><img src="" class="lightbox-img" id="lightbox-img"></div>
+
+    <script>
+        function openLightbox(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').classList.add('active'); }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+
+        function checkTask1() {
+            let score = 0;
+            let total = 4;
+            for(let i=1; i<=total; i++) {
+                let input = document.getElementById('t1p' + i);
+                if(input.value.trim().toLowerCase() === input.dataset.answer.toLowerCase()) {
+                    input.className = "gap-input input-correct"; score++;
+                } else {
+                    input.className = "gap-input input-incorrect";
+                }
+            }
+            let fb = document.getElementById('t1-feedback');
+            fb.style.display = 'block';
+            fb.className = score === total ? "feedback-message feedback-success" : "feedback-message feedback-error";
+            fb.innerHTML = `You got ${score} out of ${total} correct.`;
+        }
+
+        function showTask1() {
+            for(let i=1; i<=4; i++) {
+                let input = document.getElementById('t1p' + i);
+                input.value = input.dataset.answer;
+                input.className = "gap-input input-correct";
+            }
+        }
+
+        function resetTask1() {
+            for(let i=1; i<=4; i++) {
+                let input = document.getElementById('t1p' + i);
+                input.value = "";
+                input.className = "gap-input";
+            }
+            document.getElementById('t1-feedback').style.display = 'none';
+        }
+    </script>
     </section>
 
     <!-- Footer Section Begin -->

@@ -548,6 +548,53 @@
             cursor: zoom-in;
             /* Indicate clickable */
         }
+
+
+
+
+
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+        * { box-sizing: border-box; max-width: 100%; }
+        img, video, table, iframe { max-width: 100%; height: auto; }
+        body { word-break: break-word; overflow-wrap: anywhere; }
+
+        .container { max-width: 900px; width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; }
+
+        .lesson-title { background-color: #b8d1ea; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .lesson-title h2 { font-weight: 900; color: #000; margin: 0; text-transform: uppercase; }
+
+        .task-label { background-color: #d9e7f4; display: inline-block; padding: 5px 25px; border-radius: 20px 0 0 20px; font-weight: 700; font-style: italic; margin-right: 15px; position: relative; }
+        .task-label::after { content: ""; position: absolute; right: -20px; top: 0; border-top: 17px solid transparent; border-bottom: 17px solid transparent; border-left: 20px solid #d9e7f4; }
+
+        .task-section { margin-bottom: 40px; }
+        .text-block { background-color: #f2f2f2; padding: 30px; border-radius: 20px; line-height: 1.8; text-align: justify; }
+
+        .audio-container { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd; }
+        
+        /* Interactive Inputs */
+        .gap-input { width: 130px; text-align: center; border: none; border-bottom: 2px solid #000; background: transparent; padding: 0 5px; font-size: 16px; font-family: 'Lato', sans-serif; }
+        .gap-input:focus { border-bottom-color: #2b78c5; outline: none; }
+        
+        .check-buttons { display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap; }
+        .check-btn { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .show-answer-btn { background-color: #2b78c5; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .clear-btn { background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
+        .input-correct { border-color: #28a745 !important; background-color: #e6ffec !important; }
+        .input-incorrect { border-color: #dc3545 !important; background-color: #ffe6e6 !important; }
+
+        .feedback-message { margin-top: 10px; padding: 10px; border-radius: 5px; font-weight: bold; text-align: center; display: none; }
+        .feedback-success { background-color: #d4edda; color: #155724; }
+        .feedback-error { background-color: #f8d7da; color: #721c24; }
+
+        .anagram-table td { padding: 15px; border: 1px solid #dee2e6; vertical-align: middle; }
+        .anagram-table tr:nth-child(even) { background-color: #f9f9f9; }
+        .anagram-input { width: 100%; max-width: 250px; }
+
+        /* Lightbox */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: none; justify-content: center; align-items: center; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; }
+        .lightbox-overlay.active { display: flex; }
     </style>
 </head>
 
@@ -602,16 +649,197 @@
     <!-- Lesson Content Section Begin -->
     <section class="lesson-content spad bg-white">
         <div class="container">
-            <!-- Lesson Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="lesson-title font-Cambria">
-                        <h2>LESSON 28. Top auto companies</h2>
-                    </div>
+            <div class="lesson-title"><h2>Lesson 28. Top auto companies</h2></div>
+
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span style="font-style: italic;">Look at the image and answer the questions.</span>
+                
+                <div class="text-center mt-3">
+                    <img src="../images/image28.png" alt="25 Largest Automakers Graph" class="img-fluid" onclick="openLightbox(this)" style="max-width: 100%; border-radius: 10px;">
+                </div>
+
+                <div class="mt-4">
+                    <ol class="question-list" style="list-style: decimal; padding-left: 20px;">
+                        <li class="mb-3">What is the largest automaker in the world?
+                            <textarea class="form-control mt-2" rows="1" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-3">Which company has the least amount in the auto making world?
+                            <textarea class="form-control mt-2" rows="1" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-3">In your country which auto brand is growing fast?
+                            <textarea class="form-control mt-2" rows="1" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-3">Which European auto brands are represented in the image?
+                            <textarea class="form-control mt-2" rows="1" placeholder="Your answer..."></textarea>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span style="font-style: italic;">28. Listen to the report analysis and complete the gaps using the image in Task 1.</span>
+                
+                <div class="audio-container text-center mt-4">
+                    <audio controls><source src="../audios/Track 28.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+                </div>
+
+                <div class="text-block mt-4">
+                    This image presents the 25 largest automakers in the world based on market capitalization. It provides a visual breakdown of each company's 1. <input type="text" class="gap-input" id="t2g1" data-answer="market"> value and categorizes them by country.
+                    <br><br>
+                    <b>1. Tesla's Dominance</b><br>
+                    Tesla, valued at <b>$757 billion</b>, is by far the largest automaker, accounting for a significant portion of the <b>United States' total market capitalization</b> of 2. <input type="text" class="gap-input" id="t2g2" data-answer="868"> billion. This suggests Tesla's leading position in the EV (electric vehicle) industry and its strong investor confidence.
+                    <br><br>
+                    <b>2. Toyota's Position</b><br>
+                    Toyota is the second-largest automaker with a market capitalization of <b>$222 billion</b>, contributing to <b>Japan's total of $307 billion</b>. This reflects its continued 3. <input type="text" class="gap-input" id="t2g3" data-answer="strength"> in the traditional auto industry.
+                    <br><br>
+                    <b>3. Germany's Strong Presence</b><br>
+                    German automakers, including <b>Porsche ($98B)</b>, <b>Volkswagen ($68B)</b>, 4. <input type="text" class="gap-input" id="t2g4" data-answer="Mercedes-Benz"> <b>($77B)</b>, and <b>BMW ($69B)</b>, collectively contribute <b>$312 billion</b> to the global auto market. This highlights Germany's strength in luxury and high-performance vehicle manufacturing.
+                    <br><br>
+                    <b>4. Vietnam's Rising Influence</b><br>
+                    VinFast ($159B), a Vietnamese automaker, has emerged as a significant player in the industry. Its valuation is higher than many established 5. <input type="text" class="gap-input" id="t2g5" data-answer="automakers">, reflecting investor interest in new electric vehicle companies.
+                    <br><br>
+                    <b>5. China's Growing Market</b><br>
+                    China's total market cap is <b>$192 billion</b>, with notable companies like <b>BYD ($88B)</b>, <b>Li Auto ($39B)</b>, and <b>Nio ($19B)</b>. This underscores China's growing dominance in the 6. <input type="text" class="gap-input" id="t2g6" data-answer="electric"> sector.
+                    <br><br>
+                    <b>6. Comparing Traditional vs. EV Manufacturers</b><br>
+                    While traditional automakers such as <b>Toyota, Volkswagen, and Ford</b> remain strong, EV companies like <b>Tesla, BYD, and VinFast</b> are gaining prominence. This suggests a 7. <input type="text" class="gap-input" id="t2g7" data-answer="shift"> in market valuation towards electric and sustainable mobility.
+                    <br><br>
+                    <b>Conclusion:</b> This image illustrates the evolving landscape of the 8. <input type="text" class="gap-input" id="t2g8" data-answer="global"> industry. While legacy automakers maintain strong positions, electric vehicle companies are rapidly gaining market value, signaling the industry's transformation towards 9. <input type="text" class="gap-input" id="t2g9" data-answer="automation"> and new mobility solutions.
+                </div>
+
+                <div class="check-buttons">
+                    <button class="check-btn" onclick="checkTask2()">Check Answers</button>
+                    <button class="show-answer-btn" onclick="showTask2()">Show Answers</button>
+                    <button class="clear-btn" onclick="resetTask2()">Clear</button>
+                </div>
+                <div class="feedback-message" id="t2-feedback"></div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span style="font-style: italic;">Rearrange the letters to make the names of the top auto companies.</span>
+                
+                <div class="table-responsive mt-4">
+                    <table class="table anagram-table">
+                        <tbody>
+                            <tr>
+                                <td>YOTOTA - <input type="text" class="gap-input anagram-input" id="t3g1" data-answer="TOYOTA"></td>
+                                <td>RRAFRIE - <input type="text" class="gap-input anagram-input" id="t3g2" data-answer="FERRARI"></td>
+                            </tr>
+                            <tr>
+                                <td>DIAU - <input type="text" class="gap-input anagram-input" id="t3g3" data-answer="AUDI"></td>
+                                <td>ITUMAR KUISUZ - <input type="text" class="gap-input anagram-input" id="t3g4" data-answer="MARUTI SUZUKI"></td>
+                            </tr>
+                            <tr>
+                                <td>SELTA - <input type="text" class="gap-input anagram-input" id="t3g5" data-answer="TESLA"></td>
+                                <td>DORF - <input type="text" class="gap-input anagram-input" id="t3g6" data-answer="FORD"></td>
+                            </tr>
+                            <tr>
+                                <td>CEMERDES ZBEN - <input type="text" class="gap-input anagram-input" id="t3g7" data-answer="MERCEDES BENZ"></td>
+                                <td>TAOT SOTRAM - <input type="text" class="gap-input anagram-input" id="t3g8" data-answer="TATA MOTORS"></td>
+                            </tr>
+                            <tr>
+                                <td>YDUHANI - <input type="text" class="gap-input anagram-input" id="t3g9" data-answer="HYUNDAI"></td>
+                                <td>SPEORCH - <input type="text" class="gap-input anagram-input" id="t3g10" data-answer="PORSCHE"></td>
+                            </tr>
+                            <tr>
+                                <td>YDB - <input type="text" class="gap-input anagram-input" id="t3g11" data-answer="BYD"></td>
+                                <td>DANHO - <input type="text" class="gap-input anagram-input" id="t3g12" data-answer="HONDA"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="check-buttons">
+                    <button class="check-btn" onclick="checkTask3()">Check Answers</button>
+                    <button class="show-answer-btn" onclick="showTask3()">Show Answers</button>
+                    <button class="clear-btn" onclick="resetTask3()">Clear</button>
+                </div>
+                <div class="feedback-message" id="t3-feedback"></div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 4</span>
+                <span style="font-style: italic;">Make a Power Point presentation about largest automakers in the world. Use data in Task 1.</span>
+                <div class="text-block mt-4">
+                    For more information, watch: <a href="https://www.youtube.com/watch?v=TqH0ktUbTME" target="_blank">YouTube: Largest Automakers</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()"><img src="" class="lightbox-img" id="lightbox-img"></div>
+
+    <script>
+        function openLightbox(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').classList.add('active'); }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+
+        function checkTask2() {
+            let score = 0; let total = 9;
+            for(let i=1; i<=total; i++) {
+                let input = document.getElementById('t2g' + i);
+                if(input.value.trim().toLowerCase() === input.dataset.answer.toLowerCase()) {
+                    input.className = "gap-input input-correct"; score++;
+                } else { input.className = "gap-input input-incorrect"; }
+            }
+            let fb = document.getElementById('t2-feedback'); fb.style.display = 'block';
+            fb.className = score === total ? "feedback-message feedback-success" : "feedback-message feedback-error";
+            fb.innerHTML = `You got ${score} out of ${total} correct.`;
+        }
+
+        function showTask2() {
+            for(let i=1; i<=9; i++) {
+                let input = document.getElementById('t2g' + i);
+                input.value = input.dataset.answer;
+                input.className = "gap-input input-correct";
+            }
+        }
+
+        function resetTask2() {
+            for(let i=1; i<=9; i++) {
+                let input = document.getElementById('t2g' + i);
+                input.value = ""; input.className = "gap-input";
+            }
+            document.getElementById('t2-feedback').style.display = 'none';
+        }
+
+        function checkTask3() {
+            let score = 0; let total = 12;
+            for(let i=1; i<=total; i++) {
+                let input = document.getElementById('t3g' + i);
+                if(input.value.trim().toUpperCase() === input.dataset.answer.toUpperCase()) {
+                    input.className = "gap-input anagram-input input-correct"; score++;
+                } else { input.className = "gap-input anagram-input input-incorrect"; }
+            }
+            let fb = document.getElementById('t3-feedback'); fb.style.display = 'block';
+            fb.className = score === total ? "feedback-message feedback-success" : "feedback-message feedback-error";
+            fb.innerHTML = `You got ${score} out of ${total} correct.`;
+        }
+
+        function showTask3() {
+            for(let i=1; i<=12; i++) {
+                let input = document.getElementById('t3g' + i);
+                input.value = input.dataset.answer;
+                input.className = "gap-input anagram-input input-correct";
+            }
+        }
+
+        function resetTask3() {
+            for(let i=1; i<=12; i++) {
+                let input = document.getElementById('t3g' + i);
+                input.value = ""; input.className = "gap-input anagram-input";
+            }
+            document.getElementById('t3-feedback').style.display = 'none';
+        }
+    </script>
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">

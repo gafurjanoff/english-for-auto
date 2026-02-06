@@ -548,6 +548,60 @@
             cursor: zoom-in;
             /* Indicate clickable */
         }
+
+
+
+
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+        * { box-sizing: border-box; max-width: 100%; }
+        img, video, table, iframe { max-width: 100%; height: auto; }
+        body { word-break: break-word; overflow-wrap: anywhere; }
+
+        .container { max-width: 900px; width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; }
+
+        .lesson-title { background-color: #b8d1ea; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .lesson-title h2 { font-weight: 900; color: #000; margin: 0; text-transform: uppercase; }
+
+        .task-label { background-color: #d9e7f4; display: inline-block; padding: 5px 25px; border-radius: 20px 0 0 20px; font-weight: 700; font-style: italic; margin-right: 15px; position: relative; }
+        .task-label::after { content: ""; position: absolute; right: -20px; top: 0; border-top: 17px solid transparent; border-bottom: 17px solid transparent; border-left: 20px solid #d9e7f4; }
+
+        .task-section { margin-bottom: 40px; }
+        .text-block { background-color: #f2f2f2; padding: 30px; border-radius: 20px; line-height: 1.8; text-align: justify; }
+
+        .audio-container { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd; }
+        
+        /* Interactive Elements */
+        .gap-input { width: 140px; text-align: center; border: none; border-bottom: 2px solid #000; background: transparent; padding: 0 5px; font-size: 16px; }
+        .gap-input:focus { border-bottom-color: #2b78c5; outline: none; }
+        
+        .check-buttons { display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap; }
+        .check-btn { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .show-answer-btn { background-color: #2b78c5; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .clear-btn { background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
+        .input-correct { border-color: #28a745 !important; background-color: #e6ffec !important; }
+        .input-incorrect { border-color: #dc3545 !important; background-color: #ffe6e6 !important; }
+
+        .feedback-message { margin-top: 10px; padding: 10px; border-radius: 5px; font-weight: bold; text-align: center; display: none; }
+        .feedback-success { background-color: #d4edda; color: #155724; }
+        .feedback-error { background-color: #f8d7da; color: #721c24; }
+
+        .question-list { list-style: decimal; padding-left: 20px; }
+        .question-list li { margin-bottom: 20px; font-weight: 500; }
+        .report-textarea { width: 100%; min-height: 150px; border: 1px solid #ccc; border-radius: 5px; padding: 15px; margin-top: 10px; }
+
+        .role-play-box { background-color: #fffaf0; border-left: 5px solid #ffcc80; padding: 20px; border-radius: 5px; margin-top: 20px; }
+        .speaker-alex { color: #2b78c5; font-weight: bold; }
+        .speaker-sam { color: #e67e22; font-weight: bold; }
+
+        .true-false-table td { padding: 10px; vertical-align: middle; }
+        
+        /* Lightbox */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: none; justify-content: center; align-items: center; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; }
+        .lightbox-overlay.active { display: flex; }
+
+
     </style>
 </head>
 
@@ -601,17 +655,194 @@
 
     <!-- Lesson Content Section Begin -->
     <section class="lesson-content spad bg-white">
+
+
+
+
         <div class="container">
-            <!-- Lesson Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="lesson-title font-Cambria">
-                        <h2>LESSON 24. Dimensions and precision</h2>
+            <div class="lesson-title"><h2>Lesson 24. Dimensions and precision</h2></div>
+
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span style="font-style: italic;">24. Listen and to the information and define the bolded words.</span>
+                
+                <div class="text-center mt-4 mb-4">
+                    <img src="../images/image24.1.png" alt="Car Dimensions Diagram" class="img-fluid" onclick="openLightbox(this)" style="max-width: 600px; border: 1px solid #eee;">
+                </div>
+
+                <div class="audio-container text-center">
+                    <audio controls><source src="../audios/Track 24.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+                </div>
+
+                <div class="text-block">
+                    A car's dimensions are its <b>length</b>, <b>width</b>, and <b>height</b>, which are measured from the tips of each <b>dimension</b>. The <b>precision</b> of a car's <b>measurements</b> can affect the <b>quality</b> of the car and the <b>safety</b> of its passengers. The length of a <b>sedan</b> can range from around 15 to 18 feet, with widths between 5 and 6 feet. Heights are typically around 4 to 5 feet. Examples of sedans include the Toyota Camry, Honda Accord, and BMW 3 Series.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span style="font-style: italic;">Answer the questions based on the information in Task 1.</span>
+                <div class="mt-4">
+                    <ol class="question-list">
+                        <li>How do the dimensions of a sedan contribute to both passenger safety and overall quality?
+                            <textarea class="report-textarea" placeholder="Type your answer..."></textarea>
+                        </li>
+                        <li>How long is a typical sedan car?
+                            <br><input type="text" class="gap-input" id="t2q2" data-answer="15 to 18 feet">
+                        </li>
+                    </ol>
+                    <div class="check-buttons">
+                        <button class="check-btn" onclick="checkTask2()">Check Q2</button>
+                        <button class="show-answer-btn" onclick="showTask2()">Show Answer</button>
                     </div>
+                    <div class="feedback-message" id="t2-feedback"></div>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span style="font-style: italic;">Write a report of the given data.</span>
+                <div class="text-center mt-4">
+                    <img src="../images/image24.2.png" alt="Dimensions Graph" class="img-fluid" onclick="openLightbox(this)" style="max-width: 550px;">
+                </div>
+                <div class="mt-4">
+                    <h6><b>Introduction.</b></h6>
+                    <p>Here's a bar graph showing the dimensions (length, width, and height) of different cars. Each car's dimensions are displayed in feet for easy comparison.</p>
+                    <textarea class="report-textarea" placeholder="Write your analysis/report here..."></textarea>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 4</span>
+                <span style="font-style: italic;">Role Play: Alex and Sam.</span>
+                <div class="role-play-box">
+                    <p><span class="speaker-alex">Alex:</span> Hey Sam! Did you know cars come in all sizes?</p>
+                    <p><span class="speaker-sam">Sam:</span> Really? What do you mean?</p>
+                    <p><span class="speaker-alex">Alex:</span> Well, every car has dimensions. That means its length, width, and height.</p>
+                    <p><span class="speaker-sam">Sam:</span> Oh! So, like how long or tall the car is?</p>
+                    <p><span class="speaker-alex">Alex:</span> Exactly! For example, a small car like a compact one might be 4 meters long and 1.8 meters wide.</p>
+                    <p><span class="speaker-sam">Sam:</span> And a bigger car, like a truck, would be longer, right?</p>
+                    <p><span class="speaker-alex">Alex:</span> Yes! A truck might be 6 meters long or more.</p>
+                    <p><span class="speaker-sam">Sam:</span> But why does the size matter?</p>
+                    <p><span class="speaker-alex">Alex:</span> Good question! The size helps us know if the car can fit in a garage or parking spot.</p>
+                    <p><span class="speaker-sam">Sam:</span> Oh, that’s cool! What about precision? What’s that?</p>
+                    <p><span class="speaker-alex">Alex:</span> Precision is like being super careful when measuring. For example, instead of saying the car is 4 meters long, we could say it’s 4.05 meters.</p>
+                    <p><span class="speaker-sam">Sam:</span> That’s so exact! Why do we need to be that precise?</p>
+                    <p><span class="speaker-alex">Alex:</span> Well, if we’re building a car, even a tiny mistake in size can cause problems.</p>
+                    <p><span class="speaker-sam">Sam:</span> I see! So, dimensions and precision help make sure everything is just right!</p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 5</span>
+                <span style="font-style: italic;">Decide if the statements are true or false.</span>
+                <div class="mt-4">
+                    <table class="table true-false-table">
+                        <tr>
+                            <td>a) Car length tells you how high the car is.</td>
+                            <td><select class="nice-select gap-input" id="t5a" data-answer="false"><option value="">Select</option><option value="true">True</option><option value="false">False</option></select></td>
+                        </tr>
+                        <tr>
+                            <td>b) Car width helps you know how much space the car needs sideways.</td>
+                            <td><select class="nice-select gap-input" id="t5b" data-answer="true"><option value="">Select</option><option value="true">True</option><option value="false">False</option></select></td>
+                        </tr>
+                        <tr>
+                            <td>c) Car precision is not important when building a car.</td>
+                            <td><select class="nice-select gap-input" id="t5c" data-answer="false"><option value="">Select</option><option value="true">True</option><option value="false">False</option></select></td>
+                        </tr>
+                        <tr>
+                            <td>d) Car dimensions are only about the height of the car.</td>
+                            <td><select class="nice-select gap-input" id="t5d" data-answer="false"><option value="">Select</option><option value="true">True</option><option value="false">False</option></select></td>
+                        </tr>
+                        <tr>
+                            <td>e) Car measurements are used to know the size of the car.</td>
+                            <td><select class="nice-select gap-input" id="t5e" data-answer="true"><option value="">Select</option><option value="true">True</option><option value="false">False</option></select></td>
+                        </tr>
+                    </table>
+                    <div class="check-buttons">
+                        <button class="check-btn" onclick="checkTask5()">Check Answers</button>
+                        <button class="clear-btn" onclick="resetTask5()">Clear</button>
+                    </div>
+                    <div class="feedback-message" id="t5-feedback"></div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()"><img src="" class="lightbox-img" id="lightbox-img"></div>
+
+
+    <script src="../js/jquery-3.3.1.min.js"></script>
+    <script>
+        function openLightbox(img) { document.getElementById('lightbox-img').src = img.src; document.getElementById('lightbox').classList.add('active'); }
+        function closeLightbox() { document.getElementById('lightbox').classList.remove('active'); }
+
+        function checkTask2() {
+            let input = document.getElementById('t2q2');
+            let feedback = document.getElementById('t2-feedback');
+            if(input.value.toLowerCase().includes('15') && input.value.toLowerCase().includes('18')) {
+                input.className = 'gap-input input-correct';
+                feedback.innerHTML = "Correct!"; feedback.className = "feedback-message feedback-success";
+            } else {
+                input.className = 'gap-input input-incorrect';
+                feedback.innerHTML = "Check the text for length range."; feedback.className = "feedback-message feedback-error";
+            }
+            feedback.style.display = 'block';
+        }
+
+        function showTask2() {
+            document.getElementById('t2q2').value = "15 to 18 feet";
+        }
+
+        function checkTask5() {
+            let ids = ['a','b','c','d','e'];
+            let score = 0;
+            ids.forEach(id => {
+                let el = document.getElementById('t5'+id);
+                if(el.value === el.dataset.answer) {
+                    el.classList.add('input-correct'); el.classList.remove('input-incorrect'); score++;
+                } else {
+                    el.classList.add('input-incorrect'); el.classList.remove('input-correct');
+                }
+            });
+            let fb = document.getElementById('t5-feedback');
+            fb.style.display = 'block';
+            fb.className = score === 5 ? "feedback-message feedback-success" : "feedback-message feedback-error";
+            fb.innerHTML = `You got ${score}/5 correct.`;
+        }
+
+        function resetTask5() {
+            ['a','b','c','d','e'].forEach(id => {
+                let el = document.getElementById('t5'+id);
+                el.value = ""; el.classList.remove('input-correct', 'input-incorrect');
+            });
+            document.getElementById('t5-feedback').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+    </section>
+
+
+
+
+
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">

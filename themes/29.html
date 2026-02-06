@@ -548,6 +548,62 @@
             cursor: zoom-in;
             /* Indicate clickable */
         }
+
+
+
+
+        html, body { width: 100%; max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+        * { box-sizing: border-box; max-width: 100%; }
+        img, video, table, iframe { max-width: 100%; height: auto; }
+        body { word-break: break-word; overflow-wrap: anywhere; }
+
+        .container { max-width: 900px; width: 100%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; }
+
+        .lesson-title { background-color: #b8d1ea; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 40px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .lesson-title h2 { font-weight: 900; color: #000; margin: 0; text-transform: uppercase; }
+
+        .task-label { background-color: #d9e7f4; display: inline-block; padding: 5px 25px; border-radius: 20px 0 0 20px; font-weight: 700; font-style: italic; margin-right: 15px; position: relative; }
+        .task-label::after { content: ""; position: absolute; right: -20px; top: 0; border-top: 17px solid transparent; border-bottom: 17px solid transparent; border-left: 20px solid #d9e7f4; }
+
+        .task-section { margin-bottom: 40px; }
+        .text-block { background-color: #f2f2f2; padding: 30px; border-radius: 20px; line-height: 1.8; text-align: justify; }
+
+        .audio-container { background: #f8f9fa; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #ddd; }
+        
+        /* Interactive Inputs */
+        .gap-input { width: 100%; border: none; border-bottom: 2px solid #000; background: transparent; padding: 5px; font-size: 16px; font-family: 'Lato', sans-serif; margin-bottom: 15px; }
+        .gap-input:focus { border-bottom-color: #2b78c5; outline: none; }
+        
+        .check-buttons { display: flex; gap: 10px; margin-top: 15px; justify-content: center; flex-wrap: wrap; }
+        .check-btn { background-color: #28a745; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .show-answer-btn { background-color: #2b78c5; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        .clear-btn { background-color: #dc3545; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; }
+        
+        .input-correct { border-color: #28a745 !important; background-color: #e6ffec !important; }
+        .input-incorrect { border-color: #dc3545 !important; background-color: #ffe6e6 !important; }
+
+        .feedback-message { margin-top: 10px; padding: 10px; border-radius: 5px; font-weight: bold; text-align: center; display: none; }
+        .feedback-success { background-color: #d4edda; color: #155724; }
+        .feedback-error { background-color: #f8d7da; color: #721c24; }
+
+        .key-places-box { background-color: #fffaf0; border-left: 5px solid #ffcc80; padding: 25px; border-radius: 10px; margin-top: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+
+        /* Crossword/Puzzle Styles */
+        .puzzle-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 30px; }
+        .puzzle-row { display: flex; align-items: center; gap: 5px; }
+        .puzzle-number { min-width: 25px; font-weight: bold; color: #2b78c5; }
+        .puzzle-cell { width: 35px; height: 35px; border: 2px solid #ffcc80; text-align: center; border-radius: 4px; font-weight: bold; text-transform: uppercase; background-color: #fff; }
+        .puzzle-cell:focus { border-color: #2b78c5; outline: none; background-color: #f0f8ff; }
+        .puzzle-cell.correct { background-color: #d4edda; border-color: #28a745; }
+
+        /* Lightbox */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: none; justify-content: center; align-items: center; }
+        .lightbox-img { max-width: 90%; max-height: 90vh; }
+        .lightbox-overlay.active { display: flex; }
+
+        @media (max-width: 768px) {
+            .puzzle-cell { width: 25px; height: 25px; font-size: 12px; }
+        }
     </style>
 </head>
 
@@ -602,16 +658,113 @@
     <!-- Lesson Content Section Begin -->
     <section class="lesson-content spad bg-white">
         <div class="container">
-            <!-- Lesson Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="lesson-title font-Cambria">
-                        <h2>LESSON 29. AI in automotive industry</h2>
-                    </div>
+            <div class="lesson-title"><h2>Lesson 29. AI in automotive industry</h2></div>
+
+            <div class="task-section">
+                <span class="task-label">TASK 1</span>
+                <span style="font-style: italic;">29. Listen to the text paying attention to the bolded words.</span>
+                
+                <div class="audio-container text-center mt-4">
+                    <audio controls><source src="../audios/Track 29.mp3" type="audio/mpeg">Your browser does not support the audio element.</audio>
+                </div>
+
+                <div class="text-center mt-3">
+                    <img src="../images/image29.png" alt="AI in cars visualization" class="img-fluid" onclick="openLightbox(this)" style="max-width: 600px; border-radius: 10px;">
+                </div>
+
+                <div class="text-block mt-4">
+                    <b>Artificial intelligence</b> is changing the way we think about cars and driving. AI helps make vehicles <b>safer</b>, <b>smarter</b>, and more <b>efficient</b>. It's being used to develop <b>self-driving cars</b>, improve safety features, and enhance the overall driving experience. AI is revolutionizing the automotive industry by enabling advanced <b>driver assistance systems</b>, <b>predictive maintenance</b>, and personalized <b>in-car experiences</b>. These innovations are not just making our roads safer, but also transforming how we interact with our vehicles. From <b>voice-controlled infotainment systems</b> to <b>AI-powered navigation</b>, cars are becoming more like personal assistants on wheels.
+                    <br><br>
+                    AI makes <b>car factories</b> work better. <b>Robots</b> guided by AI can put cars together faster and with fewer mistakes. This keeps <b>production lines</b> running smoothly. Factories use AI to check the <b>quality</b> of parts and <b>finished cars</b>. <b>Computer vision systems</b> spot defects that human eyes might miss. This means fewer faulty cars leave the factory. AI also helps <b>design</b> factory layouts for maximum efficiency. It can suggest the best way to <b>arrange equipment</b> and <b>workflow</b>.
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 2</span>
+                <span style="font-style: italic;">Answer the questions based on the text.</span>
+                
+                <div class="mt-4">
+                    <ol class="question-list" style="list-style: decimal; padding-left: 20px;">
+                        <li class="mb-4">How is AI improving vehicle safety and efficiency?
+                            <textarea class="gap-input mt-2" id="t2q1" rows="2" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-4">In what ways is AI transforming the driving experience for individuals?
+                            <textarea class="gap-input mt-2" id="t2q2" rows="2" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-4">What role does AI play in self-driving car technology?
+                            <textarea class="gap-input mt-2" id="t2q3" rows="2" placeholder="Your answer..."></textarea>
+                        </li>
+                        <li class="mb-4">How do AI-powered navigation and voice-controlled infotainment systems enhance user experience?
+                            <textarea class="gap-input mt-2" id="t2q4" rows="2" placeholder="Your answer..."></textarea>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 3</span>
+                <span style="font-style: italic;">Speak about the key places where AI is applied in auto industry.</span>
+                
+                <div class="text-center mt-3">
+                    <img src="../images/image29.2.png" alt="Key applications diagram" class="img-fluid" onclick="openLightbox(this)" style="max-width: 500px;">
+                </div>
+
+                <div class="key-places-box">
+                    <p><b>Good morning everyone!</b></p>
+                    <p>AI is transforming the automotive industry in five key ways: <b>Improved Safety, Predictive Maintenance, Enhanced Driver Experience, Autonomous Driving, and Cost Savings.</b> AI-powered safety features like automatic braking and lane departure warnings help prevent accidents. Predictive maintenance detects issues before they cause breakdowns, reducing repair costs. AI enhances the driving experience with smart infotainment and voice assistants. Self-driving technology is advancing, making transportation safer. Lastly, AI-driven manufacturing and fuel optimization lead to significant cost savings. <b>Thank you!</b></p>
+                </div>
+            </div>
+
+            <hr>
+
+            <div class="task-section">
+                <span class="task-label">TASK 4</span>
+                <span style="font-style: italic;">Do the puzzle following the numbers.</span>
+                
+                <div class="mt-4">
+                    <ol style="list-style: decimal; padding-left: 20px; font-size: 0.95rem;">
+                        <li>The amount of money you can get for your car when you want to sell it.</li>
+                        <li>Another word for "motor".</li>
+                        <li>The car's capacity to go fast and accelerate quickly.</li>
+                        <li>People who worry about environment say cars cause this.</li>
+                        <li>A measurement which tells you how much petrol or diesel a car uses.</li>
+                        <li>The fastest car can go.</li>
+                        <li>This is a very important buying factor.</li>
+                        <li>Volkswagen, Opel, and Fiat are all examples of this.</li>
+                        <li>Features that can save your life.</li>
+                    </ol>
+                </div>
+
+                <div class="text-center mt-3">
+                                        <img src="../images/image29.3.png" alt="Auto Industry Crossword" class="img-fluid" style="max-width: 500px; border-radius: 5px;">
+                </div>
+
+                <div class="text-block mt-4">
+                    To find more information on the AI in automotive industry, watch: 
+                    <a href="https://www.youtube.com/watch?v=bljnP5iVADI" target="_blank">YouTube: AI in Auto Industry</a>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()"><img src="" class="lightbox-img" id="lightbox-img"></div>
+
+
+
+    <script>
+        function openLightbox(img) { 
+            document.getElementById('lightbox-img').src = img.src; 
+            document.getElementById('lightbox').classList.add('active'); 
+        }
+        function closeLightbox() { 
+            document.getElementById('lightbox').classList.remove('active'); 
+        }
+    </script>
+
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">

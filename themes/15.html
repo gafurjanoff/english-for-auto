@@ -56,7 +56,6 @@
         .container,
         .container-fluid {
             max-width: 900px;
-            /* Force a reasonable centered width */
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
@@ -205,6 +204,7 @@
             width: 100%;
             font-family: 'Lato', sans-serif;
             transition: border-color 0.3s;
+            font-size: 16px;
         }
 
         .task-input:focus {
@@ -220,6 +220,8 @@
             border-bottom: 2px solid #000;
             background: transparent;
             padding: 0 5px;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
         }
 
         .gap-input:focus {
@@ -232,6 +234,7 @@
             gap: 10px;
             margin-top: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .correct-answer {
@@ -240,10 +243,11 @@
             margin-top: 5px;
             font-weight: bold;
             display: none;
-            /* Hidden by default */
         }
 
-        .show-answer-btn {
+        .show-answer-btn,
+        .check-btn,
+        .clear-btn {
             background-color: #2b78c5;
             color: white;
             border: none;
@@ -254,23 +258,26 @@
             transition: background 0.3s;
         }
 
-        .show-answer-btn:hover {
+        .show-answer-btn:hover,
+        .check-btn:hover,
+        .clear-btn:hover {
             background-color: #1a5a9c;
         }
 
         .check-btn {
             background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
         }
 
         .check-btn:hover {
             background-color: #218838;
+        }
+
+        .clear-btn {
+            background-color: #dc3545;
+        }
+
+        .clear-btn:hover {
+            background-color: #c82333;
         }
 
         .input-correct {
@@ -285,7 +292,7 @@
 
         textarea.task-input {
             resize: vertical;
-            min-height: 80px;
+            min-height: 120px;
         }
 
         .correct-answer-display {
@@ -294,6 +301,27 @@
             margin-top: 5px;
             font-weight: bold;
             display: none;
+        }
+
+        .feedback-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-align: center;
+            display: none;
+        }
+
+        .feedback-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .feedback-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
         /* Drag and Drop Styles */
@@ -307,12 +335,10 @@
             cursor: move;
             font-weight: bold;
             color: #2b78c5;
-            /* PERFORMANCE FIX: Instant Drag */
             transition: none !important;
             animation: none !important;
             will-change: transform;
             touch-action: none;
-            /* Prevent browser scrolling handling on the element itself if possible, though we handle it in JS */
         }
 
         .draggable-word:hover {
@@ -330,7 +356,6 @@
             line-height: 1;
         }
 
-        /* Show remove button when inside drop zone */
         .drop-zone .draggable-word .remove-btn {
             display: inline-block;
         }
@@ -338,7 +363,6 @@
         .drop-zone .draggable-word {
             position: relative;
             padding-right: 20px;
-            /* Space for x button */
         }
 
         .drop-zone .draggable-word .remove-btn {
@@ -374,24 +398,38 @@
             cursor: pointer;
         }
 
-        .draggable-word.selected {
-            background-color: #2b78c5;
-            color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transform: scale(1.05);
+        .dialogue-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2b78c5;
+            margin: 20px 0;
         }
 
-        /* Fixed Word Bank Style */
-        .word-bank {
-            position: -webkit-sticky;
-            /* Safari */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #f6f8f1;
-            border-bottom: 2px solid #e0e6d6;
-            padding: 15px 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .dialogue-line {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .dialogue-speaker {
+            font-weight: bold;
+            color: #2b78c5;
+        }
+
+        .presentation-area {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ffc107;
+            margin-top: 20px;
+        }
+
+        .qr-code {
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
         }
 
         /* Mobile Responsiveness Fixes */
@@ -424,11 +462,9 @@
                 line-height: 1.3;
             }
 
-            /* Responsive Inputs */
             .gap-input {
                 width: 100px;
                 max-width: 100%;
-                /* Safety */
             }
 
             .task-input {
@@ -438,7 +474,6 @@
             .word-bank .word-item,
             .draggable-word {
                 padding: 6px 12px;
-                /* Bigger touch target */
                 font-size: 14px;
                 margin: 4px;
                 max-width: 100%;
@@ -459,30 +494,12 @@
                 vertical-align: middle;
             }
 
-            .word-bank.is-fixed {
-                padding: 10px 5px;
-                width: 100%;
-                /* Explicit width */
-                left: 0;
-                box-sizing: border-box;
-                /* Include padding in width */
-            }
-
-            /* Table adjustments */
             .lesson-table th,
             .lesson-table td {
                 padding: 8px;
                 font-size: 14px;
             }
 
-            /* Task 5 / Debate Section Mobile Fixes */
-            .task-section img {
-                display: block;
-                margin: 0 auto 15px auto;
-                /* Center image */
-            }
-
-            /* FORCE Gutter/Padding on Mobile */
             .container,
             .container-fluid,
             .task-section,
@@ -492,7 +509,6 @@
                 padding-right: 15px !important;
             }
 
-            /* Fix Row Margins on Mobile */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
@@ -501,13 +517,7 @@
             .col-md-6 {
                 width: 100%;
                 padding: 0 !important;
-                /* Let parent handle padding */
                 margin-bottom: 15px;
-            }
-
-            /* Center Headers if requested */
-            .mt-4 h6 {
-                text-align: center;
             }
         }
 
@@ -546,7 +556,6 @@
 
         .img-fluid {
             cursor: zoom-in;
-            /* Indicate clickable */
         }
     </style>
 </head>
@@ -610,8 +619,203 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TASK 1 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 1</span>
+                            <span style="font-style: italic;">Read the information and define the bolded words</span>
+                        </div>
+
+                        <div class="text-center">
+                            <img src="../images/image15.png" alt="Lubrication System Diagram" class="img-fluid" 
+                                 onclick="openLightbox(this)">
+                            <div class="image-caption">LUBRICATION SYSTEM COMPONENTS</div>
+                        </div>
+
+                        <div style="margin: 20px 0;">
+                            <audio controls style="width: 100%;">
+                                <source src="../audios/Track 15.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+
+                        <div class="text-block mt-4">
+                            <p>
+                                A <strong>lubrication</strong> system in an internal combustion engine is a system
+                                that aids in lubricating and cooling the engine's moving parts. Its
+                                main purpose is to <strong>lessen friction</strong> between <strong>moving parts</strong>, which
+                                slows down the rate of wear and tear on these <strong>engine parts</strong>.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 2</span>
+                            <span style="font-style: italic;">Complete the gaps with the bolded the words in Task 1.</span>
+                        </div>
+
+                        <ul class="gap-fill-list">
+                            <li>
+                                1. <input type="text" class="gap-input" id="gap1" data-answer="lubrication"> is necessary to ensure that different parts of an engine move smoothly and don't wear out quickly.
+                            </li>
+                            <li>
+                                2. The primary purpose of <input type="text" class="gap-input" id="gap2" data-answer="lubrication"> is to reduce resistance between surfaces that come in contact with each other.
+                            </li>
+                            <li>
+                                3. Without proper <input type="text" class="gap-input" id="gap3" data-answer="lubrication">, the <input type="text" class="gap-input" id="gap4" data-answer="moving parts"> of a machine can quickly overheat and wear out.
+                            </li>
+                            <li>
+                                4. Applying oil or grease helps to <input type="text" class="gap-input" id="gap5" data-answer="lessen friction"> between <input type="text" class="gap-input" id="gap6" data-answer="engine parts"> in an engine, improving performance and extending its lifespan.
+                            </li>
+                        </ul>
+
+                        <div class="check-buttons">
+                            <button class="check-btn" onclick="checkTask2()">Check Answers</button>
+                            <button class="show-answer-btn" onclick="showTask2Answers()">Show Answers</button>
+                            <button class="clear-btn" onclick="resetTask2()">Clear</button>
+                        </div>
+
+                        <div class="feedback-message" id="task2-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 3</span>
+                            <span style="font-style: italic;">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=../audios/Track15.mp3" 
+                                     alt="QR Code" class="qr-code">
+                                15. Listen and complete the dialogue.
+                            </span>
+                        </div>
+
+                        <div style="margin: 20px 0;">
+                            <audio controls style="width: 100%;">
+                                <source src="../audios/Track 15.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+
+                        <div class="word-bank" id="wordBank">
+                            <div style="margin-bottom: 10px; font-weight: bold;">Word Bank:</div>
+                            <div id="wordBankWords">
+                                <span class="draggable-word" draggable="true">lubrication</span>
+                                <span class="draggable-word" draggable="true">friction</span>
+                                <span class="draggable-word" draggable="true">oil</span>
+                                <span class="draggable-word" draggable="true">pump</span>
+                                <span class="draggable-word" draggable="true">contaminants</span>
+                                <span class="draggable-word" draggable="true">heart</span>
+                                <span class="draggable-word" draggable="true">film</span>
+                            </div>
+                        </div>
+
+                        <div class="dialogue-section">
+                            <div class="dialogue-line">
+                                <span class="dialogue-speaker">Alex:</span> 
+                                <em>Hey Jamie, I've been trying to understand how the 1. <span class="drop-zone" data-answer="lubrication"></span> system works in an internal combustion engine. Can you explain it a bit?</em>
+                            </div>
+
+                            <div class="dialogue-line">
+                                <span class="dialogue-speaker">Jamie:</span> 
+                                <em>Sure, Alex! The lubrication system is crucial for an engine's performance. Basically, it reduces 2. <span class="drop-zone" data-answer="friction"></span> between the moving parts.</em>
+                            </div>
+
+                            <div class="dialogue-line">
+                                <span class="dialogue-speaker">Alex:</span> 
+                                <em>That makes sense. So, which parts are involved in this system?</em>
+                            </div>
+
+                            <div class="dialogue-line">
+                                <span class="dialogue-speaker">Jamie:</span> 
+                                <em>There are a few key parts. First, we have the 3. <span class="drop-zone" data-answer="oil"></span> sump, which is like a reservoir where oil is stored. Then there's the oil 4. <span class="drop-zone" data-answer="pump"></span>, which sends the oil from the sump to various moving parts of the engine. There's also the oil filter to remove any 5. <span class="drop-zone" data-answer="contaminants"></span> before the oil circulates.</em>
+                            </div>
+
+                            <div class="dialogue-line">
+                                <span class="dialogue-speaker">Alex:</span> 
+                                <em>Got it. So, the pumps essential for making sure the oil actually gets where it needs to go, right?</em>
+                            </div>
+
+                            <div class="dialogue-line">
+                                <span class="dialogue-speaker">Jamie:</span> 
+                                <em>Exactly. The oil pump is like the 6. <span class="drop-zone" data-answer="heart"></span> of the system, keeping the oil flowing through passages that lead to different parts of the engine. This constant flow creates a thin 7. <span class="drop-zone" data-answer="film"></span> between the surfaces, which really helps to lessen friction.</em>
+                            </div>
+                        </div>
+
+                        <div class="check-buttons">
+                            <button class="check-btn" onclick="checkTask3()">Check Dialogue</button>
+                            <button class="show-answer-btn" onclick="showTask3Answers()">Show Answers</button>
+                            <button class="clear-btn" onclick="resetTask3()">Reset</button>
+                        </div>
+
+                        <div class="feedback-message" id="task3-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 4 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 4</span>
+                            <span style="font-style: italic;">Writing Task:</span>
+                        </div>
+
+                        <div class="presentation-area">
+                            <h5 style="color: #856404; font-weight: bold; text-align: center; margin-bottom: 15px;">
+                                Explaining the Lubrication System in an Internal Combustion Engine.
+                            </h5>
+                            <p style="margin-bottom: 15px; font-weight: bold;">
+                                Task Description: Write a detailed technical description of the lubrication system in an internal combustion engine.
+                            </p>
+                            
+                            <div style="background-color: white; padding: 15px; border-radius: 5px; margin-bottom: 15px;">
+                                <strong>Your essay should include:</strong>
+                                <ol style="margin-top: 10px; margin-bottom: 0; padding-left: 20px;">
+                                    <li>Introduction (2-3 sentences)</li>
+                                    <li>System Components (1-2 paragraphs)</li>
+                                    <li>How the Lubrication Process Works</li>
+                                    <li>Importance and Effects of Lubrication</li>
+                                    <li>Conclusion (2-3 sentences)</li>
+                                </ol>
+                            </div>
+
+                            <textarea class="task-input" id="essayText" rows="12" 
+                                      placeholder="Write your technical description here..."></textarea>
+                            
+                            <div class="check-buttons mt-3">
+                                <button class="check-btn" onclick="analyzeEssay()">Analyze Essay</button>
+                                <button class="show-answer-btn" onclick="saveEssay()">Save Draft</button>
+                                <button class="clear-btn" onclick="clearEssay()">Clear</button>
+                            </div>
+                            
+                            <div class="feedback-message" id="essay-feedback"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+    <!-- Lesson Content Section End -->
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Enlarged image" class="lightbox-img" id="lightbox-img">
+    </div>
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
@@ -637,7 +841,282 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(img) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // TASK 2: Gap Fill Exercise
+        function checkTask2() {
+            let correct = 0;
+            let total = 6;
+            const inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5, #gap6');
+            
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.dataset.answer.toLowerCase();
+                
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('input-incorrect');
+                    input.classList.add('input-correct');
+                    correct++;
+                } else {
+                    input.classList.remove('input-correct');
+                    input.classList.add('input-incorrect');
+                }
+            });
+
+            const feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            if (correct === total) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = `Perfect! You got all ${total} answers correct!`;
+            } else {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = `You got ${correct} out of ${total} correct. Try again!`;
+            }
+        }
+
+        function showTask2Answers() {
+            const inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5, #gap6');
+            inputs.forEach(input => {
+                input.value = input.dataset.answer;
+                input.classList.remove('input-incorrect');
+                input.classList.add('input-correct');
+            });
+            const feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback-message feedback-success';
+            feedback.textContent = 'All answers have been revealed!';
+        }
+
+        function resetTask2() {
+            const inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4, #gap5, #gap6');
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('input-correct', 'input-incorrect');
+            });
+            const feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'none';
+        }
+
+        // TASK 3: Drag and Drop functionality
+        let draggedElement = null;
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setupDragAndDrop();
+        });
+
+        function setupDragAndDrop() {
+            const draggables = document.querySelectorAll('.draggable-word');
+            const dropZones = document.querySelectorAll('.drop-zone');
+
+            draggables.forEach(draggable => {
+                draggable.addEventListener('dragstart', handleDragStart);
+                draggable.addEventListener('dragend', handleDragEnd);
+            });
+
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', handleDragOver);
+                zone.addEventListener('drop', handleDrop);
+                zone.addEventListener('dragleave', handleDragLeave);
+            });
+        }
+
+        function handleDragStart(e) {
+            draggedElement = this;
+            this.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+            e.dataTransfer.setData('text/html', this.innerHTML);
+        }
+
+        function handleDragEnd(e) {
+            this.classList.remove('dragging');
+        }
+
+        function handleDragOver(e) {
+            if (e.preventDefault) {
+                e.preventDefault();
+            }
+            e.dataTransfer.dropEffect = 'move';
+            this.classList.add('drag-over');
+            return false;
+        }
+
+        function handleDragLeave(e) {
+            this.classList.remove('drag-over');
+        }
+
+        function handleDrop(e) {
+            if (e.stopPropagation) {
+                e.stopPropagation();
+            }
+            this.classList.remove('drag-over');
+
+            if (draggedElement && this.children.length === 0) {
+                const clone = draggedElement.cloneNode(true);
+                
+                // Add remove button
+                const removeBtn = document.createElement('span');
+                removeBtn.className = 'remove-btn';
+                removeBtn.innerHTML = '✕';
+                removeBtn.onclick = function() {
+                    this.parentElement.remove();
+                };
+                clone.appendChild(removeBtn);
+                
+                clone.draggable = false;
+                this.appendChild(clone);
+            }
+
+            return false;
+        }
+
+        function checkTask3() {
+            let correct = 0;
+            let total = 7;
+            const dropZones = document.querySelectorAll('.dialogue-section .drop-zone');
+            
+            dropZones.forEach(zone => {
+                const correctAnswer = zone.dataset.answer.toLowerCase();
+                const droppedWord = zone.querySelector('.draggable-word');
+                
+                if (droppedWord) {
+                    const userAnswer = droppedWord.textContent.replace('✕', '').trim().toLowerCase();
+                    if (userAnswer === correctAnswer) {
+                        zone.style.borderBottomColor = '#28a745';
+                        zone.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+                        correct++;
+                    } else {
+                        zone.style.borderBottomColor = '#dc3545';
+                        zone.style.backgroundColor = 'rgba(220, 53, 69, 0.1)';
+                    }
+                }
+            });
+
+            const feedback = document.getElementById('task3-feedback');
+            feedback.style.display = 'block';
+            if (correct === total) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = `Excellent! You completed the dialogue perfectly!`;
+            } else {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = `You got ${correct} out of ${total} correct. Review and try again!`;
+            }
+        }
+
+        function showTask3Answers() {
+            const dropZones = document.querySelectorAll('.dialogue-section .drop-zone');
+            
+            dropZones.forEach(zone => {
+                zone.innerHTML = '';
+                const correctAnswer = zone.dataset.answer;
+                const answerElement = document.createElement('span');
+                answerElement.className = 'draggable-word';
+                answerElement.textContent = correctAnswer;
+                answerElement.draggable = false;
+                
+                zone.appendChild(answerElement);
+                zone.style.borderBottomColor = '#28a745';
+                zone.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+            });
+
+            const feedback = document.getElementById('task3-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback-message feedback-success';
+            feedback.textContent = 'All answers have been revealed!';
+        }
+
+        function resetTask3() {
+            const dropZones = document.querySelectorAll('.dialogue-section .drop-zone');
+            dropZones.forEach(zone => {
+                zone.innerHTML = '';
+                zone.style.borderBottomColor = '';
+                zone.style.backgroundColor = '';
+            });
+
+            const feedback = document.getElementById('task3-feedback');
+            feedback.style.display = 'none';
+
+            const wordBank = document.getElementById('wordBankWords');
+            wordBank.innerHTML = `
+                <span class="draggable-word" draggable="true">lubrication</span>
+                <span class="draggable-word" draggable="true">friction</span>
+                <span class="draggable-word" draggable="true">oil</span>
+                <span class="draggable-word" draggable="true">pump</span>
+                <span class="draggable-word" draggable="true">contaminants</span>
+                <span class="draggable-word" draggable="true">heart</span>
+                <span class="draggable-word" draggable="true">film</span>
+            `;
+            
+            setupDragAndDrop();
+        }
+
+        // TASK 4: Writing Task
+        function saveEssay() {
+            const essayText = document.getElementById('essayText').value;
+            if (essayText.trim().length > 0) {
+                localStorage.setItem('lubricationEssay', essayText);
+                const feedback = document.getElementById('essay-feedback');
+                feedback.style.display = 'block';
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = 'Your essay has been saved successfully!';
+            } else {
+                const feedback = document.getElementById('essay-feedback');
+                feedback.style.display = 'block';
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = 'Please write something before saving!';
+            }
+        }
+
+        function analyzeEssay() {
+            const essayText = document.getElementById('essayText').value;
+            const wordCount = essayText.trim().split(/\s+/).filter(word => word.length > 0).length;
+            const paragraphs = essayText.split('\n\n').filter(p => p.trim().length > 0).length;
+
+            const feedback = document.getElementById('essay-feedback');
+            feedback.style.display = 'block';
+            
+            if (wordCount < 50) {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = `Your essay has ${wordCount} words. Try to write at least 150-200 words for a complete technical description.`;
+            } else if (wordCount < 150) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = `Good start! Your essay has ${wordCount} words and ${paragraphs} paragraph(s). Consider adding more details to reach 150-200 words.`;
+            } else {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = `Excellent work! Your essay has ${wordCount} words and ${paragraphs} paragraph(s). This is a comprehensive technical description!`;
+            }
+        }
+
+        function clearEssay() {
+            if (confirm('Are you sure you want to clear your essay? This action cannot be undone.')) {
+                document.getElementById('essayText').value = '';
+                localStorage.removeItem('lubricationEssay');
+                const feedback = document.getElementById('essay-feedback');
+                feedback.style.display = 'block';
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = 'Essay cleared.';
+            }
+        }
+
+        // Load saved essay on page load
+        window.addEventListener('load', () => {
+            const savedEssay = localStorage.getItem('lubricationEssay');
+            if (savedEssay) {
+                document.getElementById('essayText').value = savedEssay;
+            }
+        });
+    </script>
 </body>
 
 </html>
-

@@ -56,7 +56,6 @@
         .container,
         .container-fluid {
             max-width: 900px;
-            /* Force a reasonable centered width */
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
@@ -105,15 +104,6 @@
             margin-bottom: 40px;
         }
 
-        .image-caption {
-            background-color: #d1d9e6;
-            padding: 10px;
-            text-align: center;
-            font-weight: 700;
-            margin-top: 10px;
-            letter-spacing: 1px;
-        }
-
         .text-block {
             background-color: #f2f2f2;
             padding: 30px;
@@ -144,74 +134,7 @@
             font-size: 18px;
         }
 
-        .gap-line {
-            display: inline-block;
-            width: 150px;
-            border-bottom: 2px solid #000;
-            margin: 0 5px;
-        }
-
-        .qr-placeholder {
-            width: 80px;
-            height: 80px;
-            border: 1px dashed #ccc;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 10px;
-        }
-
-        .word-bank {
-            background-color: #f6f8f1;
-            border: 1px solid #e0e6d6;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .word-bank .word-item {
-            display: inline-block;
-            margin: 5px 15px;
-            padding: 5px 10px;
-        }
-
-        .discussion-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .discussion-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        .discussion-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #2b78c5;
-            font-weight: bold;
-        }
-
         /* Interactive Inputs Styles */
-        .task-input {
-            border: 1px solid #ccc;
-            background: #fff;
-            padding: 8px;
-            border-radius: 4px;
-            width: 100%;
-            font-family: 'Lato', sans-serif;
-            transition: border-color 0.3s;
-        }
-
-        .task-input:focus {
-            border-color: #2b78c5;
-            outline: none;
-        }
-
         .gap-input {
             width: 150px;
             text-align: center;
@@ -220,6 +143,8 @@
             border-bottom: 2px solid #000;
             background: transparent;
             padding: 0 5px;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
         }
 
         .gap-input:focus {
@@ -232,6 +157,7 @@
             gap: 10px;
             margin-top: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .correct-answer {
@@ -240,10 +166,11 @@
             margin-top: 5px;
             font-weight: bold;
             display: none;
-            /* Hidden by default */
         }
 
-        .show-answer-btn {
+        .show-answer-btn,
+        .check-btn,
+        .clear-btn {
             background-color: #2b78c5;
             color: white;
             border: none;
@@ -254,23 +181,26 @@
             transition: background 0.3s;
         }
 
-        .show-answer-btn:hover {
+        .show-answer-btn:hover,
+        .check-btn:hover,
+        .clear-btn:hover {
             background-color: #1a5a9c;
         }
 
         .check-btn {
             background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
         }
 
         .check-btn:hover {
             background-color: #218838;
+        }
+
+        .clear-btn {
+            background-color: #dc3545;
+        }
+
+        .clear-btn:hover {
+            background-color: #c82333;
         }
 
         .input-correct {
@@ -283,115 +213,37 @@
             background-color: #ffe6e6 !important;
         }
 
-        textarea.task-input {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .correct-answer-display {
-            color: #28a745;
-            font-size: 0.85rem;
-            margin-top: 5px;
+        .feedback-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
             font-weight: bold;
-            display: none;
-        }
-
-        /* Drag and Drop Styles */
-        .draggable-word {
-            display: inline-block;
-            padding: 5px 15px;
-            margin: 5px;
-            background-color: #fff;
-            border: 1px solid #2b78c5;
-            border-radius: 20px;
-            cursor: move;
-            font-weight: bold;
-            color: #2b78c5;
-            /* PERFORMANCE FIX: Instant Drag */
-            transition: none !important;
-            animation: none !important;
-            will-change: transform;
-            touch-action: none;
-            /* Prevent browser scrolling handling on the element itself if possible, though we handle it in JS */
-        }
-
-        .draggable-word:hover {
-            background-color: #2b78c5;
-            color: #fff;
-        }
-
-        .draggable-word .remove-btn {
-            display: none;
-            margin-left: 8px;
-            color: #dc3545;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        /* Show remove button when inside drop zone */
-        .drop-zone .draggable-word .remove-btn {
-            display: inline-block;
-        }
-
-        .drop-zone .draggable-word {
-            position: relative;
-            padding-right: 20px;
-            /* Space for x button */
-        }
-
-        .drop-zone .draggable-word .remove-btn {
-            position: absolute;
-            top: 2px;
-            right: 5px;
-        }
-
-        .draggable-word.dragging {
-            opacity: 0.5;
-        }
-
-        .drop-zone {
-            display: inline-block;
-            min-width: 120px;
-            min-height: 30px;
-            border-bottom: 2px solid #000;
-            vertical-align: middle;
-            margin: 0 5px;
             text-align: center;
-            padding: 0 10px;
-            transition: background 0.2s;
+            display: none;
         }
 
-        .drop-zone.drag-over {
-            background-color: #e3f2fd;
-            border-bottom-color: #2b78c5;
+        .feedback-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
         }
 
-        .drop-zone .draggable-word {
-            margin: 0;
-            padding: 2px 10px;
-            cursor: pointer;
+        .feedback-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
-        .draggable-word.selected {
-            background-color: #2b78c5;
-            color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transform: scale(1.05);
+        .activity-content {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 5px;
+            line-height: 1.8;
         }
 
-        /* Fixed Word Bank Style */
-        .word-bank {
-            position: -webkit-sticky;
-            /* Safari */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #f6f8f1;
-            border-bottom: 2px solid #e0e6d6;
-            padding: 15px 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .activity-content a {
+            color: #2b78c5;
+            text-decoration: underline;
         }
 
         /* Mobile Responsiveness Fixes */
@@ -424,65 +276,17 @@
                 line-height: 1.3;
             }
 
-            /* Responsive Inputs */
             .gap-input {
                 width: 100px;
                 max-width: 100%;
-                /* Safety */
             }
 
-            .task-input {
-                width: 100%;
-            }
-
-            .word-bank .word-item,
-            .draggable-word {
-                padding: 6px 12px;
-                /* Bigger touch target */
-                font-size: 14px;
-                margin: 4px;
-                max-width: 100%;
-            }
-
-            .text-block {
-                text-align: left !important;
-            }
-
-            .drop-zone {
-                min-width: 80px;
-                height: 30px;
-                margin-bottom: 5px;
-                display: inline-block;
-                padding: 0 5px;
-                background-color: #f8f9fa;
-                border: 1px dashed #2b78c5;
-                vertical-align: middle;
-            }
-
-            .word-bank.is-fixed {
-                padding: 10px 5px;
-                width: 100%;
-                /* Explicit width */
-                left: 0;
-                box-sizing: border-box;
-                /* Include padding in width */
-            }
-
-            /* Table adjustments */
             .lesson-table th,
             .lesson-table td {
                 padding: 8px;
                 font-size: 14px;
             }
 
-            /* Task 5 / Debate Section Mobile Fixes */
-            .task-section img {
-                display: block;
-                margin: 0 auto 15px auto;
-                /* Center image */
-            }
-
-            /* FORCE Gutter/Padding on Mobile */
             .container,
             .container-fluid,
             .task-section,
@@ -492,7 +296,6 @@
                 padding-right: 15px !important;
             }
 
-            /* Fix Row Margins on Mobile */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
@@ -501,13 +304,7 @@
             .col-md-6 {
                 width: 100%;
                 padding: 0 !important;
-                /* Let parent handle padding */
                 margin-bottom: 15px;
-            }
-
-            /* Center Headers if requested */
-            .mt-4 h6 {
-                text-align: center;
             }
         }
 
@@ -546,7 +343,6 @@
 
         .img-fluid {
             cursor: zoom-in;
-            /* Indicate clickable */
         }
     </style>
 </head>
@@ -606,12 +402,190 @@
             <div class="row justify-content-center">
                 <div class="col-lg-10">
                     <div class="lesson-title font-Cambria">
-                        <h2>LESSON 19. Car crankshaft mechanism</h2>
+                        <h2>Lesson 19. Car crankshaft mechanism</h2>
                     </div>
                 </div>
             </div>
+
+            <!-- TASK 1 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 1</span>
+                            <span style="font-style: italic;">
+                                Read and define the bolded words.
+                            </span>
+                        </div>
+
+                        <div class="text-block mt-4">
+                            <p>
+                                A car's crankshaft is a mechanical <strong>component</strong> that converts the pistons'
+                                <strong>linear motion</strong> into a <strong>rotating motion</strong>, which powers the vehicle's
+                                <strong>wheels</strong>. The crankshaft is located near the bottom of the engine and is connected
+                                to the pistons by connecting rods.
+                            </p>
+                        </div>
+
+                        <div class="text-center mt-4">
+                            <img src="../images/image19.png" alt="Detailed diagram of a car crankshaft" class="img-fluid"
+                                 onclick="openLightbox(this)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 2</span>
+                            <span style="font-style: italic;">
+                                19. Listen and complete gaps &ldquo;How the crankshaft works&rdquo;
+                            </span>
+                        </div>
+
+                        <ul class="gap-fill-list">
+                            <li>
+                                1. The piston moves downward from the top dead center to the 1.
+                                <input type="text" class="gap-input" id="gap1" data-answer="bottom"> dead center.
+                            </li>
+                            <li>
+                                2. The piston's motion is transferred to the crankshaft through the connecting 2.
+                                <input type="text" class="gap-input" id="gap2" data-answer="rod">.
+                            </li>
+                            <li>
+                                3. The crankshaft transforms the piston's linear motion into a 3.
+                                <input type="text" class="gap-input" id="gap3" data-answer="rotary"> motion.
+                            </li>
+                            <li>
+                                4. The crankshaft's rotary motion moves the 4.
+                                <input type="text" class="gap-input" id="gap4" data-answer="flywheel">, which then moves the vehicle's wheels.
+                            </li>
+                        </ul>
+
+                        <div class="check-buttons">
+                            <button class="check-btn" onclick="checkTask2()">Check Answers</button>
+                            <button class="show-answer-btn" onclick="showTask2Answers()">Show Answers</button>
+                            <button class="clear-btn" onclick="resetTask2()">Clear</button>
+                        </div>
+
+                        <div class="feedback-message" id="task2-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 3</span>
+                            <span style="font-style: italic;">
+                                Read and comprehend the tables of key specifications of the car crankshaft mechanism.
+                            </span>
+                        </div>
+
+                        <div class="activity-content">
+                            <h5 style="text-align: center; font-weight: 700; margin-bottom: 20px;">General Dimensions</h5>
+                            <table class="table lesson-table">
+                                <thead>
+                                    <tr>
+                                        <th>Parameter</th>
+                                        <th>Inline Engines</th>
+                                        <th>V Engines</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Crankshaft Length</td>
+                                        <td>~500&ndash;800 mm</td>
+                                        <td>~600&ndash;800 mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Stroke (Piston Travel)</td>
+                                        <td>~70&ndash;120 mm</td>
+                                        <td>~70&ndash;120 mm</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of Crank Throws</td>
+                                        <td>1 per cylinder</td>
+                                        <td>1 per cylinder bank</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h5 style="text-align: center; font-weight: 700; margin-top: 35px; margin-bottom: 20px;">Performance Characteristics</h5>
+                            <table class="table lesson-table">
+                                <thead>
+                                    <tr>
+                                        <th>Specification</th>
+                                        <th>Economy Engines</th>
+                                        <th>Performance Engines</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Maximum RPM</td>
+                                        <td>6,000&ndash;7,000 RPM</td>
+                                        <td>8,000&ndash;12,000+ RPM</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Torque Handling</td>
+                                        <td>Moderate (~150 Nm)</td>
+                                        <td>High (~300+ Nm)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Weight</td>
+                                        <td>~10&ndash;15 kg</td>
+                                        <td>~15&ndash;30 kg</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h5 style="text-align: center; font-weight: 700; margin-top: 35px; margin-bottom: 20px;">Material Specifications</h5>
+                            <table class="table lesson-table">
+                                <thead>
+                                    <tr>
+                                        <th>Material Type</th>
+                                        <th>Applications</th>
+                                        <th>Properties</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Forged Steel</td>
+                                        <td>Performance engines, heavy-duty engines</td>
+                                        <td>High strength, durability</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cast Iron</td>
+                                        <td>Economy engines</td>
+                                        <td>Cost-effective, moderate strength</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Billet Steel</td>
+                                        <td>High-performance custom engines</td>
+                                        <td>Superior precision, maximum durability</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <h5 style="margin-top: 25px;"><strong>For more information, visit:</strong> <a href="https://www.tataaig.com/knowledge-center/car-insurance/crankshaft" target="_blank">https://www.tataaig.com/knowledge-center/car-insurance/crankshaft</a></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+    <!-- Lesson Content Section End -->
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Enlarged image" class="lightbox-img" id="lightbox-img">
+    </div>
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
@@ -637,6 +611,74 @@
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+
+    <script>
+        // Lightbox functionality
+        function openLightbox(img) {
+            var lightbox = document.getElementById('lightbox');
+            var lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = img.src;
+            lightbox.classList.add('active');
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // TASK 2: Gap Fill Exercise
+        function checkTask2() {
+            var correct = 0;
+            var total = 4;
+            var inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4');
+
+            inputs.forEach(function(input) {
+                var userAnswer = input.value.trim().toLowerCase();
+                var correctAnswer = input.dataset.answer.toLowerCase();
+
+                if (userAnswer === correctAnswer) {
+                    input.classList.remove('input-incorrect');
+                    input.classList.add('input-correct');
+                    correct++;
+                } else {
+                    input.classList.remove('input-correct');
+                    input.classList.add('input-incorrect');
+                }
+            });
+
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            if (correct === total) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = 'Perfect! You got all ' + total + ' answers correct!';
+            } else {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = 'You got ' + correct + ' out of ' + total + ' correct. Try again!';
+            }
+        }
+
+        function showTask2Answers() {
+            var inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4');
+            inputs.forEach(function(input) {
+                input.value = input.dataset.answer;
+                input.classList.remove('input-incorrect');
+                input.classList.add('input-correct');
+            });
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback-message feedback-success';
+            feedback.textContent = 'All answers have been revealed!';
+        }
+
+        function resetTask2() {
+            var inputs = document.querySelectorAll('#gap1, #gap2, #gap3, #gap4');
+            inputs.forEach(function(input) {
+                input.value = '';
+                input.classList.remove('input-correct', 'input-incorrect');
+            });
+            var feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'none';
+        }
+    </script>
 </body>
 
 </html>
