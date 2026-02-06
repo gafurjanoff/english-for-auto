@@ -56,7 +56,6 @@
         .container,
         .container-fluid {
             max-width: 900px;
-            /* Force a reasonable centered width */
             width: 100%;
             padding-right: 15px;
             padding-left: 15px;
@@ -122,16 +121,23 @@
             text-align: justify;
         }
 
+        .lesson-table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
         .lesson-table th,
         .lesson-table td {
             border: 1px solid #000 !important;
             padding: 15px;
-            text-align: center;
-            vertical-align: middle;
+            text-align: left;
+            vertical-align: top;
         }
 
         .lesson-table th {
             font-weight: 700;
+            background-color: #e8e8e8;
         }
 
         .gap-fill-list {
@@ -142,6 +148,7 @@
         .gap-fill-list li {
             margin-bottom: 15px;
             font-size: 18px;
+            line-height: 1.8;
         }
 
         .gap-line {
@@ -161,41 +168,6 @@
             margin-bottom: 10px;
         }
 
-        .word-bank {
-            background-color: #f6f8f1;
-            border: 1px solid #e0e6d6;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            margin-bottom: 30px;
-            font-weight: 500;
-        }
-
-        .word-bank .word-item {
-            display: inline-block;
-            margin: 5px 15px;
-            padding: 5px 10px;
-        }
-
-        .discussion-list {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .discussion-list li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 15px;
-        }
-
-        .discussion-list li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: #2b78c5;
-            font-weight: bold;
-        }
-
         /* Interactive Inputs Styles */
         .task-input {
             border: 1px solid #ccc;
@@ -205,6 +177,7 @@
             width: 100%;
             font-family: 'Lato', sans-serif;
             transition: border-color 0.3s;
+            font-size: 16px;
         }
 
         .task-input:focus {
@@ -220,6 +193,8 @@
             border-bottom: 2px solid #000;
             background: transparent;
             padding: 0 5px;
+            font-size: 16px;
+            font-family: 'Lato', sans-serif;
         }
 
         .gap-input:focus {
@@ -232,6 +207,7 @@
             gap: 10px;
             margin-top: 15px;
             justify-content: center;
+            flex-wrap: wrap;
         }
 
         .correct-answer {
@@ -240,10 +216,11 @@
             margin-top: 5px;
             font-weight: bold;
             display: none;
-            /* Hidden by default */
         }
 
-        .show-answer-btn {
+        .show-answer-btn,
+        .check-btn,
+        .clear-btn {
             background-color: #2b78c5;
             color: white;
             border: none;
@@ -254,23 +231,26 @@
             transition: background 0.3s;
         }
 
-        .show-answer-btn:hover {
+        .show-answer-btn:hover,
+        .check-btn:hover,
+        .clear-btn:hover {
             background-color: #1a5a9c;
         }
 
         .check-btn {
             background-color: #28a745;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
         }
 
         .check-btn:hover {
             background-color: #218838;
+        }
+
+        .clear-btn {
+            background-color: #dc3545;
+        }
+
+        .clear-btn:hover {
+            background-color: #c82333;
         }
 
         .input-correct {
@@ -296,102 +276,48 @@
             display: none;
         }
 
-        /* Drag and Drop Styles */
-        .draggable-word {
-            display: inline-block;
-            padding: 5px 15px;
-            margin: 5px;
-            background-color: #fff;
-            border: 1px solid #2b78c5;
-            border-radius: 20px;
-            cursor: move;
+        .feedback-message {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 5px;
             font-weight: bold;
-            color: #2b78c5;
-            /* PERFORMANCE FIX: Instant Drag */
-            transition: none !important;
-            animation: none !important;
-            will-change: transform;
-            touch-action: none;
-            /* Prevent browser scrolling handling on the element itself if possible, though we handle it in JS */
-        }
-
-        .draggable-word:hover {
-            background-color: #2b78c5;
-            color: #fff;
-        }
-
-        .draggable-word .remove-btn {
-            display: none;
-            margin-left: 8px;
-            color: #dc3545;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 14px;
-            line-height: 1;
-        }
-
-        /* Show remove button when inside drop zone */
-        .drop-zone .draggable-word .remove-btn {
-            display: inline-block;
-        }
-
-        .drop-zone .draggable-word {
-            position: relative;
-            padding-right: 20px;
-            /* Space for x button */
-        }
-
-        .drop-zone .draggable-word .remove-btn {
-            position: absolute;
-            top: 2px;
-            right: 5px;
-        }
-
-        .draggable-word.dragging {
-            opacity: 0.5;
-        }
-
-        .drop-zone {
-            display: inline-block;
-            min-width: 120px;
-            min-height: 30px;
-            border-bottom: 2px solid #000;
-            vertical-align: middle;
-            margin: 0 5px;
             text-align: center;
-            padding: 0 10px;
-            transition: background 0.2s;
+            display: none;
         }
 
-        .drop-zone.drag-over {
-            background-color: #e3f2fd;
-            border-bottom-color: #2b78c5;
+        .feedback-success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
         }
 
-        .drop-zone .draggable-word {
-            margin: 0;
-            padding: 2px 10px;
-            cursor: pointer;
+        .feedback-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
         }
 
-        .draggable-word.selected {
-            background-color: #2b78c5;
-            color: #fff;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            transform: scale(1.05);
+        .car-diagram {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px 0;
         }
 
-        /* Fixed Word Bank Style */
-        .word-bank {
-            position: -webkit-sticky;
-            /* Safari */
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background-color: #f6f8f1;
-            border-bottom: 2px solid #e0e6d6;
-            padding: 15px 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .audio-player {
+            margin: 20px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qr-code {
+            width: 60px;
+            height: 60px;
+            display: inline-block;
+            vertical-align: middle;
+            margin-left: 10px;
         }
 
         /* Mobile Responsiveness Fixes */
@@ -424,65 +350,25 @@
                 line-height: 1.3;
             }
 
-            /* Responsive Inputs */
             .gap-input {
                 width: 100px;
                 max-width: 100%;
-                /* Safety */
             }
 
             .task-input {
                 width: 100%;
             }
 
-            .word-bank .word-item,
-            .draggable-word {
-                padding: 6px 12px;
-                /* Bigger touch target */
-                font-size: 14px;
-                margin: 4px;
-                max-width: 100%;
-            }
-
             .text-block {
                 text-align: left !important;
             }
 
-            .drop-zone {
-                min-width: 80px;
-                height: 30px;
-                margin-bottom: 5px;
-                display: inline-block;
-                padding: 0 5px;
-                background-color: #f8f9fa;
-                border: 1px dashed #2b78c5;
-                vertical-align: middle;
-            }
-
-            .word-bank.is-fixed {
-                padding: 10px 5px;
-                width: 100%;
-                /* Explicit width */
-                left: 0;
-                box-sizing: border-box;
-                /* Include padding in width */
-            }
-
-            /* Table adjustments */
             .lesson-table th,
             .lesson-table td {
                 padding: 8px;
                 font-size: 14px;
             }
 
-            /* Task 5 / Debate Section Mobile Fixes */
-            .task-section img {
-                display: block;
-                margin: 0 auto 15px auto;
-                /* Center image */
-            }
-
-            /* FORCE Gutter/Padding on Mobile */
             .container,
             .container-fluid,
             .task-section,
@@ -492,7 +378,6 @@
                 padding-right: 15px !important;
             }
 
-            /* Fix Row Margins on Mobile */
             .row {
                 margin-left: 0 !important;
                 margin-right: 0 !important;
@@ -501,13 +386,7 @@
             .col-md-6 {
                 width: 100%;
                 padding: 0 !important;
-                /* Let parent handle padding */
                 margin-bottom: 15px;
-            }
-
-            /* Center Headers if requested */
-            .mt-4 h6 {
-                text-align: center;
             }
         }
 
@@ -546,7 +425,29 @@
 
         .img-fluid {
             cursor: zoom-in;
-            /* Indicate clickable */
+        }
+
+        .role-play-section {
+            background-color: #fff3cd;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px solid #ffc107;
+            margin-top: 20px;
+        }
+
+        .role-play-section h5 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+
+        .role-play-section ul {
+            list-style-type: disc;
+            padding-left: 30px;
+        }
+
+        .role-play-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
         }
     </style>
 </head>
@@ -610,16 +511,236 @@
                     </div>
                 </div>
             </div>
+
+            <!-- TASK 1 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 1</span>
+                            <span style="font-style: italic;">Read the information and define the bolded words.</span>
+                        </div>
+
+                        <div class="text-center">
+                            <img src="../images/image11.1.png" alt="Car Components Diagram" class="car-diagram img-fluid">
+                        </div>
+
+                        <div class="text-block mt-4">
+                            <p>A vehicle is composed of basic mechanical parts and devices making up its systems; each of them fulfills a specific function such as <strong>Fuel supply system</strong>, <strong>Transmission system</strong>, <strong>Suspension system</strong>, <strong>Braking system</strong>, <strong>Steering system</strong>, <strong>Cooling system</strong>, <strong>Electrical system</strong>, <strong>Exhaust system</strong>.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 2 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 2</span>
+                            <span style="font-style: italic;">
+                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=60x60&data=../audios/Track11.mp3" 
+                                     alt="QR Code" class="qr-code">
+                                11. Listen and fill in gaps.
+                            </span>
+                        </div>
+
+                        <div class="audio-player">
+                            <audio controls style="width: 100%;">
+                                <source src="../audios/Track 11.mp3" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                        </div>
+
+                        <div class="gap-fill-list">
+                            <p style="line-height: 1.8;">
+                                Cars are complex machines made up of various parts working together to 
+                                <input type="text" class="gap-input" id="gap1" data-answer="function"> properly. 
+                                One of the most essential parts is the <strong>engine</strong>. The engine converts 
+                                <input type="text" class="gap-input" id="gap2" data-answer="fuel"> into mechanical power, 
+                                and it's often referred to as the heart of the car. The engine is responsible for 
+                                <input type="text" class="gap-input" id="gap3" data-answer="powering"> the car and 
+                                enabling it to move. Another critical 
+                                <input type="text" class="gap-input" id="gap4" data-answer="component"> is the 
+                                <strong>transmission</strong>, which transfers the engine's power to the wheels. The transmission 
+                                ensures that the car moves at the desired speed by shifting 
+                                <input type="text" class="gap-input" id="gap5" data-answer="gears"> automatically in an 
+                                automatic transmission, or manually in a manual transmission.
+                            </p>
+                        </div>
+
+                        <div class="check-buttons">
+                            <button class="check-btn" onclick="checkTask2()">Check Answers</button>
+                            <button class="clear-btn" onclick="clearTask2()">Clear</button>
+                        </div>
+                        <div class="feedback-message" id="task2-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 3 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 3</span>
+                            <span style="font-style: italic;">Fill in the table. For more information visit: 
+                                <a href="https://www.uti.edu/blog/automotive/car-components" target="_blank">
+                                    https://www.uti.edu/blog/automotive/car-components
+                                </a>
+                            </span>
+                        </div>
+
+                        <table class="lesson-table">
+                            <thead>
+                                <tr>
+                                    <th>Mechanisms</th>
+                                    <th>Functions</th>
+                                    <th>Related words</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Fuel supply system</td>
+                                    <td><em>The function of the fuel supply system is to store and filter the required fuel, and to provide the fuel-injection system with fuel at a specific supply pressure in all operating conditions.</em></td>
+                                    <td><em>Fuel, supply, pressure, store, filter, fuel injection</em></td>
+                                </tr>
+                                <tr>
+                                    <td>Transmission system</td>
+                                    <td>
+                                        <textarea class="task-input" id="trans-function" rows="3" 
+                                                  placeholder="Enter the function of the transmission system..."></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="task-input" id="trans-words" rows="3" 
+                                                  placeholder="Enter related words..."></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Suspension system</td>
+                                    <td>
+                                        <textarea class="task-input" id="susp-function" rows="3" 
+                                                  placeholder="Enter the function of the suspension system..."></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="task-input" id="susp-words" rows="3" 
+                                                  placeholder="Enter related words..."></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Braking system</td>
+                                    <td>
+                                        <textarea class="task-input" id="brake-function" rows="3" 
+                                                  placeholder="Enter the function of the braking system..."></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="task-input" id="brake-words" rows="3" 
+                                                  placeholder="Enter related words..."></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Steering system</td>
+                                    <td>
+                                        <textarea class="task-input" id="steer-function" rows="3" 
+                                                  placeholder="Enter the function of the steering system..."></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="task-input" id="steer-words" rows="3" 
+                                                  placeholder="Enter related words..."></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Cooling system</td>
+                                    <td>
+                                        <textarea class="task-input" id="cool-function" rows="3" 
+                                                  placeholder="Enter the function of the cooling system..."></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="task-input" id="cool-words" rows="3" 
+                                                  placeholder="Enter related words..."></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Electrical system</td>
+                                    <td>
+                                        <textarea class="task-input" id="elec-function" rows="3" 
+                                                  placeholder="Enter the function of the electrical system..."></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="task-input" id="elec-words" rows="3" 
+                                                  placeholder="Enter related words..."></textarea>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Exhaust system</td>
+                                    <td>
+                                        <textarea class="task-input" id="exh-function" rows="3" 
+                                                  placeholder="Enter the function of the exhaust system..."></textarea>
+                                    </td>
+                                    <td>
+                                        <textarea class="task-input" id="exh-words" rows="3" 
+                                                  placeholder="Enter related words..."></textarea>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="check-buttons">
+                            <button class="clear-btn" onclick="clearTask3()">Clear Table</button>
+                            <button class="show-answer-btn" onclick="showTask3Answers()">Show Sample Answers</button>
+                        </div>
+                        <div class="feedback-message" id="task3-feedback"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TASK 4 -->
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="task-section">
+                        <div class="mb-3">
+                            <span class="task-label">TASK 4</span>
+                        </div>
+
+                        <div class="role-play-section">
+                            <h5 style="color: #dc3545; font-weight: bold; text-align: center;">Role Play as a Mechanic</h5>
+                            
+                            <p>Have the learners work in pairs. One plays the role of a car mechanic, and the other plays a customer whose car has a problem.</p>
+                            
+                            <ul>
+                                <li>The "customer" describes a problem with the car using clues. For example, "My car makes a loud noise when I brake."</li>
+                                <li>The "mechanic" responds using the vocabulary, e.g., "It sounds like there might be an issue with the braking system."</li>
+                            </ul>
+
+                            <div class="mt-3">
+                                <h6>Practice Area:</h6>
+                                <textarea class="task-input" id="roleplay-notes" rows="6" 
+                                          placeholder="Write your role-play dialogue here...&#10;&#10;Customer: My car makes a loud noise when I brake.&#10;Mechanic: It sounds like there might be an issue with the braking system..."></textarea>
+                            </div>
+
+                            <div class="check-buttons mt-3">
+                                <button class="clear-btn" onclick="clearTask4()">Clear Notes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
+    <!-- Lesson Content Section End -->
+
+    <!-- Lightbox -->
+    <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+        <img src="" alt="Enlarged image" class="lightbox-img" id="lightbox-img">
+    </div>
 
     <!-- Footer Section Begin -->
     <footer class="footer bg-dark py-4">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center text-white">
-                    <p>C
-opyright &copy;
+                    <p>Copyright &copy;
                         <script>document.write(new Date().getFullYear());</script> All rights reserved
                     </p>
                 </div>
@@ -638,6 +759,132 @@ opyright &copy;
     <script src="../js/jquery.slicknav.js"></script>
     <script src="../js/owl.carousel.min.js"></script>
     <script src="../js/main.js"></script>
+
+    <script>
+        // Lightbox functionality
+        document.querySelectorAll('.img-fluid').forEach(img => {
+            img.addEventListener('click', function() {
+                const lightbox = document.getElementById('lightbox');
+                const lightboxImg = document.getElementById('lightbox-img');
+                lightboxImg.src = this.src;
+                lightbox.classList.add('active');
+            });
+        });
+
+        function closeLightbox() {
+            document.getElementById('lightbox').classList.remove('active');
+        }
+
+        // Task 2: Check Answers
+        function checkTask2() {
+            const inputs = [
+                document.getElementById('gap1'),
+                document.getElementById('gap2'),
+                document.getElementById('gap3'),
+                document.getElementById('gap4'),
+                document.getElementById('gap5')
+            ];
+
+            let correct = 0;
+            let total = inputs.length;
+
+            inputs.forEach(input => {
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = input.getAttribute('data-answer').toLowerCase();
+                
+                input.classList.remove('input-correct', 'input-incorrect');
+                
+                if (userAnswer === correctAnswer) {
+                    input.classList.add('input-correct');
+                    correct++;
+                } else {
+                    input.classList.add('input-incorrect');
+                }
+            });
+
+            const feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'block';
+            
+            if (correct === total) {
+                feedback.className = 'feedback-message feedback-success';
+                feedback.textContent = `Perfect! You got all ${total} answers correct! 🎉`;
+            } else {
+                feedback.className = 'feedback-message feedback-error';
+                feedback.textContent = `You got ${correct} out of ${total} correct. Try again!`;
+            }
+        }
+
+        // Task 2: Clear
+        function clearTask2() {
+            const inputs = [
+                document.getElementById('gap1'),
+                document.getElementById('gap2'),
+                document.getElementById('gap3'),
+                document.getElementById('gap4'),
+                document.getElementById('gap5')
+            ];
+
+            inputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('input-correct', 'input-incorrect');
+            });
+
+            const feedback = document.getElementById('task2-feedback');
+            feedback.style.display = 'none';
+        }
+
+        // Task 3: Clear Table
+        function clearTask3() {
+            const textareas = document.querySelectorAll('#trans-function, #trans-words, #susp-function, #susp-words, #brake-function, #brake-words, #steer-function, #steer-words, #cool-function, #cool-words, #elec-function, #elec-words, #exh-function, #exh-words');
+            
+            textareas.forEach(textarea => {
+                textarea.value = '';
+            });
+
+            const feedback = document.getElementById('task3-feedback');
+            feedback.style.display = 'none';
+        }
+
+        // Task 3: Show Sample Answers
+        function showTask3Answers() {
+            const answers = {
+                'trans-function': 'The transmission system transfers power from the engine to the wheels, allowing the vehicle to move at different speeds through gear changes.',
+                'trans-words': 'Gears, clutch, shift, speed, power transfer, manual, automatic',
+                
+                'susp-function': 'The suspension system absorbs shocks from the road, provides a smooth ride, and maintains tire contact with the road surface.',
+                'susp-words': 'Shock absorbers, springs, struts, comfort, stability, handling',
+                
+                'brake-function': 'The braking system slows down or stops the vehicle by converting kinetic energy into heat through friction.',
+                'brake-words': 'Brake pads, discs, calipers, friction, stopping power, safety',
+                
+                'steer-function': 'The steering system allows the driver to control the direction of the vehicle by turning the front wheels.',
+                'steer-words': 'Steering wheel, rack, pinion, power steering, control, direction',
+                
+                'cool-function': 'The cooling system regulates engine temperature by circulating coolant to prevent overheating.',
+                'cool-words': 'Radiator, coolant, thermostat, water pump, temperature, heat dissipation',
+                
+                'elec-function': 'The electrical system provides power to start the engine and operate lights, accessories, and electronic components.',
+                'elec-words': 'Battery, alternator, starter, wiring, lights, electronics',
+                
+                'exh-function': 'The exhaust system channels harmful gases away from the engine and reduces emissions and noise.',
+                'exh-words': 'Muffler, catalytic converter, pipes, emissions, gases, pollution control'
+            };
+
+            Object.keys(answers).forEach(id => {
+                document.getElementById(id).value = answers[id];
+            });
+
+            const feedback = document.getElementById('task3-feedback');
+            feedback.style.display = 'block';
+            feedback.className = 'feedback-message feedback-success';
+            feedback.textContent = 'Sample answers have been filled in. These are examples - your own answers may vary!';
+        }
+
+        // Task 4: Clear Notes
+        function clearTask4() {
+            document.getElementById('roleplay-notes').value = '';
+        }
+    </script>
 </body>
 
 </html>

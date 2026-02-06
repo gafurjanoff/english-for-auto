@@ -548,6 +548,112 @@
             cursor: zoom-in;
             /* Indicate clickable */
         }
+
+
+
+        body { font-family: 'Lato', sans-serif; line-height: 1.7; }
+        .lesson-title {
+            background: #e6f0fa;
+            padding: 25px;
+            text-align: center;
+            border-radius: 10px;
+            margin: 30px auto;
+            max-width: 960px;
+        }
+        .task-section { margin: 50px 0; }
+        .task-label {
+            background: #d9e7f4;
+            padding: 6px 22px;
+            border-radius: 20px 0 0 20px;
+            font-weight: bold;
+            font-style: italic;
+            display: inline-block;
+        }
+        .word-bank {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin: 25px 0;
+        }
+        .draggable-word {
+            display: inline-block;
+            padding: 8px 18px;
+            margin: 6px;
+            background: white;
+            border: 2px solid #3b82f6;
+            border-radius: 9999px;
+            cursor: move;
+            font-weight: 600;
+            color: #1d4ed8;
+            user-select: none;
+        }
+        .drop-zone {
+            display: inline-block;
+            min-width: 140px;
+            min-height: 38px;
+            margin: 6px 10px;
+            padding: 6px 12px;
+            border: 2px dashed #64748b;
+            border-radius: 8px;
+            background: #f1f5f9;
+            text-align: center;
+            font-weight: 500;
+            color: #475569;
+            vertical-align: middle;
+            cursor: pointer;
+        }
+        .drop-zone.filled { 
+            background: #ecfdf5; 
+            border-color: #10b981; 
+            color: #065f46;
+        }
+        .drop-zone .placed-word {
+            cursor: pointer;
+            font-weight: 600;
+            color: #1e40af;
+        }
+        .gap-input, .def-input {
+            width: 160px;
+            text-align: center;
+            border: none;
+            border-bottom: 2px solid #000;
+            background: transparent;
+            padding: 4px 6px;
+            font-size: 1.05rem;
+        }
+        .input-correct { border-bottom-color: #10b981 !important; color: #065f46; }
+        .input-incorrect { border-bottom-color: #ef4444 !important; color: #991b1b; }
+        .btn-check, .btn-show {
+            padding: 10px 24px;
+            font-weight: bold;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            margin: 8px 12px;
+        }
+        .btn-check { background: #10b981; color: white; }
+        .btn-show  { background: #3b82f6; color: white; }
+        .feedback { margin: 15px 0; font-weight: bold; min-height: 26px; }
+        .stroke-box {
+            background: #f0f9ff;
+            border: 1px solid #93c5fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+            min-height: 80px;
+        }
+        .model-answers {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .gap-input, .def-input { width: 130px; }
+        }
     </style>
 </head>
 
@@ -601,16 +707,293 @@
 
     <!-- Lesson Content Section Begin -->
     <section class="lesson-content spad bg-white">
+
+
         <div class="container">
             <!-- Lesson Title -->
-            <div class="row justify-content-center">
-                <div class="col-lg-10">
-                    <div class="lesson-title font-Cambria">
-                        <h2>LESSON 12. General structure of an internal combustion engine</h2>
-                    </div>
+            <div class="lesson-title">
+                <h2>LESSON 12. General structure of an internal combustion engine</h2>
+            </div>
+        
+            <!-- TASK 1 -->
+            <div class="task-section">
+                <h4><span class="task-label">TASK 1</span> Listen and fill in the gaps. Then define the bolded words.</h4>
+        
+                <div style="text-align:center; margin:30px 0;">
+                    <audio controls style="width:100%; max-width:500px;">
+                        <source src="../audios/Track 12.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+        
+                <div style="text-align:center; margin:25px 0;">
+                    <img src="../images/image12.1.png" 
+                         alt="Labeled internal combustion engine diagram" 
+                         class="img-fluid" 
+                         style="max-height:500px; border-radius:10px; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+                </div>
+        
+                <div style="background:#f9fafb; padding:25px; border-radius:10px; border:1px solid #e5e7eb; margin:20px 0;">
+                    <p>
+                        The engine consists of a <strong>cylinder</strong> and a moving <strong>piston</strong>. 
+                        The expanding <strong>combustion gases</strong> push the <input type="text" class="gap-input" id="gap1">, 
+                        which in turn rotates the <strong>crankshaft</strong>. 
+                        Ultimately, through a system of <strong>gears</strong> in the <strong>powertrain</strong>, 
+                        this <input type="text" class="gap-input" id="gap2"> drives the vehicle's <strong>wheels</strong>.
+                    </p>
+                </div>
+        
+                <div style="margin:35px 0;">
+                    <h5>Define these bolded terms (short answers):</h5>
+                    <ul style="list-style:none; padding-left:0; line-height:2.2;">
+                        <li><strong>cylinder</strong> <input type="text" class="def-input" id="def1"></li>
+                        <li><strong>piston</strong> <input type="text" class="def-input" id="def2"></li>
+                        <li><strong>combustion gases</strong> <input type="text" class="def-input" id="def3"></li>
+                        <li><strong>crankshaft</strong> <input type="text" class="def-input" id="def4"></li>
+                        <li><strong>powertrain</strong> <input type="text" class="def-input" id="def5"></li>
+                    </ul>
+                </div>
+        
+                <div style="text-align:center;">
+                    <button class="btn-check" onclick="checkTask1()">Check answers</button>
+                    <button class="btn-show" onclick="document.getElementById('task1Model').style.display='block'">Show model answers</button>
+                    <div id="task1Feedback" class="feedback"></div>
+                </div>
+        
+                <div id="task1Model" class="model-answers">
+                    <strong>Model answers:</strong><br><br>
+                    <strong>Gaps:</strong><br>
+                    1. piston<br>
+                    2. crankshaft<br><br>
+        
+                    <strong>Definitions:</strong><br>
+                    cylinder → chamber in which the piston moves and combustion occurs<br>
+                    piston → reciprocating part that moves up/down in the cylinder<br>
+                    combustion gases → hot gases produced by burning fuel-air mixture<br>
+                    crankshaft → converts reciprocating motion of pistons to rotary motion<br>
+                    powertrain → system transmitting engine power to the wheels
                 </div>
             </div>
+        
+            <!-- TASK 2 -->
+            <div class="task-section">
+                <h4><span class="task-label">TASK 2</span> Describe the 5 main processes of a 4-stroke engine using the verbs below.</h4>
+        
+                <p>Drag phrases into the correct stage boxes. Click any placed phrase to remove it (return to bank) if mistaken.</p>
+        
+                <div style="text-align:center; margin:25px 0;">
+                    <a href="https://www.youtube.com/watch?v=ZQvHyfgBtA" target="_blank" class="btn btn-primary">
+                        <i class="fa fa-youtube-play"></i> Watch: How does an Internal Combustion Engine Work?
+                    </a>
+                </div>
+        
+                <div class="word-bank" id="verbBank">
+                    <div class="draggable-word" draggable="true">air-fuel mixture is inducted</div>
+                    <div class="draggable-word" draggable="true">fuel is sprayed / injected</div>
+                    <div class="draggable-word" draggable="true">piston compresses</div>
+                    <div class="draggable-word" draggable="true">spark ignites</div>
+                    <div class="draggable-word" draggable="true">mixture burns, releasing energy</div>
+                    <div class="draggable-word" draggable="true">piston is pushed down</div>
+                    <div class="draggable-word" draggable="true">exhaust gases are expelled</div>
+                    <div class="draggable-word" draggable="true">piston moves up</div>
+                </div>
+        
+                <div class="row text-center">
+                    <div class="col-md-3 col-sm-6"><div class="stroke-box"><strong>1. Intake</strong><div class="drop-zone" data-stage="1"></div></div></div>
+                    <div class="col-md-3 col-sm-6"><div class="stroke-box"><strong>2. Compression</strong><div class="drop-zone" data-stage="2"></div></div></div>
+                    <div class="col-md-3 col-sm-6"><div class="stroke-box"><strong>3. Power (Combustion)</strong><div class="drop-zone" data-stage="3"></div></div></div>
+                    <div class="col-md-3 col-sm-6"><div class="stroke-box"><strong>4. Exhaust</strong><div class="drop-zone" data-stage="4"></div></div></div>
+                </div>
+        
+                <div style="text-align:center; margin-top:35px;">
+                    <button class="btn-check" onclick="checkTask2()">Check</button>
+                    <button class="btn-show" onclick="resetTask2()">Reset</button>
+                    <div id="task2Feedback" class="feedback"></div>
+                </div>
+            </div>
+        
+            <!-- TASK 3 -->
+            <div class="task-section">
+                <h4><span class="task-label">TASK 3</span> Answer the questions about engine working principles.</h4>
+        
+                <p>For more information visit: <a href="https://www.youtube.com/watch?v=ZQvHyfgBtA" target="_blank">How an Engine Works</a></p>
+        
+                <ol style="line-height:2.1;">
+                    <li>The main function of the <input class="gap-input" id="q1"> in an internal combustion engine is to convert the energy from fuel into mechanical work.</li>
+                    <li>In a four-stroke engine, the four main strokes are intake, <input class="gap-input" id="q2">, power, and exhaust.</li>
+                    <li>The <input class="gap-input" id="q3"> is responsible for igniting the air-fuel mixture in gasoline engines.</li>
+                    <li>During the compression stroke, the piston moves <input class="gap-input" id="q4"> in the cylinder to compress the fuel-air mixture.</li>
+                    <li>A hybrid engine combines an internal combustion engine with an <input class="gap-input" id="q5"> motor to improve efficiency and reduce emissions.</li>
+                    <li>The <input class="gap-input" id="q6"> controls the flow of air and fuel into the engine and the release of exhaust gases.</li>
+                    <li>In a two-stroke engine, one complete cycle is achieved in <input class="gap-input" id="q7"> strokes.</li>
+                    <li>The <input class="gap-input" id="q8"> is a key component that converts the linear motion of the pistons into rotational motion.</li>
+                    <li>The purpose of the <input class="gap-input" id="q9"> system in an engine is to cool the engine components and prevent overheating.</li>
+                    <li>Electric engines primarily rely on <input class="gap-input" id="q10"> stored in batteries to power the vehicle.</li>
+                </ol>
+        
+                <div style="text-align:center; margin:40px 0;">
+                    <button class="btn-check" onclick="checkTask3()">Check answers</button>
+                    <button class="btn-show" onclick="document.getElementById('task3Model').style.display='block'">Show model answers</button>
+                    <div id="task3Feedback" class="feedback"></div>
+                </div>
+        
+                <div id="task3Model" class="model-answers">
+                    <strong>Model answers:</strong><br><br>
+                    1. crankshaft / piston<br>
+                    2. compression<br>
+                    3. spark plug<br>
+                    4. upward / up<br>
+                    5. electric<br>
+                    6. valve / valvetrain<br>
+                    7. two<br>
+                    8. crankshaft<br>
+                    9. cooling<br>
+                    10. electricity / energy
+                </div>
+            </div>
+        
+            <!-- TASK 4 -->
+            <div class="task-section">
+                <h4><span class="task-label">TASK 4</span> Make a presentation on “Innovations in Engine Technology”</h4>
+                <p>Write key points or full text for your presentation. Include topics like hybrid engines, electric motors, turbocharging, variable valve timing, hydrogen engines, etc.</p>
+                <textarea class="form-control" rows="10" placeholder="Start your presentation here..."></textarea>
+            </div>
         </div>
+        
+        <script>
+        // Task 1 check
+        function checkTask1() {
+            const gaps = {
+                gap1: document.getElementById('gap1'),
+                gap2: document.getElementById('gap2')
+            };
+            let score = 0;
+            Object.keys(gaps).forEach(k => {
+                const el = gaps[k];
+                const val = el.value.trim().toLowerCase();
+                el.classList.remove('input-correct', 'input-incorrect');
+                if ((k === 'gap1' && val === 'piston') || (k === 'gap2' && val === 'crankshaft')) {
+                    el.classList.add('input-correct');
+                    score++;
+                } else if (val) {
+                    el.classList.add('input-incorrect');
+                }
+            });
+            document.getElementById('task1Feedback').innerHTML = 
+                score === 2 ? '<span style="color:#059669;">Perfect!</span>' : `<span style="color:#dc2626;">${score}/2 correct</span>`;
+        }
+        
+        // Task 2 drag-drop with remove
+        function initTask2() {
+            document.querySelectorAll('#verbBank .draggable-word').forEach(el => {
+                el.addEventListener('dragstart', e => {
+                    e.dataTransfer.setData('text/plain', el.textContent.trim());
+                    setTimeout(() => el.style.opacity = '0.4', 0);
+                });
+                el.addEventListener('dragend', () => el.style.opacity = '1');
+            });
+        
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                zone.addEventListener('dragover', e => e.preventDefault());
+                zone.addEventListener('drop', e => {
+                    e.preventDefault();
+                    const word = e.dataTransfer.getData('text/plain');
+                    if (zone.children.length === 0 && word) {
+                        const span = document.createElement('span');
+                        span.className = 'placed-word';
+                        span.textContent = word;
+                        zone.appendChild(span);
+                        zone.classList.add('filled');
+                        // Remove from bank
+                        const orig = Array.from(document.querySelectorAll('#verbBank .draggable-word'))
+                            .find(el => el.textContent.trim() === word);
+                        if (orig) orig.remove();
+                        // Click to remove
+                        span.onclick = () => {
+                            const back = document.createElement('div');
+                            back.className = 'draggable-word';
+                            back.draggable = true;
+                            back.textContent = word;
+                            document.getElementById('verbBank').appendChild(back);
+                            back.addEventListener('dragstart', e => {
+                                e.dataTransfer.setData('text/plain', word);
+                                setTimeout(() => back.style.opacity = '0.4', 0);
+                            });
+                            zone.innerHTML = '';
+                            zone.classList.remove('filled');
+                        };
+                    }
+                });
+            });
+        }
+        
+        function checkTask2() {
+            let correct = 0;
+            document.querySelectorAll('.drop-zone').forEach(zone => {
+                const stage = zone.dataset.stage;
+                const text = zone.textContent.trim();
+                zone.classList.remove('correct', 'incorrect');
+                if (stage === '1' && (text.includes('intake') || text.includes('inducted'))) correct++;
+                if (stage === '2' && text.includes('compress')) correct++;
+                if (stage === '3' && (text.includes('burn') || text.includes('ignite') || text.includes('push'))) correct++;
+                if (stage === '4' && text.includes('exhaust')) correct++;
+                if (text && zone.classList.contains('filled')) zone.classList.add(text ? 'incorrect' : 'correct');
+            });
+            document.getElementById('task2Feedback').innerHTML = 
+                correct === 4 ? '<span style="color:#059669;">Excellent – all stages correct!</span>' : 
+                `<span style="color:#dc2626;">${correct}/4 stages correct – review verbs</span>`;
+        }
+        
+        function resetTask2() {
+            document.querySelectorAll('.drop-zone').forEach(z => {
+                z.innerHTML = '';
+                z.classList.remove('filled', 'correct', 'incorrect');
+            });
+            document.getElementById('task2Feedback').innerHTML = '';
+            // Re-init drag after reset if needed
+        }
+        
+        // Task 3 check
+        function checkTask3() {
+            const answers = {
+                q1: ['crankshaft', 'piston'],
+                q2: ['compression'],
+                q3: ['spark plug'],
+                q4: ['upward', 'up'],
+                q5: ['electric'],
+                q6: ['valve', 'valvetrain'],
+                q7: ['two'],
+                q8: ['crankshaft'],
+                q9: ['cooling'],
+                q10: ['electricity', 'energy']
+            };
+            let score = 0;
+            for (let i = 1; i <= 10; i++) {
+                const el = document.getElementById('q'+i);
+                const val = el.value.trim().toLowerCase();
+                el.classList.remove('input-correct','input-incorrect');
+                if (answers['q'+i].some(a => val.includes(a.toLowerCase()))) {
+                    el.classList.add('input-correct');
+                    score++;
+                } else if (val) {
+                    el.classList.add('input-incorrect');
+                }
+            }
+            document.getElementById('task3Feedback').innerHTML = 
+                score === 10 ? '<span style="color:#059669;">Excellent! 10/10</span>' : `<span style="color:#dc2626;">${score}/10 correct</span>`;
+        }
+        
+        // Init drag-drop on load
+        document.addEventListener('DOMContentLoaded', initTask2);
+        </script>
+
+
+
+
+
+
+
+
     </section>
 
     <!-- Footer Section Begin -->
@@ -618,8 +1001,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center text-white">
-                    <p>C
-opyright &copy;
+                    <p>Copyright &copy;
                         <script>document.write(new Date().getFullYear());</script> All rights reserved
                     </p>
                 </div>
